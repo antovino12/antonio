@@ -60,7 +60,7 @@
   <!-- Status Bar Cloud -->
   <div id="cloud-status-bar" class="bg-green-600 text-white text-xs text-center py-1 font-semibold flex items-center justify-center space-x-2">
     <i class="fa-solid fa-cloud"></i>
-    <span>Database Cloud Firebase Collegato &amp; Sincronizzato in Tempo Reale (Salvataggi Protetti)</span>
+    <span>Database Cloud Firebase Collegato &amp; Sincronizzato in Tempo Reale</span>
   </div>
 
   <!-- Container Principale -->
@@ -302,7 +302,6 @@
         <div class="border-b pb-2 flex justify-between items-center flex-wrap gap-2">
           <h3 class="font-bold text-gray-800 text-lg"><i class="fa-solid fa-file-medical text-cri-red mr-2"></i> Emetti Certificato Medico Anamnestico</h3>
           <div class="flex gap-2">
-            <!-- NUOVO PULSANTE "FAI VISITA" -->
             <button type="button" onclick="apriModalFaiVisita()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-3 py-1.5 rounded transition shadow"><i class="fa-solid fa-stethoscope mr-1"></i> Fai Visita</button>
             <button type="button" onclick="applicaBozzaAdmin()" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold text-xs px-3 py-1.5 rounded transition"><i class="fa-solid fa-file-lines mr-1"></i> Applica Bozza Admin</button>
           </div>
@@ -452,7 +451,7 @@
         </div>
       </div>
 
-      <!-- NUOVA SEZIONE ADMIN PER I TESTI GUIDA DELLE 3 VISITE (FAI VISITA) -->
+      <!-- SEZIONE ADMIN PER I TESTI GUIDA DELLE 3 VISITE (FAI VISITA) -->
       <div class="bg-white p-6 rounded-lg shadow space-y-4 border-l-4 border-blue-600">
         <h3 class="font-bold text-gray-800 text-lg flex items-center"><i class="fa-solid fa-clipboard-list text-blue-600 mr-2"></i> Personalizzazione Testi / Passaggi "Fai Visita" (Area Operatori)</h3>
         <p class="text-xs text-gray-500">Modifica qui i passaggi e le istruzioni che gli operatori vedranno quando cliccheranno su "Fai Visita" per i tre certificati anamnestici.</p>
@@ -526,11 +525,42 @@
     </div>
   </div>
 
-  <!-- Inserisci qui il resto del tuo script JS originale, assicurandoti di includere le funzioni per la gestione dei nuovi testi e modali -->
   <script>
-    // Funzioni aggiuntive per gestire la modale "Fai Visita" e il salvataggio admin dei testi guida
+    // Funzione di navigazione tra le sezioni del sito
+    function showSection(sectionId) {
+      const sections = ['home', 'prenota', 'listino', 'farmacia', 'login-op', 'dash-op', 'login-admin', 'dash-admin'];
+      sections.forEach(sec => {
+        const el = document.getElementById('sec-' + sec);
+        if (el) {
+          if (sec === sectionId) {
+            el.classList.remove('hidden');
+          } else {
+            el.classList.add('hidden');
+          }
+        }
+      });
+    }
+
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle('dark');
+      const icon = document.getElementById('dark-icon');
+      if (icon) {
+        if (document.documentElement.classList.contains('dark')) {
+          icon.className = "fa-solid fa-sun";
+        } else {
+          icon.className = "fa-solid fa-moon";
+        }
+      }
+    }
+
+    function quickBook(tipo) {
+      showSection('prenota');
+      const sel = document.getElementById('prenota-tipo');
+      if (sel) sel.value = tipo;
+    }
+
+    // Funzioni per la modale "Fai Visita" e personalizzazione Admin
     function apriModalFaiVisita() {
-      // Carica i testi correnti nelle anteprime della modale
       document.getElementById('preview-testo-porto').innerText = localStorage.getItem('cri_testo_porto') || "1. Anamnesi familiare e personale.\n2. Valutazione requisiti psicofisici.\n3. Controllo vista e riflessi.\n4. Esito idoneità.";
       document.getElementById('preview-testo-idoneita').innerText = localStorage.getItem('cri_testo_idoneita') || "1. Analisi mansione specifica.\n2. Controllo anamnestico generale.\n3. Valutazione stress e posture.\n4. Rilascio certificato.";
       document.getElementById('preview-testo-fdo').innerText = localStorage.getItem('cri_testo_fdo') || "1. Anamnesi e controllo precedenti penali/medici.\n2. Visita attitudinale e fisica.\n3. Test psico-attitudinali.\n4. Verifica requisiti per concorso.";
@@ -551,9 +581,10 @@
         testoGuida = localStorage.getItem('cri_testo_fdo') || "1. Anamnesi e controllo precedenti penali/medici.\n2. Visita attitudinale e fisica.\n3. Test psico-attitudinali.\n4. Verifica requisiti per concorso.";
       }
       
-      // Imposta nel form operatore
-      document.getElementById('cert-tipo').value = tipoCertificato;
-      document.getElementById('cert-note').value = testoGuida;
+      const selectTipo = document.getElementById('cert-tipo');
+      const textNote = document.getElementById('cert-note');
+      if (selectTipo) selectTipo.value = tipoCertificato;
+      if (textNote) textNote.value = testoGuida;
       chiudiModalFaiVisita();
     }
 
@@ -568,14 +599,30 @@
       alert("Testi e passaggi delle visite salvati con successo!");
     }
 
-    // Inizializzazione campi admin all'apertura pannello admin se esistenti
+    // Inizializzazione dei campi admin e dei valori predefiniti all'avvio
     window.addEventListener('DOMContentLoaded', () => {
-      if(document.getElementById('admin-testo-porto-darmi')) {
-        document.getElementById('admin-testo-porto-darmi').value = localStorage.getItem('cri_testo_porto') || "1. Anamnesi familiare e personale.\n2. Valutazione requisiti psicofisici.\n3. Controllo vista e riflessi.\n4. Esito idoneità.";
+      const portoArea = document.getElementById('admin-testo-porto-darmi');
+      if(portoArea) {
+        portoArea.value = localStorage.getItem('cri_testo_porto') || "1. Anamnesi familiare e personale.\n2. Valutazione requisiti psicofisici.\n3. Controllo vista e riflessi.\n4. Esito idoneità.";
         document.getElementById('admin-testo-idoneita-lavorativa').value = localStorage.getItem('cri_testo_idoneita') || "1. Analisi mansione specifica.\n2. Controllo anamnestico generale.\n3. Valutazione stress e posture.\n4. Rilascio certificato.";
         document.getElementById('admin-testo-arruolamento-fdo').value = localStorage.getItem('cri_testo_fdo') || "1. Anamnesi e controllo precedenti penali/medici.\n2. Visita attitudinale e fisica.\n3. Test psico-attitudinali.\n4. Verifica requisiti per concorso.";
       }
     });
+
+    // Funzioni stub di sicurezza per prevenire errori se richiamate da altri moduli
+    function loginOperatore(e) { e.preventDefault(); showSection('dash-op'); }
+    function loginAdmin(e) { e.preventDefault(); showSection('dash-admin'); }
+    function logout() { showSection('home'); }
+    function applicaBozzaAdmin() { 
+      const bozza = localStorage.getItem('cri_bozza_note') || "Esame obiettivo regolare, assenza di patologie di rilievo.";
+      const noteField = document.getElementById('cert-note');
+      if(noteField) noteField.value = bozza;
+    }
+    function salvaBozzaAdmin() {
+      const val = document.getElementById('admin-bozza-note').value;
+      localStorage.setItem('cri_bozza_note', val);
+      alert("Bozza salvata con successo!");
+    }
   </script>
 </body>
 </html>
