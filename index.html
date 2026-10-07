@@ -473,6 +473,184 @@
         <button onclick="salvaTestiGuideVisiteAdmin()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded text-sm transition shadow">Salva Testi Guide Visite</button>
       </div>
 
+      <!-- GESTIONE LISTINO PREZZI (ADMIN) -->
+      <div class="bg-white p-6 rounded-lg shadow space-y-4">
+        <h3 class="font-bold text-gray-800 text-lg border-b pb-2"><i class="fa-solid fa-tags text-cri-red mr-2"></i> Gestione Listino Prezzi Ufficiale</h3>
+        <form onsubmit="aggiungiVoceListino(event)" class="grid grid-cols-1 md:grid-cols-4 gap-3 bg-gray-50 p-4 rounded border">
+          <div>
+            <label class="block text-xs font-bold text-gray-600">Titolo Servizio / Prestazione</label>
+            <input type="text" id="listino-titolo" required placeholder="Es. Visita Medica Semplice" class="w-full border p-2 rounded text-sm mt-1">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-600">Categoria</label>
+            <select id="listino-categoria" class="w-full border p-2 rounded text-sm mt-1 bg-white">
+              <option value="Visite Mediche">Visite Mediche</option>
+              <option value="Certificati Anamnestici">Certificati Anamnestici</option>
+              <option value="Farmacia">Farmacia</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-600">Prezzo</label>
+            <input type="text" id="listino-prezzo" required placeholder="Es. € 150.00" class="w-full border p-2 rounded text-sm mt-1">
+          </div>
+          <div class="flex items-end">
+            <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 rounded text-sm transition shadow"><i class="fa-solid fa-plus mr-1"></i> Aggiungi Voce</button>
+          </div>
+        </form>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm border-collapse">
+            <thead>
+              <tr class="bg-gray-100 text-gray-700 border-b">
+                <th class="p-2">Servizio</th>
+                <th class="p-2">Categoria</th>
+                <th class="p-2">Prezzo</th>
+                <th class="p-2 text-right">Azioni</th>
+              </tr>
+            </thead>
+            <tbody id="tabella-listino-admin">
+              <!-- Popolato via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- GESTIONE FARMACIA (ADMIN) -->
+      <div class="bg-white p-6 rounded-lg shadow space-y-4">
+        <h3 class="font-bold text-gray-800 text-lg border-b pb-2"><i class="fa-solid fa-pills text-blue-600 mr-2"></i> Gestione Catalogo Farmacia (Prodotti &amp; Prezzi)</h3>
+        <form onsubmit="aggiungiProdottoFarmacia(event)" class="grid grid-cols-1 md:grid-cols-4 gap-3 bg-gray-50 p-4 rounded border">
+          <div>
+            <label class="block text-xs font-bold text-gray-600">Nome Farmaco / Prodotto</label>
+            <input type="text" id="farmaco-nome" required placeholder="Es. Bende Medicate" class="w-full border p-2 rounded text-sm mt-1">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-600">Prezzo Unitario</label>
+            <input type="text" id="farmaco-prezzo" required placeholder="Es. € 20.00" class="w-full border p-2 rounded text-sm mt-1">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-600">URL Icona / Immagine (Opzionale)</label>
+            <input type="url" id="farmaco-img" placeholder="https://..." class="w-full border p-2 rounded text-sm mt-1">
+          </div>
+          <div class="flex items-end">
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded text-sm transition shadow"><i class="fa-solid fa-plus mr-1"></i> Aggiungi Prodotto</button>
+          </div>
+        </form>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm border-collapse">
+            <thead>
+              <tr class="bg-gray-100 text-gray-700 border-b">
+                <th class="p-2">Prodotto</th>
+                <th class="p-2">Prezzo</th>
+                <th class="p-2 text-right">Azioni</th>
+              </tr>
+            </thead>
+            <tbody id="tabella-farmacia-admin">
+              <!-- Popolato via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- GESTIONE OPERATORI (ADMIN) -->
+      <div class="bg-white p-6 rounded-lg shadow space-y-4">
+        <h3 class="font-bold text-gray-800 text-lg border-b pb-2"><i class="fa-solid fa-users text-cri-red mr-2"></i> Gestione Account Operatori &amp; Credenziali</h3>
+        <form onsubmit="creaOperatore(event)" class="grid grid-cols-1 md:grid-cols-3 gap-3 bg-gray-50 p-4 rounded border">
+          <div>
+            <label class="block text-xs font-bold text-gray-600">Username Operatore</label>
+            <input type="text" id="nuovo-op-user" required placeholder="Es. dr_rossi" class="w-full border p-2 rounded text-sm mt-1">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-600">Ruolo / Qualifica</label>
+            <input type="text" id="nuovo-op-ruolo" required placeholder="Es. Medico Chirurgo / Capoturno" class="w-full border p-2 rounded text-sm mt-1">
+          </div>
+          <div class="flex items-end">
+            <button type="submit" class="w-full bg-cri-red hover:bg-red-700 text-white font-bold py-2 rounded text-sm transition shadow"><i class="fa-solid fa-user-plus mr-1"></i> Crea Operatore e Genera Password</button>
+          </div>
+        </form>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm border-collapse">
+            <thead>
+              <tr class="bg-gray-100 text-gray-700 border-b">
+                <th class="p-2">Username</th>
+                <th class="p-2">Ruolo</th>
+                <th class="p-2">Password Provvisoria / Attuale</th>
+                <th class="p-2 text-right">Azioni</th>
+              </tr>
+            </thead>
+            <tbody id="tabella-operatori-admin">
+              <!-- Popolato via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- LISTA PRENOTAZIONI RICEVUTE (ADMIN) -->
+      <div class="bg-white p-6 rounded-lg shadow space-y-4">
+        <h3 class="font-bold text-gray-800 text-lg border-b pb-2"><i class="fa-solid fa-calendar-days text-cri-red mr-2"></i> Prenotazioni Ricevute dai Pazienti</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm border-collapse">
+            <thead>
+              <tr class="bg-gray-100 text-gray-700 border-b">
+                <th class="p-2">Codice</th>
+                <th class="p-2">Paziente</th>
+                <th class="p-2">Discord</th>
+                <th class="p-2">Visita / Servizio</th>
+                <th class="p-2">Data / Ora</th>
+                <th class="p-2">Stato</th>
+                <th class="p-2 text-right">Azioni</th>
+              </tr>
+            </thead>
+            <tbody id="tabella-prenotazioni-admin">
+              <!-- Popolato via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- LISTA ORDINI FARMACIA RICEVUTI (ADMIN) -->
+      <div class="bg-white p-6 rounded-lg shadow space-y-4">
+        <h3 class="font-bold text-gray-800 text-lg border-b pb-2"><i class="fa-solid fa-box-archive text-blue-600 mr-2"></i> Ordini Farmacia Ricevuti (Carrello)</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm border-collapse">
+            <thead>
+              <tr class="bg-gray-100 text-gray-700 border-b">
+                <th class="p-2">Codice Ordine</th>
+                <th class="p-2">Paziente</th>
+                <th class="p-2">Discord</th>
+                <th class="p-2">Prodotti Ordinati</th>
+                <th class="p-2">Totale</th>
+                <th class="p-2">Stato</th>
+                <th class="p-2 text-right">Azioni</th>
+              </tr>
+            </thead>
+            <tbody id="tabella-ordini-farmacia-admin">
+              <!-- Popolato via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- STORICO TURNI DI TUTTI GLI OPERATORI (ADMIN) -->
+      <div class="bg-white p-6 rounded-lg shadow space-y-4">
+        <h3 class="font-bold text-gray-800 text-lg border-b pb-2 flex justify-between items-center flex-wrap gap-2">
+          <span><i class="fa-solid fa-clock-rotate-left text-indigo-600 mr-2"></i> Storico Completo Turni Operatori</span>
+          <button onclick="esportaStoricoTurniCSV()" class="bg-gray-800 hover:bg-gray-900 text-white font-bold text-xs px-3 py-1.5 rounded transition"><i class="fa-solid fa-download mr-1"></i> Esporta Report Turni</button>
+        </h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm border-collapse">
+            <thead>
+              <tr class="bg-gray-100 text-gray-700 border-b">
+                <th class="p-2">Operatore</th>
+                <th class="p-2">Inizio Turno</th>
+                <th class="p-2">Fine Turno</th>
+                <th class="p-2">Durata</th>
+              </tr>
+            </thead>
+            <tbody id="tabella-storico-turni-admin">
+              <!-- Popolato via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
     </section>
 
   </main>
@@ -505,124 +683,4 @@
             <h4 class="font-bold text-gray-800 mb-2">Idoneità Lavorativa</h4>
             <p id="preview-testo-idoneita" class="text-xs text-gray-600 whitespace-pre-line mb-4">Caricamento linee guida...</p>
           </div>
-          <button class="bg-cri-red text-white text-xs font-bold py-2 rounded hover:bg-red-700 transition">Usa questa guida</button>
-        </div>
-
-        <!-- Quadrato 3 -->
-        <div onclick="selezionaVisitaGuida('Certificato Anamnestico per Arruolamento in FdO')" class="bg-gray-50 hover:bg-red-50 border-2 border-gray-200 hover:border-red-500 rounded-lg p-5 cursor-pointer transition flex flex-col justify-between shadow-sm">
-          <div>
-            <div class="text-cri-red text-2xl mb-2"><i class="fa-solid fa-shield-halved"></i></div>
-            <h4 class="font-bold text-gray-800 mb-2">Arruolamento in FdO</h4>
-            <p id="preview-testo-fdo" class="text-xs text-gray-600 whitespace-pre-line mb-4">Caricamento linee guida...</p>
-          </div>
-          <button class="bg-cri-red text-white text-xs font-bold py-2 rounded hover:bg-red-700 transition">Usa questa guida</button>
-        </div>
-      </div>
-      
-      <div class="flex justify-end pt-2 border-t">
-        <button onclick="chiudiModalFaiVisita()" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold px-4 py-2 rounded text-sm transition">Chiudi</button>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    // Funzione di navigazione tra le sezioni del sito
-    function showSection(sectionId) {
-      const sections = ['home', 'prenota', 'listino', 'farmacia', 'login-op', 'dash-op', 'login-admin', 'dash-admin'];
-      sections.forEach(sec => {
-        const el = document.getElementById('sec-' + sec);
-        if (el) {
-          if (sec === sectionId) {
-            el.classList.remove('hidden');
-          } else {
-            el.classList.add('hidden');
-          }
-        }
-      });
-    }
-
-    function toggleDarkMode() {
-      document.documentElement.classList.toggle('dark');
-      const icon = document.getElementById('dark-icon');
-      if (icon) {
-        if (document.documentElement.classList.contains('dark')) {
-          icon.className = "fa-solid fa-sun";
-        } else {
-          icon.className = "fa-solid fa-moon";
-        }
-      }
-    }
-
-    function quickBook(tipo) {
-      showSection('prenota');
-      const sel = document.getElementById('prenota-tipo');
-      if (sel) sel.value = tipo;
-    }
-
-    // Funzioni per la modale "Fai Visita" e personalizzazione Admin
-    function apriModalFaiVisita() {
-      document.getElementById('preview-testo-porto').innerText = localStorage.getItem('cri_testo_porto') || "1. Anamnesi familiare e personale.\n2. Valutazione requisiti psicofisici.\n3. Controllo vista e riflessi.\n4. Esito idoneità.";
-      document.getElementById('preview-testo-idoneita').innerText = localStorage.getItem('cri_testo_idoneita') || "1. Analisi mansione specifica.\n2. Controllo anamnestico generale.\n3. Valutazione stress e posture.\n4. Rilascio certificato.";
-      document.getElementById('preview-testo-fdo').innerText = localStorage.getItem('cri_testo_fdo') || "1. Anamnesi e controllo precedenti penali/medici.\n2. Visita attitudinale e fisica.\n3. Test psico-attitudinali.\n4. Verifica requisiti per concorso.";
-      document.getElementById('modal-fai-visita').classList.remove('hidden');
-    }
-
-    function chiudiModalFaiVisita() {
-      document.getElementById('modal-fai-visita').classList.add('hidden');
-    }
-
-    function selezionaVisitaGuida(tipoCertificato) {
-      let testoGuida = "";
-      if (tipoCertificato.includes("Porto d'Armi")) {
-        testoGuida = localStorage.getItem('cri_testo_porto') || "1. Anamnesi familiare e personale.\n2. Valutazione requisiti psicofisici.\n3. Controllo vista e riflessi.\n4. Esito idoneità.";
-      } else if (tipoCertificato.includes("Idoneità Lavorativa")) {
-        testoGuida = localStorage.getItem('cri_testo_idoneita') || "1. Analisi mansione specifica.\n2. Controllo anamnestico generale.\n3. Valutazione stress e posture.\n4. Rilascio certificato.";
-      } else {
-        testoGuida = localStorage.getItem('cri_testo_fdo') || "1. Anamnesi e controllo precedenti penali/medici.\n2. Visita attitudinale e fisica.\n3. Test psico-attitudinali.\n4. Verifica requisiti per concorso.";
-      }
-      
-      const selectTipo = document.getElementById('cert-tipo');
-      const textNote = document.getElementById('cert-note');
-      if (selectTipo) selectTipo.value = tipoCertificato;
-      if (textNote) textNote.value = testoGuida;
-      chiudiModalFaiVisita();
-    }
-
-    function salvaTestiGuideVisiteAdmin() {
-      const pPorto = document.getElementById('admin-testo-porto-darmi').value;
-      const pIdoneita = document.getElementById('admin-testo-idoneita-lavorativa').value;
-      const pFdo = document.getElementById('admin-testo-arruolamento-fdo').value;
-
-      localStorage.setItem('cri_testo_porto', pPorto);
-      localStorage.setItem('cri_testo_idoneita', pIdoneita);
-      localStorage.setItem('cri_testo_fdo', pFdo);
-      alert("Testi e passaggi delle visite salvati con successo!");
-    }
-
-    // Inizializzazione dei campi admin e dei valori predefiniti all'avvio
-    window.addEventListener('DOMContentLoaded', () => {
-      const portoArea = document.getElementById('admin-testo-porto-darmi');
-      if(portoArea) {
-        portoArea.value = localStorage.getItem('cri_testo_porto') || "1. Anamnesi familiare e personale.\n2. Valutazione requisiti psicofisici.\n3. Controllo vista e riflessi.\n4. Esito idoneità.";
-        document.getElementById('admin-testo-idoneita-lavorativa').value = localStorage.getItem('cri_testo_idoneita') || "1. Analisi mansione specifica.\n2. Controllo anamnestico generale.\n3. Valutazione stress e posture.\n4. Rilascio certificato.";
-        document.getElementById('admin-testo-arruolamento-fdo').value = localStorage.getItem('cri_testo_fdo') || "1. Anamnesi e controllo precedenti penali/medici.\n2. Visita attitudinale e fisica.\n3. Test psico-attitudinali.\n4. Verifica requisiti per concorso.";
-      }
-    });
-
-    // Funzioni stub di sicurezza per prevenire errori se richiamate da altri moduli
-    function loginOperatore(e) { e.preventDefault(); showSection('dash-op'); }
-    function loginAdmin(e) { e.preventDefault(); showSection('dash-admin'); }
-    function logout() { showSection('home'); }
-    function applicaBozzaAdmin() { 
-      const bozza = localStorage.getItem('cri_bozza_note') || "Esame obiettivo regolare, assenza di patologie di rilievo.";
-      const noteField = document.getElementById('cert-note');
-      if(noteField) noteField.value = bozza;
-    }
-    function salvaBozzaAdmin() {
-      const val = document.getElementById('admin-bozza-note').value;
-      localStorage.setItem('cri_bozza_note', val);
-      alert("Bozza salvata con successo!");
-    }
-  </script>
-</body>
-</html>
+          <button class="bg-cri-red
