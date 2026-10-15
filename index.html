@@ -1323,7 +1323,6 @@
             dayIndex: 0,
             weather: "Soleggiato",
             familyDayName: "Nessuno",
-            // Scorte iniziali reali di biglietti magazzino
             stockInteri: 100,
             stockRidotti: 100,
             prices: {
@@ -1555,8 +1554,13 @@
                 document.getElementById('cnt-' + k).innerText = 0;
             }
 
-            let target = { vip_int: 0, vip_rid: 0, tribuna_int: 0, tribuna_rid: 0, gradinata_int: 0, gradinata_rid: 0 };
-            target[randomType] = randomQty;
+            let ticketPrice = gameState.prices[randomType];
+            let exactTotal = ticketPrice * randomQty;
+
+            // Determina una banconota sufficiente o superiore (tagli realistici: 10, 20, 50, 100, 200, 500)
+            let standardNotes = [10, 20, 50, 100, 200, 500];
+            let validNotes = standardNotes.filter(n => n >= exactTotal);
+            let clientCash = validNotes.length > 0 ? validNotes[0] : Math.ceil(exactTotal / 50) * 50;
 
             let sectorName = randomType.includes('vip') ? 'poltrona vip' : (randomType.includes('tribuna') ? 'tribuna' : 'gradinata');
             let tariffName = randomType.includes('int') ? 'intero' : 'ridotto';
@@ -1570,8 +1574,8 @@
             gameState.currentClient = {
                 dialog: phrases[Math.floor(Math.random() * phrases.length)],
                 method: "CONTANTI",
-                cash: [20, 50, 100][Math.floor(Math.random() * 3)],
-                targetTickets: target
+                cash: clientCash,
+                targetTickets: { [randomType]: randomQty }
             };
 
             document.getElementById('client-dialog').innerText = '"' + gameState.currentClient.dialog + '"';
@@ -1608,7 +1612,6 @@
                 return;
             }
 
-            // CONTROLLO ESAURIMENTO SCORTE IN MAGAZZINO
             if (requiredInteri > gameState.stockInteri || requiredRidotti > gameState.stockRidotti) {
                 alert("Attenzione: Scorte di magazzino insufficienti! I biglietti sono esauriti o non bastano per questo ordine. Vai al Negozio a comprarne altri.");
                 return;
@@ -1619,7 +1622,6 @@
                 return;
             }
 
-            // SCAMBIO E SCARICO SCORTE
             gameState.cassa += total;
             gameState.stockInteri -= requiredInteri;
             gameState.stockRidotti -= requiredRidotti;
@@ -1776,7 +1778,6 @@
 
             gameState.piazza = city;
 
-            // Reset stato email e fatture per la nuova piazza
             gameState.emailState.sent = false;
             gameState.emailState.responded = false;
             gameState.emailState.attachmentOpened = false;
@@ -1825,7 +1826,7 @@
         function savePrices() {
             gameState.prices.vip_int = parseFloat(document.getElementById('cfg-vip-int').value) || 25;
             gameState.prices.tribuna_int = parseFloat(document.getElementById('cfg-tribuna-int').value) || 18;
-            gameState.prices.gradinata_int = parseFloat(document.getElementById('cfg-gradinata-int').value)|| 12;
+            gameState.prices.gradinata_int = parseFloat(document.getElementById('cfg-gradinata-int').value) || 12;
             alert("Listino prezzi aggiornato con successo.");
             updatePricesDisplay();
         }
