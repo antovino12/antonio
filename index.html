@@ -226,7 +226,7 @@
             </div>
             <div>
               <label class="block text-sm font-medium text-gray-700">Dettagli / Argomenti da trattare</label>
-              <textarea id="colloquio-dettagli" rows="3" required class="w-full border p-2 rounded mt-1 focus:ring-2 focus:ring-red-800 outline-none" placeholder="Scrivi sinteticamente i punti di cui vorresti discutere..."></textarea>
+              <textarea id="colloquio-dettagli" rows="3" required class="w-full border p-2 rounded mt-1 focus:ring-2 focus:ring-red-800 outline-none" placeholder="Scrivi sinteticamente i punti di cui vorresti discutirne..."></textarea>
             </div>
             <button type="submit" class="w-full bg-red-800 text-white font-bold py-3 rounded hover:bg-red-900 transition shadow"><i class="fa-solid fa-paper-plane mr-2"></i> Invia Richiesta Colloquio</button>
           </form>
@@ -444,7 +444,7 @@
         </div>
       </section>
 
-      <!-- DASHBOARD ADMIN -->
+      <!-- DASHBOARD ADMIN (COMPLETA CON TUTTE LE SEZIONI) -->
       <section id="sec-dash-admin" class="hidden space-y-6">
         <div class="flex justify-between items-center bg-gray-800 text-white p-4 rounded-lg shadow flex-wrap gap-2">
           <div>
@@ -477,6 +477,54 @@
           </div>
         </div>
 
+        <!-- CREAZIONE E GESTIONE OPERATORI (AREA ADMIN) -->
+        <div class="bg-white p-6 rounded-lg shadow space-y-4 border-l-4 border-blue-600">
+          <h3 class="font-bold text-gray-800 text-lg border-b pb-2 flex items-center justify-between">
+            <span><i class="fa-solid fa-users-gear text-blue-600 mr-2"></i> Creazione e Gestione Operatori CRI</span>
+          </h3>
+          <form onsubmit="creaOperatore(event)" class="grid grid-cols-1 md:grid-cols-4 gap-3 bg-gray-50 p-4 rounded border">
+            <div>
+              <label class="block text-xs font-bold text-gray-600">Nome e Cognome</label>
+              <input type="text" id="new-op-nome" required placeholder="Es. Marco Bianchi" class="w-full border p-2 rounded text-sm mt-1">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-gray-600">Username Accesso</label>
+              <input type="text" id="new-op-user" required placeholder="Es. marco_cri" class="w-full border p-2 rounded text-sm mt-1">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-gray-600">Ruolo / Qualifica</label>
+              <select id="new-op-ruolo" required class="w-full border p-2 rounded text-sm mt-1 bg-white">
+                <option value="Soccorritore">Soccorritore</option>
+                <option value="Infermiere">Infermiere</option>
+                <option value="Medico Chirurgo">Medico Chirurgo</option>
+                <option value="Medico Psicologo">Medico Psicologo</option>
+                <option value="Dirigente CRI">Dirigente CRI</option>
+              </select>
+            </div>
+            <div class="flex items-end">
+              <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded text-sm transition shadow"><i class="fa-solid fa-plus mr-1"></i> Crea Operatore</button>
+            </div>
+          </form>
+
+          <!-- Tabella Operatori Creati -->
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm border-collapse">
+              <thead>
+                <tr class="bg-gray-100 text-gray-700 border-b">
+                  <th class="p-2">Nome</th>
+                  <th class="p-2">Username</th>
+                  <th class="p-2">Ruolo</th>
+                  <th class="p-2">Password Provvisoria</th>
+                  <th class="p-2 text-right">Azioni</th>
+                </tr>
+              </thead>
+              <tbody id="tabella-operatori-admin">
+                <!-- Popolato via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
         <!-- CONFIGURAZIONE TESTI LUNGHI PER I 3 QUADRATI VISITA (AREA ADMIN) -->
         <div class="bg-white p-6 rounded-lg shadow space-y-4 border-l-4 border-red-600">
           <h3 class="font-bold text-gray-800 text-lg flex items-center"><i class="fa-solid fa-pen-to-square text-red-600 mr-2"></i> Gestione Testi e Passaggi Visite Mediche (Area Admin)</h3>
@@ -485,18 +533,98 @@
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div class="space-y-1">
               <label class="block text-xs font-bold text-gray-700">Testo Porto d'Armi</label>
-              <textarea id="admin-testo-porto" rows="4" class="w-full border p-2 rounded text-xs outline-none focus:ring-2 focus:ring-red-500" placeholder="Inserisci passaggi..."></textarea>
+              <textarea id="admin-testo-porto" rows="5" class="w-full border p-2 rounded text-xs outline-none focus:ring-2 focus:ring-red-500" placeholder="Inserisci passaggi..."></textarea>
             </div>
             <div class="space-y-1">
               <label class="block text-xs font-bold text-gray-700">Testo Idoneità Lavorativa</label>
-              <textarea id="admin-testo-lavoro" rows="4" class="w-full border p-2 rounded text-xs outline-none focus:ring-2 focus:ring-red-500" placeholder="Inserisci passaggi..."></textarea>
+              <textarea id="admin-testo-lavoro" rows="5" class="w-full border p-2 rounded text-xs outline-none focus:ring-2 focus:ring-red-500" placeholder="Inserisci passaggi..."></textarea>
             </div>
             <div class="space-y-1">
               <label class="block text-xs font-bold text-gray-700">Testo Arruolamento FdO</label>
-              <textarea id="admin-testo-fdo" rows="4" class="w-full border p-2 rounded text-xs outline-none focus:ring-2 focus:ring-red-500" placeholder="Inserisci passaggi..."></textarea>
+              <textarea id="admin-testo-fdo" rows="5" class="w-full border p-2 rounded text-xs outline-none focus:ring-2 focus:ring-red-500" placeholder="Inserisci passaggi..."></textarea>
             </div>
           </div>
           <button onclick="salvaTestiQuadratiAdmin()" class="bg-red-600 hover:bg-red-700 text-white font-bold px-4 py-2 rounded text-xs transition shadow">Salva Testi Quadrati</button>
+        </div>
+
+        <!-- GESTIONE LISTINO PREZZI (AREA ADMIN) -->
+        <div class="bg-white p-6 rounded-lg shadow space-y-4 border-l-4 border-cri-red">
+          <h3 class="font-bold text-gray-800 text-lg border-b pb-2"><i class="fa-solid fa-tags text-cri-red mr-2"></i> Gestione Listino Prezzi Ufficiale</h3>
+          <form onsubmit="aggiungiVoceListino(event)" class="grid grid-cols-1 md:grid-cols-4 gap-3 bg-gray-50 p-4 rounded border">
+            <div>
+              <label class="block text-xs font-bold text-gray-600">Titolo Servizio / Prestazione</label>
+              <input type="text" id="listino-titolo" required placeholder="Es. Visita Medica Semplice" class="w-full border p-2 rounded text-sm mt-1">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-gray-600">Categoria</label>
+              <select id="listino-categoria" required class="w-full border p-2 rounded text-sm mt-1 bg-white">
+                <option value="Visita Medica">Visita Medica</option>
+                <option value="Certificato Anamnestico">Certificato Anamnestico</option>
+                <option value="Prestazione Sanitaria">Prestazione Sanitaria</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-gray-600">Prezzo ($ o €)</label>
+              <input type="number" step="0.01" id="listino-prezzo" required placeholder="50.00" class="w-full border p-2 rounded text-sm mt-1">
+            </div>
+            <div class="flex items-end">
+              <button type="submit" class="w-full bg-cri-red hover:bg-red-700 text-white font-bold py-2 rounded text-sm transition shadow"><i class="fa-solid fa-plus mr-1"></i> Aggiungi a Listino</button>
+            </div>
+          </form>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm border-collapse">
+              <thead>
+                <tr class="bg-gray-100 text-gray-700 border-b">
+                  <th class="p-2">Prestazione</th>
+                  <th class="p-2">Categoria</th>
+                  <th class="p-2">Prezzo</th>
+                  <th class="p-2 text-right">Azioni</th>
+                </tr>
+              </thead>
+              <tbody id="tabella-listino-admin">
+                <!-- Popolato via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- GESTIONE FARMACIA E PRODOTTI (AREA ADMIN) -->
+        <div class="bg-white p-6 rounded-lg shadow space-y-4 border-l-4 border-green-600">
+          <h3 class="font-bold text-gray-800 text-lg border-b pb-2"><i class="fa-solid fa-pills text-green-600 mr-2"></i> Gestione Catalogo Farmacia Sanitaria</h3>
+          <form onsubmit="aggiungiFarmaco(event)" class="grid grid-cols-1 md:grid-cols-4 gap-3 bg-gray-50 p-4 rounded border">
+            <div>
+              <label class="block text-xs font-bold text-gray-600">Nome Farmaco / Presidio</label>
+              <input type="text" id="farmaco-nome" required placeholder="Es. Tachipirina 1000" class="w-full border p-2 rounded text-sm mt-1">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-gray-600">Descrizione Sintetica</label>
+              <input type="text" id="farmaco-desc" required placeholder="Es. Antipiretico ed analgesico" class="w-full border p-2 rounded text-sm mt-1">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-gray-600">Prezzo Unitario</label>
+              <input type="number" step="0.01" id="farmaco-prezzo" required placeholder="12.50" class="w-full border p-2 rounded text-sm mt-1">
+            </div>
+            <div class="flex items-end">
+              <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 rounded text-sm transition shadow"><i class="fa-solid fa-plus mr-1"></i> Aggiungi Farmaco</button>
+            </div>
+          </form>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm border-collapse">
+              <thead>
+                <tr class="bg-gray-100 text-gray-700 border-b">
+                  <th class="p-2">Nome Farmaco</th>
+                  <th class="p-2">Descrizione</th>
+                  <th class="p-2">Prezzo</th>
+                  <th class="p-2 text-right">Azioni</th>
+                </tr>
+              </thead>
+              <tbody id="tabella-farmaci-admin">
+                <!-- Popolato via JS -->
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <!-- Configurazione Discord Webhooks -->
@@ -542,7 +670,7 @@
     <p>Croce Rossa Italiana - Portale Sanitario RP &bull; Sito creato da <strong class="text-white">ANTOVINO</strong></p>
   </footer>
 
-  <!-- SCRIPT DI GESTIONE -->
+  <!-- SCRIPT DI GESTIONE COMPLETO -->
   <script>
     // Variabili di stato per il turno
     let inServizio = false;
@@ -550,6 +678,19 @@
     let secondiTotaliTurno = 0;
     let oraInizioTurno = null;
     let isProcessingTurno = false; // Flag anti-duplicazione click
+
+    // Dati mock / localStorage
+    let operatoriList = [
+      { id: 1, nome: "Mario Rossi", user: "mario_cri", ruolo: "Medico Chirurgo", pass: "CRI1234" }
+    ];
+    let listinoPrezzi = [
+      { id: 1, titolo: "Visita Medica Semplice", categoria: "Visita Medica", prezzo: "50.00" },
+      { id: 2, titolo: "Certificato Anamnestico Porto d'Armi", categoria: "Certificato Anamnestico", prezzo: "80.00" }
+    ];
+    let catalogoFarmaci = [
+      { id: 1, nome: "Tachipirina 1000", desc: "Antipiretico e antidolorifico", prezzo: "10.00" },
+      { id: 2, nome: "Kit Primo Soccorso", desc: "Bende, disinfettante e cerotti", prezzo: "25.00" }
+    ];
 
     // Funzione di navigazione tra le sezioni
     function showSection(secId) {
@@ -608,7 +749,6 @@
           badgeStato.innerText = "In Servizio";
         }
 
-        // Avvia il timer visivo
         if (timerInterval) clearInterval(timerInterval);
         timerInterval = setInterval(() => {
           secondiTotaliTurno++;
@@ -634,7 +774,6 @@
           badgeStato.innerText = "Fuori Servizio";
         }
 
-        // Calcola durata e registra UNA SOLA VOLTA nello storico
         const durataMs = oraFineTurno - oraInizioTurno;
         const durataStr = formattaDurataMs(durataMs);
         
@@ -680,7 +819,7 @@
       const badgeTotale = document.getElementById('op-ore-totali-badge');
       if(!tbody) return;
 
-      tbody.innerHTML = ''; // Pulisce la tabella per evitare duplicazioni di visualizzazione
+      tbody.innerHTML = '';
       let msTotali = 0;
 
       listaTurni.forEach((t, index) => {
@@ -699,6 +838,153 @@
       if(badgeTotale) {
         badgeTotale.innerText = `Totale: ${formattaDurataMs(msTotali)}`;
       }
+    }
+
+    // Gestione Operatori Admin
+    function creaOperatore(e) {
+      e.preventDefault();
+      const nome = document.getElementById('new-op-nome').value;
+      const user = document.getElementById('new-op-user').value;
+      const ruolo = document.getElementById('new-op-ruolo').value;
+      const pass = "CRI" + Math.floor(1000 + Math.random() * 9000);
+
+      operatoriList.push({ id: Date.now(), nome, user, ruolo, pass });
+      renderOperatoriAdmin();
+      document.querySelector('form[onsubmit="creaOperatore(event)"]').reset();
+      alert(`Operatore ${nome} creato con password provvisoria: ${pass}`);
+    }
+
+    function rimuoviOperatore(id) {
+      operatoriList = operatoriList.filter(o => o.id !== id);
+      renderOperatoriAdmin();
+    }
+
+    function renderOperatoriAdmin() {
+      const tbody = document.getElementById('tabella-operatori-admin');
+      if(!tbody) return;
+      tbody.innerHTML = '';
+      operatoriList.forEach(o => {
+        const tr = document.createElement('tr');
+        tr.className = 'border-b hover:bg-gray-50';
+        tr.innerHTML = `
+          <td class="p-2 font-semibold">${o.nome}</td>
+          <td class="p-2 text-gray-600">${o.user}</td>
+          <td class="p-2"><span class="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded font-bold">${o.ruolo}</span></td>
+          <td class="p-2 font-mono text-xs text-red-600 font-bold">${o.pass}</td>
+          <td class="p-2 text-right"><button onclick="rimuoviOperatore(${o.id})" class="text-red-600 hover:text-red-800"><i class="fa-solid fa-trash"></i></button></td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // Gestione Listino Admin
+    function aggiungiVoceListino(e) {
+      e.preventDefault();
+      const titolo = document.getElementById('listino-titolo').value;
+      const categoria = document.getElementById('listino-categoria').value;
+      const prezzo = parseFloat(document.getElementById('listino-prezzo').value).toFixed(2);
+
+      listinoPrezzi.push({ id: Date.now(), titolo, categoria, prezzo });
+      renderListinoAdmin();
+      renderListinoPubblico();
+      document.querySelector('form[onsubmit="aggiungiVoceListino(event)"]').reset();
+    }
+
+    function rimuoviVoceListino(id) {
+      listinoPrezzi = listinoPrezzi.filter(l => l.id !== id);
+      renderListinoAdmin();
+      renderListinoPubblico();
+    }
+
+    function renderListinoAdmin() {
+      const tbody = document.getElementById('tabella-listino-admin');
+      if(!tbody) return;
+      tbody.innerHTML = '';
+      listinoPrezzi.forEach(l => {
+        const tr = document.createElement('tr');
+        tr.className = 'border-b hover:bg-gray-50';
+        tr.innerHTML = `
+          <td class="p-2 font-semibold">${l.titolo}</td>
+          <td class="p-2 text-gray-600">${l.categoria}</td>
+          <td class="p-2 font-bold text-green-600">$${l.prezzo}</td>
+          <td class="p-2 text-right"><button onclick="rimuoviVoceListino(${l.id})" class="text-red-600 hover:text-red-800"><i class="fa-solid fa-trash"></i></button></td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function renderListinoPubblico() {
+      const tbody = document.getElementById('tabella-listino-pubblico');
+      if(!tbody) return;
+      tbody.innerHTML = '';
+      listinoPrezzi.forEach(l => {
+        const tr = document.createElement('tr');
+        tr.className = 'border-b hover:bg-gray-50';
+        tr.innerHTML = `
+          <td class="p-3 font-semibold text-gray-800">${l.titolo}</td>
+          <td class="p-3 text-gray-500 text-sm">${l.categoria}</td>
+          <td class="p-3 text-right font-bold text-red-600">$${l.prezzo}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // Gestione Farmaci Admin
+    function aggiungiFarmaco(e) {
+      e.preventDefault();
+      const nome = document.getElementById('farmaco-nome').value;
+      const desc = document.getElementById('farmaco-desc').value;
+      const prezzo = parseFloat(document.getElementById('farmaco-prezzo').value).toFixed(2);
+
+      catalogoFarmaci.push({ id: Date.now(), nome, desc, prezzo });
+      renderFarmaciAdmin();
+      renderFarmaciPubblico();
+      document.querySelector('form[onsubmit="aggiungiFarmaco(event)"]').reset();
+    }
+
+    function rimuoviFarmaco(id) {
+      catalogoFarmaci = catalogoFarmaci.filter(f => f.id !== id);
+      renderFarmaciAdmin();
+      renderFarmaciPubblico();
+    }
+
+    function renderFarmaciAdmin() {
+      const tbody = document.getElementById('tabella-farmaci-admin');
+      if(!tbody) return;
+      tbody.innerHTML = '';
+      catalogoFarmaci.forEach(f => {
+        const tr = document.createElement('tr');
+        tr.className = 'border-b hover:bg-gray-50';
+        tr.innerHTML = `
+          <td class="p-2 font-semibold">${f.nome}</td>
+          <td class="p-2 text-gray-600">${f.desc}</td>
+          <td class="p-2 font-bold text-green-600">$${f.prezzo}</td>
+          <td class="p-2 text-right"><button onclick="rimuoviFarmaco(${f.id})" class="text-red-600 hover:text-red-800"><i class="fa-solid fa-trash"></i></button></td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function renderFarmaciPubblico() {
+      const grid = document.getElementById('catalogo-farmaci-pubblico');
+      if(!grid) return;
+      grid.innerHTML = '';
+      catalogoFarmaci.forEach(f => {
+        const div = document.createElement('div');
+        div.className = 'bg-white p-5 rounded-lg shadow border border-gray-200 flex flex-col justify-between';
+        div.innerHTML = `
+          <div>
+            <div class="text-blue-600 text-2xl mb-2"><i class="fa-solid fa-pills"></i></div>
+            <h4 class="font-bold text-lg text-gray-800">${f.nome}</h4>
+            <p class="text-gray-500 text-xs my-2">${f.desc}</p>
+          </div>
+          <div class="flex justify-between items-center mt-4 pt-3 border-t">
+            <span class="font-bold text-lg text-gray-800">$${f.prezzo}</span>
+            <button onclick="apriModalCarrello()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-3 py-2 rounded transition">Aggiungi</button>
+          </div>
+        `;
+        grid.appendChild(div);
+      });
     }
 
     // Gestione testi quadrati admin
@@ -729,14 +1015,20 @@
       if(f && document.getElementById('admin-testo-fdo')) document.getElementById('admin-testo-fdo').value = f;
     }
 
-    // Al caricamento della pagina inizializza i dati salvati
+    // Al caricamento della pagina inizializza tutti i dati
     window.addEventListener('DOMContentLoaded', () => {
       aggiornaTestiQuadratiUI();
+      renderOperatoriAdmin();
+      renderListinoAdmin();
+      renderListinoPubblico();
+      renderFarmaciAdmin();
+      renderFarmaciPubblico();
+      
       const storicoSalvato = JSON.parse(localStorage.getItem('cri_storico_turni') || '[]');
       renderStoricoTurni(storicoSalvato);
     });
 
-    // Funzioni stub e di utilità
+    // Funzioni stub e utilità
     function quickBook(tipo) {
       showSection('prenota');
       const sel = document.getElementById('prenota-tipo');
@@ -754,7 +1046,7 @@
       document.getElementById('form-colloquio').reset();
       showSection('home');
     }
-    function apriModalCarrello() { alert('Carrello vuoto o non attivo.'); }
+    function apriModalCarrello() { alert('Prodotto aggiunto al carrello!'); }
     function loginOperatore(e) { e.preventDefault(); showSection('dash-op'); }
     function loginAdmin(e) { e.preventDefault(); showSection('dash-admin'); }
     function logout() { showSection('home'); }
@@ -767,7 +1059,6 @@
     function salvaWebhookAnamnestici() { alert('Webhook anamnestici salvato.'); }
     function testWebhookAnamnestici() { alert('Test webhook anamnestici inviato.'); }
     function salvaBozzaAdmin() { alert('Bozza salvata.'); }
-    function aggiungiVoceListino(e) { e.preventDefault(); }
   </script>
 </body>
 </html>
