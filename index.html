@@ -239,7 +239,6 @@
             display: flex;
             align-items: center;
             gap: 2rem;
-            flex-wrap: wrap;
         }
 
         .day-item {
@@ -606,6 +605,18 @@
             text-transform: uppercase;
         }
 
+        .status-tag {
+            padding: 0.25rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        .status-tag.ok { background: rgba(34, 197, 94, 0.15); color: var(--success); border: 1px solid var(--success); }
+        .status-tag.in { background: rgba(34, 197, 94, 0.15); color: var(--success); border: 1px solid var(--success); }
+        .status-tag.out { background: rgba(239, 68, 68, 0.15); color: var(--danger); border: 1px solid var(--danger); }
+
         /* FORMS */
         .form-group {
             display: flex;
@@ -708,6 +719,7 @@
         <div class="header-stats">
             <div class="stat-badge">Cassa: <span class="val" id="head-cassa">€ 1359.00</span></div>
             <div class="stat-badge">Piazza: <span class="val" id="head-piazza">Castrignano</span></div>
+            <div class="stat-badge">Animali: <span class="val" id="head-animali">3</span></div>
             <button class="nav-btn" onclick="showView('home')">Home</button>
         </div>
     </header>
@@ -754,7 +766,7 @@
                 <button class="btn-gold" onclick="nextDay()">Avanza Giorno</button>
             </div>
 
-            <!-- Home Tiles Grid (Senza lettere giganti, pulito ed elegante) -->
+            <!-- Home Tiles Grid -->
             <div class="grid-home">
                 <div class="tile-card" onclick="showView('cassa')">
                     <div>
@@ -791,7 +803,7 @@
                 <div class="tile-card" onclick="showView('piazze')">
                     <div>
                         <div class="tile-title">Gestione Piazze & Tour</div>
-                        <div class="tile-desc">Organizzazione tournée. Seleziona la città e le date per attivare l'email del Comune di riferimento.</div>
+                        <div class="tile-desc">Organizzazione tournée. Seleziona la città per attivare l'email del Comune di riferimento.</div>
                     </div>
                     <div class="tile-footer">Vedi Piazze -></div>
                 </div>
@@ -806,12 +818,12 @@
             </div>
         </div>
 
-        <!-- VIEW 2: BIGLIETTERIA & SPORTELLO POS SIAE -->
+        <!-- VIEW 2: BIGLIETTERIA & SPORTELLO POS SIAE (Modificato: avviso conto e richiesta esplicita) -->
         <div id="view-cassa" class="view-panel">
             <div class="section-header">
                 <div class="section-title">
                     <h2>BIGLIETTERIA & SPORTELLO POS SIAE</h2>
-                    <p>Fai sempre prima il conto esatto al cliente prima di ricevere pagamenti o banconote</p>
+                    <p>Fai sempre prima il conto esatto al cliente prima di accettare pagamenti o banconote</p>
                 </div>
                 <button class="nav-btn" onclick="showView('home')">Indietro</button>
             </div>
@@ -857,7 +869,7 @@
 
                     <!-- Avviso Regola Cassa -->
                     <div style="background: rgba(234, 179, 8, 0.1); border: 1px solid var(--warning); padding: 0.75rem; border-radius: 8px; font-size: 0.8rem; color: var(--warning);">
-                        ⚠️ <strong>Attenzione Cassa:</strong> Fai prima il conto esatto al cliente prima di accettare la banconota, per evitare che diano €20 per due biglietti da €25!
+                        ⚠️ <strong>Regola Cassa:</strong> Fai sempre prima il conto esatto al cliente prima di accettare la banconota, per evitare errori sul resto (es. dare €20 per due biglietti da €25)!
                     </div>
 
                     <p style="font-size:0.8rem; font-weight:700; color:var(--text-muted); text-transform:uppercase;">SELEZIONA BIGLIETTI PER L'ORDINE:</p>
@@ -1065,7 +1077,7 @@ La vostra richiesta di installazione per la piazza corrente è stata registrata 
             </table>
         </div>
 
-        <!-- VIEW 6: GESTIONE PIAZZE & TOUR -->
+        <!-- VIEW 6: GESTIONE PIAZZE & TOUR (Modificato: aggiunta date e controllo piazza indipendente) -->
         <div id="view-piazze" class="view-panel">
             <div class="section-header">
                 <div class="section-title">
