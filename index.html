@@ -202,8 +202,7 @@
             font-size: 1.3rem;
             font-weight: 700;
             color: #fff;
-            margin-bottom: 0.5rem;
-            margin-top: 1rem;
+            margin-bottom: 0.75rem;
         }
 
         .tile-desc {
@@ -755,7 +754,7 @@
                 <button class="btn-gold" onclick="nextDay()">Avanza Giorno</button>
             </div>
 
-            <!-- Home Tiles Grid -->
+            <!-- Home Tiles Grid (Senza lettere giganti, pulito ed elegante) -->
             <div class="grid-home">
                 <div class="tile-card" onclick="showView('cassa')">
                     <div>
@@ -792,7 +791,7 @@
                 <div class="tile-card" onclick="showView('piazze')">
                     <div>
                         <div class="tile-title">Gestione Piazze & Tour</div>
-                        <div class="tile-desc">Organizzazione tournée con intervallo date e gestione indipendente della piazza attiva.</div>
+                        <div class="tile-desc">Organizzazione tournée. Seleziona la città e le date per attivare l'email del Comune di riferimento.</div>
                     </div>
                     <div class="tile-footer">Vedi Piazze -></div>
                 </div>
@@ -812,7 +811,7 @@
             <div class="section-header">
                 <div class="section-title">
                     <h2>BIGLIETTERIA & SPORTELLO POS SIAE</h2>
-                    <p>Fai il conto esatto al cliente prima di accettare pagamenti o banconote</p>
+                    <p>Fai sempre prima il conto esatto al cliente prima di ricevere pagamenti o banconote</p>
                 </div>
                 <button class="nav-btn" onclick="showView('home')">Indietro</button>
             </div>
@@ -841,7 +840,7 @@
                     </div>
 
                     <div class="client-speech">
-                        <p class="label">Richiesta esplicita del cliente:</p>
+                        <p class="label">Richiesta del cliente:</p>
                         <p class="text" id="client-dialog">"Generazione cliente in corso..."</p>
                     </div>
 
@@ -858,7 +857,7 @@
 
                     <!-- Avviso Regola Cassa -->
                     <div style="background: rgba(234, 179, 8, 0.1); border: 1px solid var(--warning); padding: 0.75rem; border-radius: 8px; font-size: 0.8rem; color: var(--warning);">
-                        ⚠️ <strong>Attenzione:</strong> Fai prima il conto esatto al cliente prima di accettare la banconota, per evitare che diano €20 per due biglietti da €25!
+                        ⚠️ <strong>Attenzione Cassa:</strong> Fai prima il conto esatto al cliente prima di accettare la banconota, per evitare che diano €20 per due biglietti da €25!
                     </div>
 
                     <p style="font-size:0.8rem; font-weight:700; color:var(--text-muted); text-transform:uppercase;">SELEZIONA BIGLIETTI PER L'ORDINE:</p>
@@ -1071,7 +1070,7 @@ La vostra richiesta di installazione per la piazza corrente è stata registrata 
             <div class="section-header">
                 <div class="section-title">
                     <h2>GESTIONE PIAZZE & TOUR</h2>
-                    <p>Organizza le tappe della tournée con date precise e controllo piazza</p>
+                    <p>Organizza le tappe della tournée con date precise e controllo piazza indipendente</p>
                 </div>
                 <button class="nav-btn" onclick="showView('home')">Indietro</button>
             </div>
@@ -1100,11 +1099,11 @@ La vostra richiesta di installazione per la piazza corrente è stata registrata 
                             <p class="val" id="active-piazza-display">Castrignano</p>
                         </div>
                         <div class="detail-item">
-                            <p class="lbl">Date Tour:</p>
+                            <p class="lbl">Intervallo Date Tour:</p>
                             <p class="val" id="active-dates-display" style="color:var(--text-main);">Nessuna data impostata</p>
                         </div>
                     </div>
-                    <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.4;">Nota: inviare una richiesta o organizzare un tour non cambierà automaticamente la piazza corrente finché non lo deciderai tu manualmente.</p>
+                    <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.4;">Nota: inviare una richiesta o registrare un tour non cambia automaticamente la piazza attiva finché non lo decidi tu manualmente.</p>
                     <button class="btn-gold" style="background:var(--bg-card-hover); color:var(--accent-gold); border:1px solid var(--accent-gold);" onclick="setCurrentPiazzaManually()">Imposta come Piazza Attiva Corrente</button>
                 </div>
             </div>
@@ -1258,7 +1257,7 @@ La vostra richiesta di installazione per la piazza corrente è stata registrata 
             updateHeader();
             alert("Incasso effettuato con successo e scontrino SIAE emesso!");
             
-            // Genera automaticamente un NUOVO CLIENTE ogni volta che emetti il biglietto
+            // Genera automaticamente un nuovo cliente dopo l'emissione dello scontrino
             generateClient();
         }
 
@@ -1316,7 +1315,7 @@ La vostra richiesta di installazione per la piazza corrente è stata registrata 
                 state.pendingTourDates = dates;
             }
             updateHeader();
-            alert("Richiesta di tour per " + city + " registrata con successo! (La piazza attiva corrente non è stata modificata automaticamente).");
+            alert("Tour per " + city + " registrato con successo! (La piazza corrente attiva non è stata modificata automaticamente).");
         }
 
         function setCurrentPiazzaManually() {
