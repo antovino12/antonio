@@ -568,6 +568,21 @@
             color: #000;
         }
 
+        .qr-mock {
+            width: 80px;
+            height: 80px;
+            background: #000;
+            padding: 4px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+            margin: 0.4rem 0;
+        }
+
+        .qr-cell { background: #fff; }
+        .qr-cell:nth-child(2n) { background: #000; }
+        .qr-cell:nth-child(3n) { background: #fff; }
+
         /* TABLES */
         .custom-table {
             width: 100%;
@@ -797,7 +812,7 @@
             <div class="section-header">
                 <div class="section-title">
                     <h2>BIGLIETTERIA & SPORTELLO POS SIAE</h2>
-                    <p>Attendi che il conto sia effettuato prima di accettare pagamenti dal pubblico</p>
+                    <p>Fai il conto esatto al cliente prima di accettare pagamenti o banconote</p>
                 </div>
                 <button class="nav-btn" onclick="showView('home')">Indietro</button>
             </div>
@@ -826,7 +841,7 @@
                     </div>
 
                     <div class="client-speech">
-                        <p class="label">Richiesta del cliente:</p>
+                        <p class="label">Richiesta esplicita del cliente:</p>
                         <p class="text" id="client-dialog">"Generazione cliente in corso..."</p>
                     </div>
 
@@ -843,7 +858,7 @@
 
                     <!-- Avviso Regola Cassa -->
                     <div style="background: rgba(234, 179, 8, 0.1); border: 1px solid var(--warning); padding: 0.75rem; border-radius: 8px; font-size: 0.8rem; color: var(--warning);">
-                        ⚠️ <strong>Regola Cassa:</strong> Fai sempre prima il conto esatto al cliente prima di accettare la banconota, per evitare errori sul resto (es. dare €20 per due biglietti da €25)!
+                        ⚠️ <strong>Attenzione:</strong> Fai prima il conto esatto al cliente prima di accettare la banconota, per evitare che diano €20 per due biglietti da €25!
                     </div>
 
                     <p style="font-size:0.8rem; font-weight:700; color:var(--text-muted); text-transform:uppercase;">SELEZIONA BIGLIETTI PER L'ORDINE:</p>
@@ -1143,7 +1158,7 @@ La vostra richiesta di installazione per la piazza corrente è stata registrata 
                 gradinata_rid: 8.00
             },
             client: {
-                dialog: "Buongiorno, vorrei prendere 2 biglietti per favore.",
+                dialog: "",
                 method: "CONTANTI",
                 cash: 50.00
             },
@@ -1189,14 +1204,17 @@ La vostra richiesta di installazione per la piazza corrente è stata registrata 
         }
 
         function generateClient() {
-            const dialogues = [
-                "Buongiorno! Vorrei fare due biglietti per lo spettacolo di stasera.",
-                "Salve, mi dia un intero e un ridotto per la poltrona VIP.",
-                "Buonasera, quanto viene per due biglietti in tribuna?",
-                "Vorrei acquistare tre ingressi per la famiglia."
+            const requests = [
+                "Salve, vorrei 2 Poltrone VIP Intero per favore.",
+                "Buongiorno, mi dia 1 Poltrona VIP Intero e 1 VIP Ridotto.",
+                "Buonasera, vorrei 2 biglietti in Tribuna Intero.",
+                "Salve! Ci servono 1 Tribuna Intero e 2 Tribuna Ridotto.",
+                "Buongiorno, vorrei 2 biglietti in Gradinata Intero.",
+                "Buonasera, mi servono 3 biglietti per la Gradinata Ridotto per favore."
             ];
-            state.client.dialog = dialogues[Math.floor(Math.random() * dialogues.length)];
+            state.client.dialog = requests[Math.floor(Math.random() * requests.length)];
             state.client.cash = [20.00, 50.00, 100.00][Math.floor(Math.random() * 3)];
+            
             document.getElementById('client-dialog').innerText = '"' + state.client.dialog + '"';
             document.getElementById('client-cash').innerText = "€ " + state.client.cash.toFixed(2);
         }
@@ -1231,7 +1249,7 @@ La vostra richiesta di installazione per la piazza corrente è stata registrata 
             document.getElementById('receipt-total-val').innerText = "€ " + totalPrice.toFixed(2);
             document.getElementById('receipt-footer').style.display = 'flex';
 
-            // Reset ticket selection
+            // Reset selezione biglietti
             for (let key in state.tickets) {
                 state.tickets[key] = 0;
                 document.getElementById('cnt-' + key).innerText = 0;
@@ -1239,6 +1257,9 @@ La vostra richiesta di installazione per la piazza corrente è stata registrata 
             updateTotals();
             updateHeader();
             alert("Incasso effettuato con successo e scontrino SIAE emesso!");
+            
+            // Genera automaticamente un NUOVO CLIENTE ogni volta che emetti il biglietto
+            generateClient();
         }
 
         function buyStock() {
