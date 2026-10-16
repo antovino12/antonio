@@ -198,16 +198,12 @@
             opacity: 1;
         }
 
-        .tile-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
         .tile-title {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: #fff;
             margin-bottom: 0.5rem;
+            margin-top: 1rem;
         }
 
         .tile-desc {
@@ -244,6 +240,7 @@
             display: flex;
             align-items: center;
             gap: 2rem;
+            flex-wrap: wrap;
         }
 
         .day-item {
@@ -571,21 +568,6 @@
             color: #000;
         }
 
-        .qr-mock {
-            width: 80px;
-            height: 80px;
-            background: #000;
-            padding: 4px;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2px;
-            margin: 0.4rem 0;
-        }
-
-        .qr-cell { background: #fff; }
-        .qr-cell:nth-child(2n) { background: #000; }
-        .qr-cell:nth-child(3n) { background: #fff; }
-
         /* TABLES */
         .custom-table {
             width: 100%;
@@ -609,18 +591,6 @@
             font-weight: 700;
             text-transform: uppercase;
         }
-
-        .status-tag {
-            padding: 0.25rem 0.6rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            display: inline-block;
-        }
-
-        .status-tag.ok { background: rgba(34, 197, 94, 0.15); color: var(--success); border: 1px solid var(--success); }
-        .status-tag.in { background: rgba(34, 197, 94, 0.15); color: var(--success); border: 1px solid var(--success); }
-        .status-tag.out { background: rgba(239, 68, 68, 0.15); color: var(--danger); border: 1px solid var(--danger); }
 
         /* FORMS */
         .form-group {
@@ -724,7 +694,6 @@
         <div class="header-stats">
             <div class="stat-badge">Cassa: <span class="val" id="head-cassa">€ 1359.00</span></div>
             <div class="stat-badge">Piazza: <span class="val" id="head-piazza">Castrignano</span></div>
-            <div class="stat-badge">Animali: <span class="val" id="head-animali">3</span></div>
             <button class="nav-btn" onclick="showView('home')">Home</button>
         </div>
     </header>
@@ -775,7 +744,6 @@
             <div class="grid-home">
                 <div class="tile-card" onclick="showView('cassa')">
                     <div>
-                        <div class="tile-icon">T</div>
                         <div class="tile-title">Sportello POS SIAE</div>
                         <div class="tile-desc">Gestione vendita biglietti con clienti allo sportello, emissione scontrino fiscale e controllo scorte stock rimanenti.</div>
                     </div>
@@ -784,7 +752,6 @@
 
                 <div class="tile-card" onclick="showView('negozio')">
                     <div>
-                        <div class="tile-icon">N</div>
                         <div class="tile-title">Negozio Biglietti Proprietario</div>
                         <div class="tile-desc">Acquista stock di biglietti a pacchetti da 100 pezzi per 10 euro (ricarica immediata scorte esauribili).</div>
                     </div>
@@ -793,7 +760,6 @@
 
                 <div class="tile-card" onclick="showView('burocrazia')">
                     <div>
-                        <div class="tile-icon">B</div>
                         <div class="tile-title">Portale Burocrazia & Email Comunale</div>
                         <div class="tile-desc">Corrispondenza con il Comune. La fattura viene allegata via email per poi essere saldata.</div>
                     </div>
@@ -802,7 +768,6 @@
 
                 <div class="tile-card" onclick="showView('finanze')">
                     <div>
-                        <div class="tile-icon">F</div>
                         <div class="tile-title">Registro Finanze & Transazioni</div>
                         <div class="tile-desc">Storico contabile dettagliato di tutte le entrate (biglietti) e uscite (fatture, stock biglietti).</div>
                     </div>
@@ -811,16 +776,14 @@
 
                 <div class="tile-card" onclick="showView('piazze')">
                     <div>
-                        <div class="tile-icon">P</div>
                         <div class="tile-title">Gestione Piazze & Tour</div>
-                        <div class="tile-desc">Organizzazione tournée. Seleziona la città per attivare l'email del Comune di riferimento.</div>
+                        <div class="tile-desc">Organizzazione tournée con intervallo date e gestione indipendente della piazza attiva.</div>
                     </div>
                     <div class="tile-footer">Vedi Piazze -></div>
                 </div>
 
                 <div class="tile-card" onclick="showView('admin')">
                     <div>
-                        <div class="tile-icon">S</div>
                         <div class="tile-title">Pannello Direzione Admin</div>
                         <div class="tile-desc">Controllo finanziario totale, modifica listino prezzi, imprevisti e reset salvataggi.</div>
                     </div>
@@ -834,7 +797,7 @@
             <div class="section-header">
                 <div class="section-title">
                     <h2>BIGLIETTERIA & SPORTELLO POS SIAE</h2>
-                    <p>Gestione emissione tagliandi fiscali per il pubblico e controllo giacenza scorte</p>
+                    <p>Attendi che il conto sia effettuato prima di accettare pagamenti dal pubblico</p>
                 </div>
                 <button class="nav-btn" onclick="showView('home')">Indietro</button>
             </div>
@@ -876,6 +839,11 @@
                             <p class="lbl">Banconota Fornita:</p>
                             <p class="val" id="client-cash">€ 50.00</p>
                         </div>
+                    </div>
+
+                    <!-- Avviso Regola Cassa -->
+                    <div style="background: rgba(234, 179, 8, 0.1); border: 1px solid var(--warning); padding: 0.75rem; border-radius: 8px; font-size: 0.8rem; color: var(--warning);">
+                        ⚠️ <strong>Regola Cassa:</strong> Fai sempre prima il conto esatto al cliente prima di accettare la banconota, per evitare errori sul resto (es. dare €20 per due biglietti da €25)!
                     </div>
 
                     <p style="font-size:0.8rem; font-weight:700; color:var(--text-muted); text-transform:uppercase;">SELEZIONA BIGLIETTI PER L'ORDINE:</p>
@@ -959,52 +927,48 @@
                         </div>
                     </div>
 
-                    <!-- Totals Block -->
                     <div class="totals-block">
                         <div class="total-row">
-                            <span>Totale Calcolato:</span>
-                            <span class="val" id="order-total-display">€ 0.00</span>
+                            <span>Biglietti Selezionati:</span>
+                            <span id="summary-count" style="font-family:'JetBrains Mono'; font-weight:700;">0</span>
                         </div>
-                        <div class="total-row">
-                            <span>Resto da dare:</span>
-                            <span class="val" id="order-change-display" style="color:var(--warning);">€ 0.00</span>
+                        <div class="total-row main">
+                            <span>Totale da Incassare:</span>
+                            <span class="val" id="summary-total">€ 0.00</span>
                         </div>
                     </div>
 
-                    <button class="btn-gold" style="width:100%; justify-content:center; padding:1rem;" onclick="processSale()">Emetti Biglietto SIAE</button>
+                    <button class="btn-gold" style="width:100%; justify-content:center; padding:1rem;" onclick="completeSale()">EMETTI SCONTRINO FISCALE & INCASSA</button>
                 </div>
 
-                <!-- Right Panel: SIAE Receipt Display -->
+                <!-- Right Panel: Scontrino Fiscale SIAE -->
                 <div class="cassa-card">
                     <div class="cassa-card-header">
-                        <h3>ULTIME EMISSIONI & RICEVUTA SIAE LIVE</h3>
+                        <h3>ANTEPRIMA SCONTRINO EMESSO</h3>
+                        <span style="font-size:0.75rem; color:var(--text-muted);">SIAE COMPLIANT</span>
                     </div>
 
                     <div class="siae-receipt-wrapper">
-                        <div class="siae-receipt" id="siae-receipt-box">
+                        <div class="siae-receipt">
                             <div class="siae-header">
                                 <h4>CIRCO M. ORFEI</h4>
-                                <p>CASTRIGNANO PRODUCTION - SIAE REG. #849204</p>
-                                <p>C.F. / P.IVA: 09283740192 - T.U.L.P.S. ART. 68</p>
-                                <p id="receipt-date">DATA: --/--/---- --:--</p>
+                                <p>Sede: Castrignano Production<br>P.IVA: 04928190752<br>REGISTRO FISCALE SIAE #8841</p>
                             </div>
-
-                            <div class="siae-body" id="receipt-items">
-                                <p style="text-align:center; color:#666; font-style:italic; margin-top:2rem;">Nessun biglietto ancora emesso.</p>
+                            <div class="siae-body" id="receipt-body">
+                                <p style="text-align:center; color:#666; margin-top:2rem;">Nessuna transazione recente.<br>Emetti uno scontrino per visualizzarlo qui.</p>
                             </div>
-
-                            <div class="siae-footer">
-                                <div class="siae-total">
-                                    <span>TOTALE:</span>
-                                    <span id="receipt-total">€ 0.00</span>
-                                </div>
+                            <div class="siae-footer" id="receipt-footer" style="display:none;">
                                 <div class="qr-mock">
                                     <div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell"></div>
                                     <div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell"></div>
                                     <div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell"></div>
                                     <div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell"></div>
                                 </div>
-                                <p style="font-size:0.55rem; color:#666;">TAGLIANDO FISCALE ART. 74 DPR 633/72</p>
+                                <div class="siae-total">
+                                    <span>TOTALE:</span>
+                                    <span id="receipt-total-val">€ 0.00</span>
+                                </div>
+                                <p style="font-size:0.55rem; color:#555; text-align:center;">CONSERVARE IL BIGLIETTO FINO A FINE SPETTACOLO</p>
                             </div>
                         </div>
                     </div>
@@ -1012,332 +976,157 @@
             </div>
         </div>
 
-        <!-- VIEW 2.5: NEGOZIO BIGLIETTI PROPRIETARIO (STOCK A BLOCCHI DI 100) -->
+        <!-- VIEW 3: NEGOZIO BIGLIETTI PROPRIETARIO -->
         <div id="view-negozio" class="view-panel">
             <div class="section-header">
                 <div class="section-title">
-                    <h2>NEGOZIO STAMPA BIGLIETTI PROPRIETARIO (STOCK)</h2>
-                    <p>Acquisto stock biglietti a blocchi da 100 pezzi (Tariffa: 10.00 € ogni 100 biglietti)</p>
+                    <h2>NEGOZIO STOCK BIGLIETTI PROPRIETARIO</h2>
+                    <p>Rifornisci la cassa acquistando nuovi pacchetti di tagliandi fiscali</p>
                 </div>
                 <button class="nav-btn" onclick="showView('home')">Indietro</button>
             </div>
-
-            <div class="cassa-card" style="max-width: 650px; margin: 0 auto;">
-                <div class="cassa-card-header">
-                    <h3>ORDINE STOCK STAMPA BIGLIETTI (BLOCCHI DA 100)</h3>
-                </div>
-                <p style="font-size:0.85rem; color:var(--text-muted);">
-                    Seleziona quanti blocchi da 100 biglietti desideri acquistare. Ogni blocco da 100 costa 10.00 €. 
-                    Aggiungendo 5 blocchi Interi (500 biglietti = 50 €) e 5 blocchi Ridotti (500 biglietti = 50 €) spenderai esattamente 100.00 €.
-                </p>
-
-                <div class="ticket-sector-block">
-                    <div class="sector-title"><span>STOCK BIGLIETTI INTERI</span></div>
-                    <div class="tariff-row">
-                        <span class="tariff-label">Blocco da 100 Biglietti Interi</span>
-                        <div style="display:flex; align-items:center;">
-                            <span class="tariff-price">€ 10.00 / 100pz</span>
-                            <div class="ticket-controls">
-                                <button type="button" class="btn-ctrl" onclick="changeShopBlocks('interi', -1)">-100</button>
-                                <span class="count-val" id="shop-cnt-interi">0</span>
-                                <button type="button" class="btn-ctrl" onclick="changeShopBlocks('interi', 1)">+100</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="ticket-sector-block">
-                    <div class="sector-title"><span>STOCK BIGLIETTI RIDOTTI</span></div>
-                    <div class="tariff-row">
-                        <span class="tariff-label">Blocco da 100 Biglietti Ridotti</span>
-                        <div style="display:flex; align-items:center;">
-                            <span class="tariff-price">€ 10.00 / 100pz</span>
-                            <div class="ticket-controls">
-                                <button type="button" class="btn-ctrl" onclick="changeShopBlocks('ridotti', -1)">-100</button>
-                                <span class="count-val" id="shop-cnt-ridotti">0</span>
-                                <button type="button" class="btn-ctrl" onclick="changeShopBlocks('ridotti', 1)">+100</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+            <div class="cassa-card" style="max-width:600px; margin:0 auto;">
+                <h3 style="color:var(--accent-gold);">ACQUISTA PACCO STOCK (100 PEZZI)</h3>
+                <p style="font-size:0.85rem; color:var(--text-muted);">Ogni pacchetto costa <strong>€ 10.00</strong> e aggiunge 100 biglietti Interi e 100 biglietti Ridotti alle tue scorte operative in cassa.</p>
                 <div class="totals-block">
                     <div class="total-row">
-                        <span>Totale Biglietti Selezionati:</span>
-                        <span class="val" id="shop-total-tickets-display" style="color:#fff;">0 biglietti</span>
-                    </div>
-                    <div class="total-row main">
-                        <span>Costo Totale Stampa:</span>
-                        <span class="val" id="shop-total-cost-display">€ 0.00</span>
+                        <span>Costo Pacchetto:</span>
+                        <span style="font-family:'JetBrains Mono'; color:var(--danger);">€ 10.00</span>
                     </div>
                 </div>
-
-                <button class="btn-gold" style="width:100%; justify-content:center; padding:1rem;" onclick="processShopPurchase()">Acquista e Paga al Negozio</button>
+                <button class="btn-gold" style="justify-content:center;" onclick="buyStock()">ACQUISTA 100 PZ STOCK</button>
             </div>
         </div>
 
-        <!-- VIEW 3: REGISTRO FINANZE -->
+        <!-- VIEW 4: BUROCRAZIA & EMAIL -->
+        <div id="view-burocrazia" class="view-panel">
+            <div class="section-header">
+                <div class="section-title">
+                    <h2>PORTALE BUROCRAZIA & EMAIL COMUNALE</h2>
+                    <p>Gestione permessi di sosta e saldi fatture per il tour in corso</p>
+                </div>
+                <button class="nav-btn" onclick="showView('home')">Indietro</button>
+            </div>
+            <div class="email-box">
+                <div class="email-header-row"><span class="lbl">DA:</span> <strong>Ufficio Protocollo Comune</strong></div>
+                <div class="email-header-row"><span class="lbl">OGGETTO:</span> <strong>Autorizzazione e Fattura Occupazione Suolo Pubblico</strong></div>
+                <div class="email-body-text" id="email-content">Gentile Direzione del Circo M. Orfei,
+La vostra richiesta di installazione per la piazza corrente è stata registrata con successo. In allegato trovate la fattura per l'occupazione del suolo pubblico e la tassa di permanenza. Vi invitiamo a saldare l'importo quanto prima per regolarizzare la posizione.</div>
+                <div class="attachment-card">
+                    <div class="attachment-info">
+                        <p class="title">📄 Fattura_Comune_Suolo_Pubblico.pdf</p>
+                        <p class="desc" id="invoice-status-desc">Importo dovuto: € 150.00 - Stato: DA SALDARE</p>
+                    </div>
+                    <button class="btn-gold" id="pay-invoice-btn" onclick="payInvoice()">Paga Fattura</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW 5: REGISTRO FINANZE -->
         <div id="view-finanze" class="view-panel">
             <div class="section-header">
                 <div class="section-title">
                     <h2>REGISTRO FINANZE & TRANSAZIONI</h2>
-                    <p>Storico completo delle entrate e delle uscite della cassa</p>
+                    <p>Storico contabile di tutte le entrate e uscite</p>
                 </div>
                 <button class="nav-btn" onclick="showView('home')">Indietro</button>
             </div>
-
-            <div class="cassa-card">
-                <div class="cassa-card-header">
-                    <h3>MOVIMENTI CONTABILI REGISTRATI</h3>
-                </div>
-
-                <table class="custom-table">
-                    <thead>
-                        <tr>
-                            <th>Data & Ora</th>
-                            <th>Tipologia Operazione</th>
-                            <th>Descrizione Dettagliata</th>
-                            <th>Importo</th>
-                            <th>Tipo</th>
-                        </tr>
-                    </thead>
-                    <tbody id="finance-table-body">
-                        <!-- Popolato via JS -->
-                    </tbody>
-                </table>
-            </div>
+            <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th>Data / Giorno</th>
+                        <th>Tipo Operazione</th>
+                        <th>Descrizione</th>
+                        <th>Importo</th>
+                    </tr>
+                </thead>
+                <tbody id="finance-table-body">
+                    <tr>
+                        <td>Lunedì</td>
+                        <td style="color:var(--success);">ENTRATA</td>
+                        <td>Vendita Biglietti Spettacolo</td>
+                        <td style="color:var(--success); font-family:'JetBrains Mono';">+ € 350.00</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
-        <!-- VIEW 4: BUROCRAZIA & EMAIL COMUNALE -->
-        <div id="view-burocrazia" class="view-panel">
-            <div class="section-header">
-                <div class="section-title">
-                    <h2>PORTALE BUROCRAZIA & CORRISPONDENZA EMAIL COMUNALE</h2>
-                    <p>Gestione messaggi, fattura allegata ed autorizzazioni per il Comune di <span id="buro-city-header">Castrignano</span></p>
-                </div>
-                <button class="nav-btn" onclick="showView('home')">Indietro</button>
-            </div>
-
-            <div class="cassa-grid">
-                <!-- Panel Sinistro: Simulator Mail RP -->
-                <div class="cassa-card">
-                    <div class="cassa-card-header">
-                        <h3>MESSAGGIO IN USCITA DAL CIRCO</h3>
-                    </div>
-
-                    <div class="email-box">
-                        <div class="email-header-row"><span class="lbl">DA:</span> <span>cirmomorfei@castrignanoproduction.it</span></div>
-                        <div class="email-header-row"><span class="lbl">A:</span> <span id="email-to-comune">protocollo@comune.castrignano.it</span></div>
-                        <div class="email-header-row"><span class="lbl">OGGETTO:</span> <span>Richiesta Autorizzazione Spettacolo Circense</span></div>
-                        
-                        <div class="email-body-text" id="email-body-outbound">
-                            Spettabile Ufficio Protocollo e Tributi del Comune di Castrignano,
-                            
-                            con la presente il Circo M. Orfei di Castrignano Production trasmette formale richiesta di autorizzazione per l'allestimento delle strutture circensi presso l'area occupata.
-                            
-                            In attesa di Vostra cortese risposta con prospetto costi e fattura per il successivo saldo e rilascio concessioni.
-                            
-                            Distinti Saluti,
-                            Direzione Circo M. Orfei
-                        </div>
-                        <button class="btn-gold" id="btn-send-email" style="margin-top:1rem; width:100%; justify-content:center;" onclick="sendCircusEmail()">Invia Email al Comune</button>
-                    </div>
-
-                    <div class="email-box" id="email-inbound-box" style="display:none; border-color:var(--accent-gold);">
-                        <div class="cassa-card-header" style="padding-bottom:0.4rem; margin-bottom:0.5rem;">
-                            <h3 style="font-size:0.85rem; color:var(--accent-gold);">RISPOSTA RICEVUTA DAL COMUNE</h3>
-                        </div>
-                        <div class="email-header-row"><span class="lbl">DA:</span> <span id="email-from-comune">protocollo@comune.castrignano.it</span></div>
-                        <div class="email-header-row"><span class="lbl">A:</span> <span>cirmomorfei@castrignanoproduction.it</span></div>
-                        <div class="email-header-row"><span class="lbl">OGGETTO:</span> <span>Risposta: Prospetto Tasse Comunali e Fattura Concessione</span></div>
-                        
-                        <div class="email-body-text" id="email-body-inbound">
-                            Gentile Direzione Circo M. Orfei,
-                            
-                            abbiamo preso in carico la Vostra richiesta. In allegato alla presente email inviamo il prospetto dettagliato della Fattura relativa alle tasse di occupazione suolo, SIAE e TARI.
-                        </div>
-
-                        <div class="attachment-card">
-                            <div class="attachment-info">
-                                <p class="title">Allegato: Fattura_Comunale_Concessione.pdf</p>
-                                <p class="desc">Importo totale da saldare: € 490.00</p>
-                            </div>
-                            <button class="btn-gold" id="btn-open-attachment" style="padding:0.4rem 0.8rem; font-size:0.75rem;" onclick="openAttachment()">Apri Allegato & Carica Fattura</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Panel Destro: Dettaglio Fattura Allegata e Saldo -->
-                <div class="cassa-card">
-                    <div class="cassa-card-header">
-                        <h3>FATTURA ALLEGATA DALLA RISPOSTA</h3>
-                    </div>
-
-                    <div id="invoice-placeholder" style="text-align:center; padding:3rem 1rem; color:var(--text-muted); font-style:italic;">
-                        Nessuna fattura caricata. Invia prima l'email al Comune ed apri l'allegato contenuto nella risposta.
-                    </div>
-
-                    <div id="invoice-details-block" style="display:none;">
-                        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.75rem;">Voce e riepilogo della fattura ricevuta via email dal Comune:</p>
-
-                        <table class="custom-table">
-                            <thead>
-                                <tr>
-                                    <th>Voce Fattura</th>
-                                    <th>Importo</th>
-                                    <th>Stato</th>
-                                </tr>
-                            </thead>
-                            <tbody id="buro-table-body">
-                                <tr><td>Licenza Pubblico Spettacolo e SIAE</td><td>€ 150.00</td><td id="st-0">DA PAGARE</td></tr>
-                                <tr><td>TOSAP - Occupazione Suolo Pubblico</td><td>€ 200.00</td><td id="st-1">DA PAGARE</td></tr>
-                                <tr><td>Diritti Affissioni e Pubblicità</td><td>€ 80.00</td><td id="st-2">DA PAGARE</td></tr>
-                                <tr><td>TARI - Tassa Smaltimento Rifiuti</td><td>€ 60.00</td><td id="st-3">DA PAGARE</td></tr>
-                            </tbody>
-                        </table>
-
-                        <div class="totals-block" style="margin-top:1rem;">
-                            <div class="total-row main">
-                                <span>Totale Fattura Allegata:</span>
-                                <span class="val">€ 490.00</span>
-                            </div>
-                        </div>
-
-                        <button class="btn-gold" id="btn-pay-invoice" style="width:100%; justify-content:center; padding:1rem; margin-top:1rem;" onclick="payFullInvoice()">Paga Fattura Completa ed Emetti Autorizzazione</button>
-                        <div id="autorizzazione-badge" style="display:none; text-align:center; padding:0.8rem; background:rgba(34, 197, 94, 0.2); border:1px solid var(--success); border-radius:8px; color:var(--success); font-weight:800; margin-top:1rem;">
-                            AUTORIZZAZIONE COMUNALE RILASCIATA E ATTIVA
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Storico Email -->
-            <div class="cassa-card" style="margin-top:1.5rem;">
-                <div class="cassa-card-header">
-                    <h3>STORICO EMAIL COMUNALI SCAMBIATE</h3>
-                </div>
-                <table class="custom-table">
-                    <thead>
-                        <tr>
-                            <th>Data e Ora</th>
-                            <th>Città</th>
-                            <th>Mittente -> Destinatario</th>
-                            <th>Oggetto</th>
-                            <th>Stato</th>
-                        </tr>
-                    </thead>
-                    <tbody id="email-history-body">
-                        <!-- Popolato via JS -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- VIEW 5: PIAZZE -->
+        <!-- VIEW 6: GESTIONE PIAZZE & TOUR -->
         <div id="view-piazze" class="view-panel">
             <div class="section-header">
                 <div class="section-title">
-                    <h2>GESTIONE PIAZZE & ORGANIZZAZIONE TOUR</h2>
-                    <p>Pianifica un nuovo tour: scegli la città per generare l'email del Comune relativa</p>
+                    <h2>GESTIONE PIAZZE & TOUR</h2>
+                    <p>Organizza le tappe della tournée con date precise e controllo piazza</p>
                 </div>
                 <button class="nav-btn" onclick="showView('home')">Indietro</button>
             </div>
-
             <div class="cassa-grid">
                 <div class="cassa-card">
-                    <div class="cassa-card-header">
-                        <h3>ORGANIZZA NUOVO TOUR IN UNA PIAZZA</h3>
+                    <h3 style="color:var(--accent-gold);">ORGANIZZA NUOVA TAPPA</h3>
+                    <div class="form-group">
+                        <label>Nome Città / Piazza</label>
+                        <input type="text" id="tour-city" class="form-control" placeholder="Es. Lecce">
                     </div>
                     <div class="form-group">
-                        <label>Nome Città / Comune Destinazione</label>
-                        <input type="text" id="tour-city-input" class="form-control" placeholder="Es. Lecce, Gallipoli, Taranto...">
+                        <label>Intervallo Date (es. dal 03 al 12 marzo)</label>
+                        <input type="text" id="tour-dates" class="form-control" placeholder="dal 03 al 12 marzo">
                     </div>
                     <div class="form-group">
-                        <label>Ubicazione / Area Spettacolo</label>
-                        <input type="text" id="tour-location-input" class="form-control" placeholder="Es. Area Fiera, Piazza Nuova...">
+                        <label>Durata (Giorni)</label>
+                        <input type="number" id="tour-days" class="form-control" value="7">
                     </div>
-                    <div class="form-group">
-                        <label>Durata Tournée (Giorni)</label>
-                        <input type="number" id="tour-days-input" class="form-control" value="7">
-                    </div>
-                    <button class="btn-gold" onclick="organizeTour()">Conferma e Prepara Email Comune</button>
+                    <button class="btn-gold" onclick="addTour()">Registra Tour</button>
                 </div>
-
                 <div class="cassa-card">
-                    <div class="cassa-card-header">
-                        <h3>STORICO & PIAZZE IN PROGRAMMA</h3>
+                    <h3 style="color:var(--accent-gold);">STATO TOURNEE ATTUALE</h3>
+                    <div class="client-details" style="grid-template-columns:1fr;">
+                        <div class="detail-item">
+                            <p class="lbl">Piazza Corrente Attiva:</p>
+                            <p class="val" id="active-piazza-display">Castrignano</p>
+                        </div>
+                        <div class="detail-item">
+                            <p class="lbl">Date Tour:</p>
+                            <p class="val" id="active-dates-display" style="color:var(--text-main);">Nessuna data impostata</p>
+                        </div>
                     </div>
-                    <table class="custom-table">
-                        <thead>
-                            <tr>
-                                <th>Città</th>
-                                <th>Ubicazione</th>
-                                <th>Durata</th>
-                                <th>Stato</th>
-                            </tr>
-                        </thead>
-                        <tbody id="piazze-table-body">
-                            <!-- Popolato via JS -->
-                        </tbody>
-                    </table>
+                    <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.4;">Nota: inviare una richiesta o organizzare un tour non cambierà automaticamente la piazza corrente finché non lo deciderai tu manualmente.</p>
+                    <button class="btn-gold" style="background:var(--bg-card-hover); color:var(--accent-gold); border:1px solid var(--accent-gold);" onclick="setCurrentPiazzaManually()">Imposta come Piazza Attiva Corrente</button>
                 </div>
             </div>
         </div>
 
-        <!-- VIEW 6: ADMIN -->
+        <!-- VIEW 7: PANNELLO ADMIN -->
         <div id="view-admin" class="view-panel">
             <div class="section-header">
                 <div class="section-title">
                     <h2>PANNELLO DIREZIONE ADMIN</h2>
-                    <p>Amministrazione avanzata e listino prezzi</p>
+                    <p>Controlli amministrativi completi e impostazioni di sistema</p>
                 </div>
                 <button class="nav-btn" onclick="showView('home')">Indietro</button>
             </div>
-            <div class="cassa-card">
-                <div class="cassa-card-header">
-                    <h3>CONFIGURAZIONE LISTINO PREZZI BOTTEGHINO</h3>
-                </div>
-                <div class="form-group">
-                    <label>Prezzo Poltrona VIP Intero (€)</label>
-                    <input type="number" id="cfg-vip-int" class="form-control" value="25">
-                </div>
-                <div class="form-group">
-                    <label>Prezzo Tribuna Intero (€)</label>
-                    <input type="number" id="cfg-tribuna-int" class="form-control" value="18">
-                </div>
-                <div class="form-group">
-                    <label>Prezzo Gradinata Intero (€)</label>
-                    <input type="number" id="cfg-gradinata-int" class="form-control" value="12">
-                </div>
-                <button class="btn-gold" onclick="savePrices()">Salva Listino</button>
+            <div class="cassa-card" style="max-width:600px; margin:0 auto;">
+                <h3 style="color:var(--danger);">ZONA PERICOLOSA</h3>
+                <p style="font-size:0.85rem; color:var(--text-muted);">Ripristina i dati di default del gestionale o modifica i parametri di cassa.</p>
+                <button class="btn-gold" style="background:var(--danger); color:#fff;" onclick="resetData()">Reset Completo Dati</button>
             </div>
         </div>
 
     </main>
 
     <script>
-        let gameState = {
+        // Stato Globale Applicazione
+        let state = {
             cassa: 1359.00,
             piazza: "Castrignano",
-            animali: 3,
-            dayIndex: 0,
+            pendingTourCity: "Lecce",
+            pendingTourDates: "dal 03 al 12 marzo",
+            currentDayIndex: 0,
+            days: ["Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato", "Domenica"],
             weather: "Soleggiato",
-            familyDayName: "Nessuno",
+            familyDay: "Nessuno",
             stockInteri: 100,
             stockRidotti: 100,
-            prices: {
-                vip_int: 25,
-                vip_rid: 18,
-                tribuna_int: 18,
-                tribuna_rid: 12,
-                gradinata_int: 12,
-                gradinata_rid: 8
-            },
-            shopBlocks: {
-                interi: 0,
-                ridotti: 0
-            },
-            ticketCounts: {
+            tickets: {
                 vip_int: 0,
                 vip_rid: 0,
                 tribuna_int: 0,
@@ -1345,493 +1134,186 @@
                 gradinata_int: 0,
                 gradinata_rid: 0
             },
-            currentClient: {
-                dialog: "Buongiorno, vorrei 2 biglietti per la tribuna per favore.",
+            prices: {
+                vip_int: 25.00,
+                vip_rid: 18.00,
+                tribuna_int: 18.00,
+                tribuna_rid: 12.00,
+                gradinata_int: 12.00,
+                gradinata_rid: 8.00
+            },
+            client: {
+                dialog: "Buongiorno, vorrei prendere 2 biglietti per favore.",
                 method: "CONTANTI",
-                cash: 50.00,
-                targetTickets: { tribuna_int: 2, vip_int: 0, vip_rid: 0, tribuna_rid: 0, gradinata_int: 0, gradinata_rid: 0 }
+                cash: 50.00
             },
-            emailState: {
-                sent: false,
-                responded: false,
-                attachmentOpened: false,
-                invoicePaid: false
-            },
-            finances: [
-                { date: "Iniziale", type: "ENTRATA", desc: "Fondo Cassa Iniziale", amount: 1359.00 }
-            ],
-            emailHistory: [],
-            tours: [
-                { city: "Castrignano", location: "Area Mercatale", days: 7, status: "ATTUALE" }
-            ]
+            invoicePaid: false
         };
 
-        const days = ["Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato", "Domenica"];
-
         function showView(viewId) {
-            document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.view-panel').forEach(panel => {
+                panel.classList.remove('active');
+            });
             document.getElementById('view-' + viewId).classList.add('active');
-            if (viewId === 'cassa') {
-                updatePricesDisplay();
-                updateStockDisplay();
-                generateClient();
-            }
-            if (viewId === 'burocrazia') {
-                renderBurocraziaView();
-            }
-            if (viewId === 'finanze') {
-                renderFinancesTable();
-            }
-            if (viewId === 'piazze') {
-                renderPiazzeTable();
-            }
-        }
-
-        function addTransaction(type, desc, amount) {
-            let now = new Date();
-            let dateStr = now.toLocaleDateString() + " " + now.toLocaleTimeString();
-            gameState.finances.unshift({
-                date: dateStr,
-                type: type,
-                desc: desc,
-                amount: amount
-            });
-        }
-
-        function renderFinancesTable() {
-            let html = '';
-            gameState.finances.forEach(f => {
-                let tagClass = f.type === 'ENTRATA' ? 'status-tag in' : 'status-tag out';
-                let sign = f.type === 'ENTRATA' ? '+ € ' : '- € ';
-                html += `
-                    <tr>
-                        <td>${f.date}</td>
-                        <td><span class="${tagClass}">${f.type}</span></td>
-                        <td>${f.desc}</td>
-                        <td style="font-weight:700; font-family:'JetBrains Mono', monospace;">${sign}${f.amount.toFixed(2)}</td>
-                        <td>${f.type}</td>
-                    </tr>
-                `;
-            });
-            document.getElementById('finance-table-body').innerHTML = html;
+            window.scrollTo(0, 0);
         }
 
         function updateHeader() {
-            document.getElementById('head-cassa').innerText = '€ ' + gameState.cassa.toFixed(2);
-            document.getElementById('head-piazza').innerText = gameState.piazza;
-            document.getElementById('head-animali').innerText = gameState.animali;
-            document.getElementById('current-day-display').innerText = days[gameState.dayIndex];
-
-            let dayName = days[gameState.dayIndex];
-            let isWeekend = (dayName === 'Sabato' || dayName === 'Domenica');
-            let isFamilyDay = (gameState.familyDayName === dayName);
-
-            let limitText = "300 Posti (Normale)";
-            if (isWeekend || isFamilyDay) {
-                limitText = "800 Posti (Capienza Massima)";
-            }
-            document.getElementById('daily-limit-display').innerText = limitText;
-            updateStockDisplay();
+            document.getElementById('head-cassa').innerText = "€ " + state.cassa.toFixed(2);
+            document.getElementById('head-piazza').innerText = state.piazza;
+            document.getElementById('stock-interi-display').innerText = state.stockInteri + " pz";
+            document.getElementById('stock-ridotti-display').innerText = state.stockRidotti + " pz";
+            document.getElementById('current-day-display').innerText = state.days[state.currentDayIndex];
+            document.getElementById('active-piazza-display').innerText = state.pendingTourCity;
+            document.getElementById('active-dates-display').innerText = state.pendingTourDates;
         }
 
-        function updateStockDisplay() {
-            let intEl = document.getElementById('stock-interi-display');
-            let ridEl = document.getElementById('stock-ridotti-display');
-            if (intEl && ridEl) {
-                intEl.innerText = gameState.stockInteri + " pz";
-                ridEl.innerText = gameState.stockRidotti + " pz";
-                intEl.style.color = gameState.stockInteri > 10 ? 'var(--success)' : 'var(--danger)';
-                ridEl.style.color = gameState.stockRidotti > 10 ? 'var(--success)' : 'var(--danger)';
+        function changeTicket(type, delta) {
+            let newVal = state.tickets[type] + delta;
+            if (newVal >= 0) {
+                state.tickets[type] = newVal;
+                document.getElementById('cnt-' + type).innerText = newVal;
+                updateTotals();
             }
+        }
+
+        function updateTotals() {
+            let totalCount = 0;
+            let totalPrice = 0;
+            for (let key in state.tickets) {
+                totalCount += state.tickets[key];
+                totalPrice += state.tickets[key] * state.prices[key];
+            }
+            document.getElementById('summary-count').innerText = totalCount;
+            document.getElementById('summary-total').innerText = "€ " + totalPrice.toFixed(2);
+        }
+
+        function generateClient() {
+            const dialogues = [
+                "Buongiorno! Vorrei fare due biglietti per lo spettacolo di stasera.",
+                "Salve, mi dia un intero e un ridotto per la poltrona VIP.",
+                "Buonasera, quanto viene per due biglietti in tribuna?",
+                "Vorrei acquistare tre ingressi per la famiglia."
+            ];
+            state.client.dialog = dialogues[Math.floor(Math.random() * dialogues.length)];
+            state.client.cash = [20.00, 50.00, 100.00][Math.floor(Math.random() * 3)];
+            document.getElementById('client-dialog').innerText = '"' + state.client.dialog + '"';
+            document.getElementById('client-cash').innerText = "€ " + state.client.cash.toFixed(2);
+        }
+
+        function completeSale() {
+            let totalCount = 0;
+            let totalPrice = 0;
+            for (let key in state.tickets) {
+                totalCount += state.tickets[key];
+                totalPrice += state.tickets[key] * state.prices[key];
+            }
+            if (totalCount === 0) {
+                alert("Seleziona almeno un biglietto prima di emettere lo scontrino!");
+                return;
+            }
+            if (state.stockInteri < totalCount / 2 || state.stockRidotti < totalCount / 2) {
+                alert("Attenzione: scorte di biglietti insufficienti in cassa! Rifornisciti al Negozio.");
+                return;
+            }
+
+            state.cassa += totalPrice;
+            state.stockInteri -= Math.ceil(totalCount / 2);
+            state.stockRidotti -= Math.floor(totalCount / 2);
+
+            let receiptHTML = '';
+            for (let key in state.tickets) {
+                if (state.tickets[key] > 0) {
+                    receiptHTML += `<div class="siae-item-row"><span>${key.toUpperCase()} x${state.tickets[key]}</span><span>€ ${(state.tickets[key] * state.prices[key]).toFixed(2)}</span></div>`;
+                }
+            }
+            document.getElementById('receipt-body').innerHTML = receiptHTML;
+            document.getElementById('receipt-total-val').innerText = "€ " + totalPrice.toFixed(2);
+            document.getElementById('receipt-footer').style.display = 'flex';
+
+            // Reset ticket selection
+            for (let key in state.tickets) {
+                state.tickets[key] = 0;
+                document.getElementById('cnt-' + key).innerText = 0;
+            }
+            updateTotals();
+            updateHeader();
+            alert("Incasso effettuato con successo e scontrino SIAE emesso!");
+        }
+
+        function buyStock() {
+            if (state.cassa < 10) {
+                alert("Fondi in cassa insufficienti per acquistare il pacchetto stock!");
+                return;
+            }
+            state.cassa -= 10.00;
+            state.stockInteri += 100;
+            state.stockRidotti += 100;
+            updateHeader();
+            alert("Acquisto completato! +100 biglietti interi e +100 ridotti aggiunti alle scorte.");
         }
 
         function nextDay() {
-            gameState.dayIndex = (gameState.dayIndex + 1) % days.length;
+            state.currentDayIndex = (state.currentDayIndex + 1) % state.days.length;
             updateHeader();
         }
 
         function updateWeather() {
-            gameState.weather = document.getElementById('weather-select').value;
+            state.weather = document.getElementById('weather-select').value;
         }
 
         function updateFamilyDay() {
-            gameState.familyDayName = document.getElementById('family-day-select').value;
+            state.familyDay = document.getElementById('family-day-select').value;
+        }
+
+        function payInvoice() {
+            if (state.invoicePaid) {
+                alert("Fattura già saldata in precedenza!");
+                return;
+            }
+            if (state.cassa < 150) {
+                alert("Fondi insufficienti in cassa per pagare la fattura comunale!");
+                return;
+            }
+            state.cassa -= 150.00;
+            state.invoicePaid = true;
+            document.getElementById('invoice-status-desc').innerText = "Importo pagato: € 150.00 - Stato: SALDATO";
+            document.getElementById('pay-invoice-btn').innerText = "Pagata";
             updateHeader();
+            alert("Fattura comunale saldata con successo!");
         }
 
-        function updatePricesDisplay() {
-            document.getElementById('pr-vip-int').innerText = '€ ' + gameState.prices.vip_int.toFixed(2);
-            document.getElementById('pr-vip-rid').innerText = '€ ' + gameState.prices.vip_rid.toFixed(2);
-            document.getElementById('pr-tribuna-int').innerText = '€ ' + gameState.prices.tribuna_int.toFixed(2);
-            document.getElementById('pr-tribuna-rid').innerText = '€ ' + gameState.prices.tribuna_rid.toFixed(2);
-            document.getElementById('pr-gradinata-int').innerText = '€ ' + gameState.prices.gradinata_int.toFixed(2);
-            document.getElementById('pr-gradinata-rid').innerText = '€ ' + gameState.prices.gradinata_rid.toFixed(2);
-        }
-
-        /* NEGOZIO BIGLIETTI A BLOCCHI DA 100 */
-        function changeShopBlocks(type, delta) {
-            let val = gameState.shopBlocks[type] + delta;
-            if (val < 0) val = 0;
-            gameState.shopBlocks[type] = val;
-            document.getElementById('shop-cnt-' + type).innerText = val * 100;
-            calcShopTotal();
-        }
-
-        function calcShopTotal() {
-            let totalTickets = (gameState.shopBlocks.interi + gameState.shopBlocks.ridotti) * 100;
-            let totalCost = (gameState.shopBlocks.interi + gameState.shopBlocks.ridotti) * 10.00;
-
-            document.getElementById('shop-total-tickets-display').innerText = totalTickets + " biglietti";
-            document.getElementById('shop-total-cost-display').innerText = '€ ' + totalCost.toFixed(2);
-        }
-
-        function processShopPurchase() {
-            let totalBlocks = gameState.shopBlocks.interi + gameState.shopBlocks.ridotti;
-            let totalCost = totalBlocks * 10.00;
-            let addedInteri = gameState.shopBlocks.interi * 100;
-            let addedRidotti = gameState.shopBlocks.ridotti * 100;
-            let totalTickets = addedInteri + addedRidotti;
-
-            if (totalTickets === 0) {
-                alert("Seleziona almeno un blocco da 100 biglietti.");
+        function addTour() {
+            let city = document.getElementById('tour-city').value;
+            let dates = document.getElementById('tour-dates').value;
+            if (!city) {
+                alert("Inserisci il nome della piazza!");
                 return;
             }
-
-            if (gameState.cassa < totalCost) {
-                alert("Fondi in cassa insufficienti per completare l'acquisto stock!");
-                return;
+            state.pendingTourCity = city;
+            if (dates) {
+                state.pendingTourDates = dates;
             }
-
-            gameState.cassa -= totalCost;
-            gameState.stockInteri += addedInteri;
-            gameState.stockRidotti += addedRidotti;
-
-            addTransaction("USCITA", `Acquisto Stock Negozio (${addedInteri} Interi, ${addedRidotti} Ridotti)`, totalCost);
             updateHeader();
-
-            gameState.shopBlocks.interi = 0;
-            gameState.shopBlocks.ridotti = 0;
-            document.getElementById('shop-cnt-interi').innerText = 0;
-            document.getElementById('shop-cnt-ridotti').innerText = 0;
-            calcShopTotal();
-
-            alert("Acquisto completato! Ricaricati " + addedInteri + " biglietti interi e " + addedRidotti + " ridotti in magazzino. Totale pagato: € " + totalCost.toFixed(2));
+            alert("Richiesta di tour per " + city + " registrata con successo! (La piazza attiva corrente non è stata modificata automaticamente).");
         }
 
-        /* CASSA SPORTELLO */
-        function changeTicket(type, delta) {
-            let val = gameState.ticketCounts[type] + delta;
-            if (val < 0) val = 0;
-            gameState.ticketCounts[type] = val;
-            document.getElementById('cnt-' + type).innerText = val;
-            calcOrderTotal();
-        }
-
-        function calcOrderTotal() {
-            let total = 0;
-            for (let k in gameState.ticketCounts) {
-                total += gameState.ticketCounts[k] * gameState.prices[k];
-            }
-            document.getElementById('order-total-display').innerText = '€ ' + total.toFixed(2);
-            let change = gameState.currentClient.cash - total;
-            let changeEl = document.getElementById('order-change-display');
-            if (change >= 0) {
-                changeEl.innerText = '€ ' + change.toFixed(2);
-                changeEl.style.color = 'var(--success)';
-            } else {
-                changeEl.innerText = 'Denaro insufficiente!';
-                changeEl.style.color = 'var(--danger)';
-            }
-        }
-
-        function generateClient() {
-            let types = ['vip_int', 'vip_rid', 'tribuna_int', 'tribuna_rid', 'gradinata_int', 'gradinata_rid'];
-            let randomType = types[Math.floor(Math.random() * types.length)];
-            let randomQty = Math.floor(Math.random() * 3) + 1;
-
-            for (let k in gameState.ticketCounts) {
-                gameState.ticketCounts[k] = 0;
-                document.getElementById('cnt-' + k).innerText = 0;
-            }
-
-            let ticketPrice = gameState.prices[randomType];
-            let exactTotal = ticketPrice * randomQty;
-
-            // Determina una banconota sufficiente o superiore (tagli realistici: 10, 20, 50, 100, 200, 500)
-            let standardNotes = [10, 20, 50, 100, 200, 500];
-            let validNotes = standardNotes.filter(n => n >= exactTotal);
-            let clientCash = validNotes.length > 0 ? validNotes[0] : Math.ceil(exactTotal / 50) * 50;
-
-            let sectorName = randomType.includes('vip') ? 'poltrona vip' : (randomType.includes('tribuna') ? 'tribuna' : 'gradinata');
-            let tariffName = randomType.includes('int') ? 'intero' : 'ridotto';
-
-            let phrases = [
-                "Salve, vorrei " + randomQty + " biglietti " + tariffName + " per " + sectorName + ".",
-                "Buonasera, mi servono " + randomQty + " biglietti (" + tariffName + ") per " + sectorName + ", grazie.",
-                "Ciao! Posso avere " + randomQty + " ingressi " + tariffName + " in " + sectorName + "?"
-            ];
-
-            gameState.currentClient = {
-                dialog: phrases[Math.floor(Math.random() * phrases.length)],
-                method: "CONTANTI",
-                cash: clientCash,
-                targetTickets: { [randomType]: randomQty }
-            };
-
-            document.getElementById('client-dialog').innerText = '"' + gameState.currentClient.dialog + '"';
-            document.getElementById('client-method').innerText = gameState.currentClient.method;
-            document.getElementById('client-cash').innerText = '€ ' + gameState.currentClient.cash.toFixed(2);
-            calcOrderTotal();
-        }
-
-        function processSale() {
-            let total = 0;
-            let itemsHtml = '';
-            let hasItems = false;
-            let requiredInteri = 0;
-            let requiredRidotti = 0;
-
-            for (let k in gameState.ticketCounts) {
-                let count = gameState.ticketCounts[k];
-                if (count > 0) {
-                    hasItems = true;
-                    let sub = count * gameState.prices[k];
-                    total += sub;
-                    itemsHtml += `<div class="siae-item-row"><span>${count}x ${k.toUpperCase()}</span><span>€ ${sub.toFixed(2)}</span></div>`;
-                    
-                    if (k.includes('int')) {
-                        requiredInteri += count;
-                    } else {
-                        requiredRidotti += count;
-                    }
-                }
-            }
-
-            if (!hasItems) {
-                alert("Seleziona almeno un biglietto da emettere.");
-                return;
-            }
-
-            if (requiredInteri > gameState.stockInteri || requiredRidotti > gameState.stockRidotti) {
-                alert("Attenzione: Scorte di magazzino insufficienti! I biglietti sono esauriti o non bastano per questo ordine. Vai al Negozio a comprarne altri.");
-                return;
-            }
-
-            if (gameState.currentClient.cash < total) {
-                alert("Il cliente non ha abbastanza denaro per coprire l'importo!");
-                return;
-            }
-
-            gameState.cassa += total;
-            gameState.stockInteri -= requiredInteri;
-            gameState.stockRidotti -= requiredRidotti;
-
-            addTransaction("ENTRATA", `Vendita Biglietti Botteghino (${requiredInteri} Int, ${requiredRidotti} Rid)`, total);
+        function setCurrentPiazzaManually() {
+            state.piazza = state.pendingTourCity;
             updateHeader();
+            alert("Piazza corrente aggiornata ufficialmente a: " + state.piazza);
+        }
 
-            let now = new Date();
-            let dateStr = now.toLocaleDateString() + ' ' + now.toLocaleTimeString();
-            document.getElementById('receipt-date').innerText = 'DATA: ' + dateStr;
-            document.getElementById('receipt-items').innerHTML = itemsHtml;
-            document.getElementById('receipt-total').innerText = '€ ' + total.toFixed(2);
+        function resetData() {
+            if (confirm("Sei sicuro di voler resettare tutti i dati del gestionale?")) {
+                location.reload();
+            }
+        }
 
-            alert("Vendita completata con successo! Scontrino SIAE emesso e scorte aggiornate.");
+        window.onload = function() {
+            updateHeader();
             generateClient();
-        }
-
-        /* BUROCRAZIA & CORRISPONDENZA EMAIL COMUNALE */
-        function renderBurocraziaView() {
-            let cityClean = gameState.piazza.toLowerCase().replace(/[^a-z0-9]/g, '');
-            let comuneEmail = `protocollo.ufficiotributi@comune.${cityClean}.it`;
-
-            document.getElementById('buro-city-header').innerText = gameState.piazza;
-            document.getElementById('email-to-comune').innerText = comuneEmail;
-            document.getElementById('email-from-comune').innerText = comuneEmail;
-
-            document.getElementById('email-body-outbound').innerText = 
-                `Spettabile Ufficio Protocollo e Tributi del Comune di ${gameState.piazza},\n\n` +
-                `con la presente il Circo M. Orfei di Castrignano Production trasmette formale richiesta di autorizzazione per l'allestimento delle strutture circensi presso l'area occupata.\n\n` +
-                `Siamo in attesa di Vostra risposta con il prospetto dettagliato dei costi e la relativa fattura da saldare per il rilascio dei permessi ufficiali.\n\n` +
-                `Distinti Saluti,\nDirezione Circo M. Orfei`;
-
-            if (gameState.emailState.attachmentOpened) {
-                document.getElementById('invoice-placeholder').style.display = 'none';
-                document.getElementById('invoice-details-block').style.display = 'block';
-            } else {
-                document.getElementById('invoice-placeholder').style.display = 'block';
-                document.getElementById('invoice-details-block').style.display = 'none';
-            }
-
-            if (gameState.emailState.invoicePaid) {
-                for (let i = 0; i < 4; i++) {
-                    let el = document.getElementById('st-' + i);
-                    if (el) el.innerHTML = '<span class="status-tag ok">PAGATO</span>';
-                }
-                document.getElementById('btn-pay-invoice').style.display = 'none';
-                document.getElementById('autorizzazione-badge').style.display = 'block';
-            } else {
-                for (let i = 0; i < 4; i++) {
-                    let el = document.getElementById('st-' + i);
-                    if (el) el.innerHTML = '<span class="status-tag" style="background:rgba(239,68,68,0.2); color:var(--danger); border:1px solid var(--danger);">DA PAGARE</span>';
-                }
-                document.getElementById('btn-pay-invoice').style.display = 'inline-flex';
-                document.getElementById('autorizzazione-badge').style.display = 'none';
-            }
-
-            renderEmailHistoryTable();
-        }
-
-        function sendCircusEmail() {
-            gameState.emailState.sent = true;
-            document.getElementById('btn-send-email').innerText = "Email Inviata";
-            document.getElementById('btn-send-email').disabled = true;
-
-            let cityClean = gameState.piazza.toLowerCase().replace(/[^a-z0-9]/g, '');
-            let comuneEmail = `protocollo.ufficiotributi@comune.${cityClean}.it`;
-
-            document.getElementById('email-body-inbound').innerText = 
-                `Gentile Direzione Circo M. Orfei,\n\n` +
-                `I nostri uffici hanno esaminato la Vostra richiesta di occupazione e spettacolo per il Comune di ${gameState.piazza}.\n\n` +
-                `In allegato trasmettiamo la fattura complessiva di € 490.00. Apri l'allegato sottostante per caricare la fattura ed effettuare il saldo.\n\n` +
-                `Cordiali Saluti,\nUfficio Tributi & Demanio - Comune di ${gameState.piazza}`;
-
-            document.getElementById('email-inbound-box').style.display = 'block';
-
-            let now = new Date();
-            let timeStr = now.toLocaleDateString() + ' ' + now.toLocaleTimeString();
-            gameState.emailHistory.unshift({
-                date: timeStr,
-                city: gameState.piazza,
-                route: "cirmomorfei@castrignanoproduction.it -> " + comuneEmail,
-                subject: "Richiesta Autorizzazione Spettacolo Circense",
-                status: "INVIATO"
-            });
-            gameState.emailHistory.unshift({
-                date: timeStr,
-                city: gameState.piazza,
-                route: comuneEmail + " -> cirmomorfei@castrignanoproduction.it",
-                subject: "Risposta: Prospetto Tasse e Fattura (Allegato)",
-                status: "RICEVUTO"
-            });
-
-            renderEmailHistoryTable();
-            alert("Email inviata con successo al Comune! Il Comune ha risposto allegando la fattura.");
-        }
-
-        function openAttachment() {
-            gameState.emailState.attachmentOpened = true;
-            renderBurocraziaView();
-            alert("Allegato 'Fattura_Comunale_Concessione.pdf' aperto e caricato con successo!");
-        }
-
-        function payFullInvoice() {
-            if (!gameState.emailState.attachmentOpened) {
-                alert("Devi prima aprire l'allegato ricevuto nell'email dal Comune!");
-                return;
-            }
-
-            let totalInvoice = 490.00;
-            if (gameState.cassa < totalInvoice) {
-                alert("Fondi in cassa insufficienti per saldare la fattura comunale!");
-                return;
-            }
-
-            gameState.cassa -= totalInvoice;
-            addTransaction("USCITA", `Saldo Fattura Comunale Permessi e TOSAP (${gameState.piazza})`, totalInvoice);
-            gameState.emailState.invoicePaid = true;
-
-            updateHeader();
-            renderBurocraziaView();
-
-            alert("Fattura saldata con successo! L'autorizzazione ufficiale del Comune di " + gameState.piazza + " è stata rilasciata ed è ora attiva.");
-        }
-
-        function renderEmailHistoryTable() {
-            let html = '';
-            gameState.emailHistory.forEach(e => {
-                let statusTag = e.status === "RICEVUTO" 
-                    ? '<span class="status-tag ok">RICEVUTO</span>' 
-                    : '<span class="status-tag" style="background:rgba(59, 130, 246, 0.2); color:var(--info); border:1px solid var(--info);">INVIATO</span>';
-                html += `
-                    <tr>
-                        <td>${e.date}</td>
-                        <td>${e.city}</td>
-                        <td style="font-size:0.75rem;">${e.route}</td>
-                        <td>${e.subject}</td>
-                        <td>${statusTag}</td>
-                    </tr>
-                `;
-            });
-            document.getElementById('email-history-body').innerHTML = html;
-        }
-
-        /* PIAZZE & TOUR */
-        function organizeTour() {
-            let city = document.getElementById('tour-city-input').value.trim();
-            let location = document.getElementById('tour-location-input').value.trim();
-            let daysNum = document.getElementById('tour-days-input').value;
-
-            if (!city || !location) {
-                alert("Inserisci sia il nome della città che l'ubicazione!");
-                return;
-            }
-
-            gameState.piazza = city;
-
-            gameState.emailState.sent = false;
-            gameState.emailState.responded = false;
-            gameState.emailState.attachmentOpened = false;
-            gameState.emailState.invoicePaid = false;
-
-            document.getElementById('btn-send-email').innerText = "Invia Email al Comune";
-            document.getElementById('btn-send-email').disabled = false;
-            document.getElementById('email-inbound-box').style.display = 'none';
-
-            gameState.tours.forEach(t => { if (t.status === "ATTUALE") t.status = "COMPLETATO"; });
-            gameState.tours.push({
-                city: city,
-                location: location,
-                days: daysNum,
-                status: "ATTUALE"
-            });
-
-            updateHeader();
-            renderPiazzeTable();
-
-            document.getElementById('tour-city-input').value = "";
-            document.getElementById('tour-location-input').value = "";
-
-            alert(`Tour organizzato per la città di ${city}! Vai nel Portale Burocrazia per inviare l'email prescritta al Comune.`);
-            showView('burocrazia');
-        }
-
-        function renderPiazzeTable() {
-            let html = '';
-            gameState.tours.forEach(t => {
-                let statusTag = t.status === "ATTUALE" 
-                    ? '<span class="status-tag ok">ATTUALE</span>' 
-                    : '<span class="status-tag" style="background:rgba(255,255,255,0.1); color:#fff;">COMPLETATO</span>';
-                html += `
-                    <tr>
-                        <td>${t.city}</td>
-                        <td>${t.location}</td>
-                        <td>${t.days} giorni</td>
-                        <td>${statusTag}</td>
-                    </tr>
-                `;
-            });
-            document.getElementById('piazze-table-body').innerHTML = html;
-        }
-
-        function savePrices() {
-            gameState.prices.vip_int = parseFloat(document.getElementById('cfg-vip-int').value) || 25;
-            gameState.prices.tribuna_int = parseFloat(document.getElementById('cfg-tribuna-int').value) || 18;
-            gameState.prices.gradinata_int = parseFloat(document.getElementById('cfg-gradinata-int').value) || 12;
-            alert("Listino prezzi aggiornato con successo.");
-            updatePricesDisplay();
-        }
-
-        updateHeader();
+        };
     </script>
 </body>
 </html>
