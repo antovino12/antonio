@@ -64,7 +64,7 @@
     </div>
 
     <!-- Container Principale -->
-    <main class="max-w-7xl mx-auto p-4">
+    <main class="max-w-7xl mx-auto p-4 space-y-6">
 
       <!-- HOME / PRENOTAZIONI PUBBLICHE -->
       <section id="sec-home" class="space-y-6">
@@ -87,6 +87,72 @@
             <button onclick="verificaStatoGenerale()" class="bg-blue-600 text-white font-bold px-4 py-2 rounded text-sm hover:bg-blue-700 transition">Verifica</button>
           </div>
           <div id="esito-codice" class="hidden p-3 rounded text-sm font-semibold mt-2"></div>
+        </div>
+
+        <!-- SEZIONE VISITE MEDICHE -->
+        <div class="space-y-3">
+          <h3 class="text-xl font-bold text-gray-800 flex items-center"><i class="fa-solid fa-stethoscope text-cri-red mr-2"></i> Visite Mediche Specialistiche</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-lg shadow border border-gray-200 flex flex-col justify-between hover:shadow-lg transition">
+              <div>
+                <div class="text-red-600 text-3xl mb-3"><i class="fa-solid fa-user-doctor"></i></div>
+                <h4 class="font-bold text-lg mb-2 text-gray-800">Visita Medica Semplice</h4>
+                <p class="text-gray-600 text-sm mb-4">Controllo generale dello stato di salute, esame obiettivo e check-up di base.</p>
+              </div>
+              <button onclick="quickBook('Visita Medica Semplice')" class="text-red-600 font-semibold text-sm hover:underline text-left">Prenota ora &rarr;</button>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow border border-gray-200 flex flex-col justify-between hover:shadow-lg transition">
+              <div>
+                <div class="text-red-600 text-3xl mb-3"><i class="fa-solid fa-brain"></i></div>
+                <h4 class="font-bold text-lg mb-2 text-gray-800">Visita Psicologica</h4>
+                <p class="text-gray-600 text-sm mb-4">Colloquio clinico valutativo, supporto psicologico ed erogazione idoneità mentale.</p>
+              </div>
+              <button onclick="quickBook('Visita Psicologica')" class="text-red-600 font-semibold text-sm hover:underline text-left">Prenota ora &rarr;</button>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow border border-gray-200 flex flex-col justify-between hover:shadow-lg transition">
+              <div>
+                <div class="text-red-600 text-3xl mb-3"><i class="fa-solid fa-syringe"></i></div>
+                <h4 class="font-bold text-lg mb-2 text-gray-800">Visita Chirurgica</h4>
+                <p class="text-gray-600 text-sm mb-4">Valutazione specialistica per piccoli interventi, lesioni da trauma o controlli post-operatori.</p>
+              </div>
+              <button onclick="quickBook('Visita Chirurgica')" class="text-red-600 font-semibold text-sm hover:underline text-left">Prenota ora &rarr;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEZIONE CERTIFICATI ANAMNESTICI -->
+        <div class="space-y-3 pt-4">
+          <h3 class="text-xl font-bold text-gray-800 flex items-center"><i class="fa-solid fa-file-medical text-cri-red mr-2"></i> Certificati Anamnestici</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-lg shadow border border-gray-200 flex flex-col justify-between hover:shadow-lg transition">
+              <div>
+                <div class="text-red-600 text-3xl mb-3"><i class="fa-solid fa-id-card"></i></div>
+                <h4 class="font-bold text-lg mb-2 text-gray-800">Certificato Anamnestico per Porto d'Armi</h4>
+                <p class="text-gray-600 text-sm mb-4">Accertamento medico dei requisiti psicofisici minimi per licenze d'armi e tiro a segno.</p>
+              </div>
+              <button onclick="quickBook('Certificato Anamnestico per Porto d\'Armi')" class="text-red-600 font-semibold text-sm hover:underline text-left">Prenota ora &rarr;</button>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow border border-gray-200 flex flex-col justify-between hover:shadow-lg transition">
+              <div>
+                <div class="text-red-600 text-3xl mb-3"><i class="fa-solid fa-user-check"></i></div>
+                <h4 class="font-bold text-lg mb-2 text-gray-800">Certificato Anamnestico per Idoneità Lavorativa</h4>
+                <p class="text-gray-600 text-sm mb-4">Certificazione medica per l'assunzione e idoneità preventiva alla mansione lavorativa.</p>
+              </div>
+              <button onclick="quickBook('Certificato Anamnestico per Idoneità Lavorativa')" class="text-red-600 font-semibold text-sm hover:underline text-left">Prenota ora &rarr;</button>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow border border-gray-200 flex flex-col justify-between hover:shadow-lg transition">
+              <div>
+                <div class="text-red-600 text-3xl mb-3"><i class="fa-solid fa-shield-halved"></i></div>
+                <h4 class="font-bold text-lg mb-2 text-gray-800">Certificato Anamnestico per Arruolamento in FdO</h4>
+                <p class="text-gray-600 text-sm mb-4">Certificato sanitario obbligatorio per concorsi e arruolamento nelle Forze dell'Ordine.</p>
+              </div>
+              <button onclick="quickBook('Certificato Anamnestico per Arruolamento in FdO')" class="text-red-600 font-semibold text-sm hover:underline text-left">Prenota ora &rarr;</button>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -139,11 +205,9 @@
 
       <!-- SEZIONE LISTINO PREZZI PUBBLICO -->
       <section id="sec-listino" class="hidden space-y-6">
-        <div class="bg-white rounded-lg shadow-md p-6 border-t-4 border-cri-red flex justify-between items-center flex-wrap gap-4">
-          <div>
-            <h2 class="text-2xl font-bold text-gray-800 mb-2 flex items-center"><i class="fa-solid fa-tags text-cri-red mr-2"></i> Listino Prezzi Ufficiale CRI</h2>
-            <p class="text-gray-600 text-sm">Consulta i costi ufficiali stabiliti dalla Croce Rossa Italiana per visite, certificati e prestazioni sanitarie.</p>
-          </div>
+        <div class="bg-white rounded-lg shadow-md p-6 border-t-4 border-cri-red">
+          <h2 class="text-2xl font-bold text-gray-800 mb-2 flex items-center"><i class="fa-solid fa-tags text-cri-red mr-2"></i> Listino Prezzi Ufficiale CRI</h2>
+          <p class="text-gray-600 text-sm">Consulta i costi ufficiali stabiliti dalla Croce Rossa Italiana per visite, certificati e prestazioni sanitarie.</p>
         </div>
         <div class="bg-white rounded-lg shadow overflow-hidden">
           <table class="w-full text-left border-collapse">
@@ -171,7 +235,6 @@
           </button>
         </div>
 
-        <!-- Catalogo Farmaci -->
         <div class="space-y-3">
           <h3 class="font-bold text-gray-800 text-lg">Catalogo Farmaci Disponibili</h3>
           <div id="catalogo-farmaci-pubblico" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
@@ -206,7 +269,6 @@
           <button onclick="apriModalCambioPass()" class="bg-amber-600 text-white text-sm font-bold px-3 py-1.5 rounded hover:bg-amber-700 shadow">Cambia Password</button>
         </div>
 
-        <!-- Barra Stato Operatore -->
         <div class="bg-white p-6 rounded-lg shadow flex flex-wrap justify-between items-center gap-4">
           <div>
             <h2 class="text-2xl font-bold text-gray-800" id="op-welcome-name">Benvenuto Operatore</h2>
@@ -222,14 +284,13 @@
           </div>
         </div>
 
-        <!-- Timer Turno e Stats Personali -->
         <div class="bg-white border border-gray-200 rounded-lg p-6 text-center shadow">
           <span class="text-xs text-gray-500 font-semibold uppercase tracking-wider">Tempo del Turno Corrente</span>
           <div id="timer-display" class="text-4xl font-mono font-bold text-green-600 mt-2">00:00:00</div>
           <span class="text-xs text-gray-400 mt-2">I dati sul tempo lavorato vengono salvati automaticamente nel tuo storico turni.</span>
         </div>
 
-        <!-- PORTALE DEL CITTADINO & CARTELLA CLINICA (VISIBILE SOLO SE AUTORIZZATO) -->
+        <!-- PORTALE DEL CITTADINO -->
         <div id="wrapper-portale-cittadino" class="hidden space-y-6">
           <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-blue-600 space-y-4">
             <div class="border-b pb-2 flex justify-between items-center flex-wrap gap-2">
@@ -275,7 +336,6 @@
               </div>
             </form>
 
-            <!-- Ricerca & Lista Cartelle Cliniche -->
             <div class="space-y-3 pt-2">
               <div class="flex justify-between items-center flex-wrap gap-2">
                 <h4 class="font-bold text-gray-800 text-sm">Archivio Cartelle Cliniche &amp; Fatture Generate</h4>
@@ -302,7 +362,7 @@
           </div>
         </div>
 
-        <!-- EMISSIONE CERTIFICATI ANAMNESTICI (SE ABILITATO) -->
+        <!-- EMISSIONE CERTIFICATI ANAMNESTICI -->
         <div id="wrapper-certificati-op" class="hidden bg-white p-6 rounded-lg shadow space-y-4">
           <div class="border-b pb-2 flex justify-between items-center flex-wrap gap-2">
             <h3 class="font-bold text-gray-800 text-lg"><i class="fa-solid fa-file-medical text-cri-red mr-2"></i> Emetti Certificato Medico Anamnestico</h3>
@@ -345,7 +405,7 @@
           </form>
         </div>
 
-        <!-- STORICO PRENOTAZIONI OPERATORE (GESTIONE PRENOTAZIONI) -->
+        <!-- GESTIONE PRENOTAZIONI OPERATORE -->
         <div class="bg-white p-6 rounded-lg shadow space-y-4">
           <h3 class="font-bold text-gray-800 text-lg border-b pb-2"><i class="fa-solid fa-clipboard-list text-cri-red mr-2"></i> Gestione Prenotazioni Visite Ricevute</h3>
           <div class="overflow-x-auto">
@@ -367,7 +427,7 @@
           </div>
         </div>
 
-        <!-- STORICO SERVIZI DELL'OPERATORE -->
+        <!-- STORICO TURNI OPERATORE -->
         <div class="bg-white p-6 rounded-lg shadow space-y-4">
           <h3 class="font-bold text-gray-800 text-lg border-b pb-2 flex items-center justify-between flex-wrap gap-2">
             <span><i class="fa-solid fa-clock-rotate-left text-cri-red mr-2"></i> Storico dei Miei Servizi / Turni</span>
@@ -420,7 +480,6 @@
           </div>
         </div>
 
-        <!-- STATISTICHE RAPIDE (WIDGETS) -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div class="bg-white p-4 rounded-lg shadow border-l-4 border-blue-600">
             <div class="text-xs font-bold text-gray-500 uppercase">Totale Prenotazioni</div>
@@ -440,10 +499,10 @@
           </div>
         </div>
 
-        <!-- CONFIGURAZIONE PERMESSI RUOLI (ADMIN) -->
+        <!-- CONFIGURAZIONE PERMESSI RUOLI -->
         <div class="bg-white p-6 rounded-lg shadow space-y-4 border-l-4 border-blue-600">
           <h3 class="font-bold text-gray-800 flex items-center"><i class="fa-solid fa-user-gear text-blue-600 mr-2"></i> Configurazione Permessi Ruoli / Gradi</h3>
-          <p class="text-xs text-gray-500">Seleziona quali ruoli hanno l'accesso alle sezioni riservate degli operatori (spunta tutti i ruoli desiderati):</p>
+          <p class="text-xs text-gray-500">Seleziona quali ruoli hanno l'accesso alle sezioni riservate:</p>
           
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-gray-50 p-4 rounded border">
             <div>
@@ -460,7 +519,7 @@
           </div>
         </div>
 
-        <!-- Configurazione Discord Webhooks (3 CANALI WEBHOOK) -->
+        <!-- 3 CANALI WEBHOOK -->
         <div class="bg-white p-6 rounded-lg shadow space-y-4 border-l-4 border-indigo-600">
           <h3 class="font-bold text-gray-800 flex items-center"><i class="fa-brands fa-discord text-indigo-600 mr-2 text-xl"></i> Configurazione Canali Discord Webhook</h3>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -497,17 +556,15 @@
           </div>
         </div>
 
-        <!-- Configurazione Bozza Note Anamnestiche (Admin) -->
         <div class="bg-white p-6 rounded-lg shadow space-y-3 border-l-4 border-amber-600">
           <h3 class="font-bold text-gray-800 flex items-center"><i class="fa-solid fa-file-pen text-amber-600 mr-2"></i> Gestione Bozza Predefinita Note Anamnestiche</h3>
-          <p class="text-xs text-gray-500">Imposta qui sotto il testo di default che gli operatori potranno inserire automaticamente compilando un certificato anamnestico.</p>
           <div class="flex gap-2">
-            <textarea id="admin-bozza-note" rows="2" placeholder="Es. Esame obiettivo regolare, assenza di patologie di rilievo, idoneità rilasciata con riserva..." class="flex-1 border p-2 rounded text-sm outline-none focus:ring-2 focus:ring-amber-500"></textarea>
+            <textarea id="admin-bozza-note" rows="2" placeholder="Es. Esame obiettivo regolare..." class="flex-1 border p-2 rounded text-sm outline-none focus:ring-2 focus:ring-amber-500"></textarea>
             <button onclick="salvaBozzaAdmin()" class="bg-amber-600 text-white font-bold px-4 py-2 rounded text-sm hover:bg-amber-700 transition self-end">Salva Bozza</button>
           </div>
         </div>
 
-        <!-- GESTIONE LISTINO PREZZI CON RE-ORDER (ADMIN) -->
+        <!-- LISTINO CON RE-ORDER -->
         <div class="bg-white p-6 rounded-lg shadow space-y-4">
           <h3 class="font-bold text-gray-800 text-lg border-b pb-2"><i class="fa-solid fa-tags text-cri-red mr-2"></i> Gestione &amp; Ordinamento Listino Prezzi Ufficiale</h3>
           <form onsubmit="aggiungiVoceListino(event)" class="grid grid-cols-1 md:grid-cols-4 gap-3 bg-gray-50 p-4 rounded border">
@@ -517,7 +574,7 @@
             </div>
             <div>
               <label class="block text-xs font-bold text-gray-600">Categoria</label>
-              <input type="text" id="listino-categoria" required placeholder="Es. Visite / Certificati" class="w-full border p-2 rounded text-sm mt-1">
+              <input type="text" id="listino-categoria" required placeholder="Es. Visite" class="w-full border p-2 rounded text-sm mt-1">
             </div>
             <div>
               <label class="block text-xs font-bold text-gray-600">Prezzo</label>
@@ -543,27 +600,26 @@
           </div>
         </div>
 
-        <!-- GESTIONE FARMACIA (ADMIN) -->
+        <!-- GESTIONE FARMACIA -->
         <div class="bg-white p-6 rounded-lg shadow space-y-4">
           <h3 class="font-bold text-gray-800 text-lg border-b pb-2"><i class="fa-solid fa-pills text-blue-600 mr-2"></i> Gestione Catalogo Farmacia</h3>
           <form onsubmit="aggiungiFarmaco(event)" class="grid grid-cols-1 md:grid-cols-4 gap-3 bg-gray-50 p-4 rounded border">
             <div>
-              <label class="block text-xs font-bold text-gray-600">Nome Farmaco / Presidio</label>
-              <input type="text" id="farmaco-nome" required placeholder="Es. Tachipirina 1000mg" class="w-full border p-2 rounded text-sm mt-1">
+              <label class="block text-xs font-bold text-gray-600">Nome Farmaco</label>
+              <input type="text" id="farmaco-nome" required placeholder="Es. Tachipirina" class="w-full border p-2 rounded text-sm mt-1">
             </div>
             <div>
-              <label class="block text-xs font-bold text-gray-600">Prezzo (€ o Valuta RP)</label>
+              <label class="block text-xs font-bold text-gray-600">Prezzo</label>
               <input type="text" id="farmaco-prezzo" required placeholder="Es. 50€" class="w-full border p-2 rounded text-sm mt-1">
             </div>
             <div class="md:col-span-2">
-              <label class="block text-xs font-bold text-gray-600">Descrizione / Uso</label>
-              <input type="text" id="farmaco-desc" placeholder="Es. Antipiretico ed analgesico..." class="w-full border p-2 rounded text-sm mt-1">
+              <label class="block text-xs font-bold text-gray-600">Descrizione</label>
+              <input type="text" id="farmaco-desc" placeholder="Descrizione..." class="w-full border p-2 rounded text-sm mt-1">
             </div>
             <div class="md:col-span-4 flex justify-end mt-1">
               <button type="submit" class="bg-blue-600 text-white font-bold px-4 py-2 rounded text-sm hover:bg-blue-700 transition"><i class="fa-solid fa-plus mr-1"></i> Aggiungi al Catalogo</button>
             </div>
           </form>
-
           <div class="overflow-x-auto">
             <table class="w-full text-left text-sm border-collapse">
               <thead>
@@ -579,7 +635,7 @@
           </div>
         </div>
 
-        <!-- TABELLA ORDINI FARMACIA RICEVUTI -->
+        <!-- ORDINI FARMACIA RICEVUTI -->
         <div class="bg-white p-6 rounded-lg shadow space-y-4">
           <h3 class="font-bold text-gray-800 text-lg border-b pb-2"><i class="fa-solid fa-boxes-packing text-blue-600 mr-2"></i> Gestione Ordini Farmacia Ricevuti</h3>
           <div class="overflow-x-auto">
@@ -589,7 +645,7 @@
                   <th class="p-2">Codice</th>
                   <th class="p-2">Data</th>
                   <th class="p-2">Nome RP</th>
-                  <th class="p-2">Tag Discord</th>
+                  <th class="p-2">Discord</th>
                   <th class="p-2">Prodotti &amp; Qta</th>
                   <th class="p-2">Totale In-Game</th>
                   <th class="p-2">Stato</th>
@@ -601,7 +657,7 @@
           </div>
         </div>
 
-        <!-- TABELLA CERTIFICATI ANAMNESTICI EMESSI (ADMIN) -->
+        <!-- CERTIFICATI ANAMNESTICI EMESSI -->
         <div class="bg-white p-6 rounded-lg shadow space-y-4">
           <h3 class="font-bold text-gray-800 text-lg border-b pb-2"><i class="fa-solid fa-file-medical text-cri-red mr-2"></i> Certificati Anamnestici Emessi</h3>
           <div class="overflow-x-auto">
@@ -622,13 +678,12 @@
           </div>
         </div>
 
-        <!-- Gestione Operatori & Reset Ore Settimanali -->
+        <!-- OPERATORI -->
         <div class="bg-white p-6 rounded-lg shadow space-y-4">
           <div class="border-b pb-2 flex justify-between items-center flex-wrap gap-2">
             <h3 class="font-bold text-gray-800 text-lg"><i class="fa-solid fa-users text-cri-red mr-2"></i> Creazione e Gestione Operatori</h3>
             <button onclick="resettaOreTuttiOp()" class="bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs px-3 py-1.5 rounded transition shadow"><i class="fa-solid fa-rotate-left mr-1"></i> Resetta Ore Settimanali Tutti</button>
           </div>
-
           <form onsubmit="creaOperatore(event)" class="grid grid-cols-1 md:grid-cols-4 gap-3 bg-gray-50 p-4 rounded border">
             <div>
               <label class="block text-xs font-bold text-gray-600">Nome Operatore</label>
@@ -640,7 +695,7 @@
             </div>
             <div>
               <label class="block text-xs font-bold text-gray-600">Ruolo / Qualifica</label>
-              <input type="text" id="nuovo-op-ruolo" required placeholder="Es. Medico Chirurgo, Soccorritore 118..." class="w-full border p-2 rounded text-sm mt-1">
+              <input type="text" id="nuovo-op-ruolo" required placeholder="Es. Medico Chirurgo" class="w-full border p-2 rounded text-sm mt-1">
             </div>
             <div>
               <label class="block text-xs font-bold text-gray-600">Password Provvisoria</label>
@@ -653,7 +708,6 @@
               <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-bold px-4 py-2 rounded text-sm transition"><i class="fa-solid fa-plus mr-1"></i> Aggiungi Operatore</button>
             </div>
           </form>
-
           <div class="overflow-x-auto">
             <table class="w-full text-left text-sm border-collapse">
               <thead>
@@ -671,7 +725,7 @@
           </div>
         </div>
 
-        <!-- Tabella Prenotazioni Visite Admin -->
+        <!-- PRENOTAZIONI ADMIN -->
         <div class="bg-white p-6 rounded-lg shadow space-y-4">
           <h3 class="font-bold text-gray-800 text-lg border-b pb-2"><i class="fa-solid fa-clipboard-list text-cri-red mr-2"></i> Gestione Prenotazioni Visite Ricevute</h3>
           <div class="overflow-x-auto">
@@ -705,11 +759,11 @@
     </div>
   </footer>
 
-  <!-- Modal Modifica / Conferma Appuntamento Prenotazione (con Webhook) -->
+  <!-- MODALE CONFERMA PRENOTAZIONE -->
   <div id="modal-conferma-prenotazione" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
     <div class="bg-white rounded-lg shadow-xl max-w-md w-full p-6 space-y-4">
       <h3 class="text-lg font-bold text-gray-800 flex items-center"><i class="fa-solid fa-calendar-check text-blue-600 mr-2"></i> Accetta &amp; Conferma Prenotazione</h3>
-      <p class="text-xs text-gray-500">Conferma la data e l'orario definitivo dell'appuntamento per il paziente. Verrà inviata una notifica al canale Discord di conferma.</p>
+      <p class="text-xs text-gray-500">Conferma la data e l'orario definitivo dell'appuntamento. Verrà inviata una notifica sul canale Discord di conferma.</p>
       <form onsubmit="confermaAccettazionePrenotazione(event)" class="space-y-3">
         <input type="hidden" id="conf-prenota-id">
         <div>
@@ -726,7 +780,7 @@
         </div>
         <div>
           <label class="block text-xs font-bold text-gray-600">Note del Medico (Opzionale)</label>
-          <textarea id="conf-prenota-note" rows="2" placeholder="Es. Presentarsi presso l'ospedale centrale..." class="w-full border p-2 rounded text-sm mt-1"></textarea>
+          <textarea id="conf-prenota-note" rows="2" placeholder="Note..." class="w-full border p-2 rounded text-sm mt-1"></textarea>
         </div>
         <div class="flex justify-end space-x-2 pt-2">
           <button type="button" onclick="chiudiModalConfermaPrenotazione()" class="px-3 py-1.5 border rounded text-sm hover:bg-gray-100">Annulla</button>
@@ -736,7 +790,7 @@
     </div>
   </div>
 
-  <!-- Modal Carrello / Ordine Farmacia Multiplo -->
+  <!-- MODALE CARRELLO -->
   <div id="modal-carrello" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
     <div class="bg-white rounded-lg shadow-xl max-w-lg w-full p-6 space-y-4">
       <h3 class="text-lg font-bold text-gray-800 flex items-center"><i class="fa-solid fa-cart-shopping text-blue-600 mr-2"></i> Carrello Farmacia &amp; Checkout</h3>
@@ -756,7 +810,7 @@
         </div>
         <div>
           <label class="block text-xs font-bold text-gray-600">Note per la Consegna</label>
-          <textarea id="ordine-mult-note" rows="2" placeholder="Specifiche o luogo di ritiro..." class="w-full border p-2 rounded text-sm mt-1"></textarea>
+          <textarea id="ordine-mult-note" rows="2" placeholder="Specifiche..." class="w-full border p-2 rounded text-sm mt-1"></textarea>
         </div>
         <div class="flex justify-end space-x-2 pt-2">
           <button type="button" onclick="chiudiModalCarrello()" class="px-3 py-1.5 border rounded text-sm hover:bg-gray-100">Annulla</button>
@@ -766,7 +820,7 @@
     </div>
   </div>
 
-  <!-- Modal Storico Turni Operatore -->
+  <!-- MODALI VARIE -->
   <div id="modal-storico-turni" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
     <div class="bg-white rounded-lg shadow-xl max-w-lg w-full p-6 space-y-4">
       <h3 class="text-lg font-bold text-gray-800" id="titolo-modal-storico">Storico Turni Operatore</h3>
@@ -777,7 +831,6 @@
     </div>
   </div>
 
-  <!-- Modal Aggiungi/Togli Ore Operatore (Admin) -->
   <div id="modal-modifica-ore" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
     <div class="bg-white rounded-lg shadow-xl max-w-md w-full p-6 space-y-4">
       <h3 class="text-lg font-bold text-gray-800" id="titolo-modal-ore">Gestisci Ore Operatore</h3>
@@ -808,7 +861,6 @@
     </div>
   </div>
 
-  <!-- Modal Cambio Pass Operatore -->
   <div id="modal-cambio-pass" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
     <div class="bg-white rounded-lg shadow-xl max-w-md w-full p-6 space-y-4">
       <h3 class="text-lg font-bold text-gray-800">Imposta Password Definitiva</h3>
@@ -825,7 +877,6 @@
     </div>
   </div>
 
-  <!-- Modal Cambio Credenziali Admin -->
   <div id="modal-cred-admin" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
     <div class="bg-white rounded-lg shadow-xl max-w-md w-full p-6 space-y-4">
       <h3 class="text-lg font-bold text-gray-800">Cambia Credenziali Amministratore</h3>
@@ -847,7 +898,6 @@
   </div>
 
   <script>
-    // Configurazioni Firebase
     const firebaseConfig = {
       apiKey: "AIzaSyCvJybS5CI3gJ8-8N9kSvlx61TpFmDVb50",
       authDomain: "cri-rp-database.firebaseapp.com",
@@ -862,12 +912,11 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
 
-    // Dati Applicazione
     let appData = {
       adminUser: 'admin',
       adminPass: 'admin123',
       webhookUrl: '',
-      webhookConfermeUrl: '', // Webhook per Conferma/Modifica Prenotazioni
+      webhookConfermeUrl: '',
       webhookAnamnesticiUrl: '',
       bozzaNoteAdmin: 'Esame obiettivo regolare, assenza di patologie di rilievo, idoneità rilasciata con riserva.',
       ruoliAbilitatiPortale: ['Soccorritore 118', 'Medico Chirurgo'],
@@ -877,8 +926,8 @@
       ],
       prenotazioni: [],
       farmacia: [
-        { id: 1, nome: 'Kit Primo Soccorso', prezzo: '50€', descrizione: 'Garze sterili, disinfettante e bende di emergenza.' },
-        { id: 2, nome: 'Morfina 10mg', prezzo: '150€', descrizione: 'Analgesico ospedaliero per forti traumi.' }
+        { id: 1, nome: 'Kit Primo Soccorso', prezzo: '50€', descrizione: 'Garze sterili e disinfettante.' },
+        { id: 2, nome: 'Morfina 10mg', prezzo: '150€', descrizione: 'Analgesico per traumi.' }
       ],
       ordiniFarmacia: [],
       certificatiAnamnestici: [],
@@ -901,7 +950,6 @@
       const h = Math.floor(secondiTotali / 3600);
       const m = Math.floor((secondiTotali % 3600) / 60);
       const s = secondiTotali % 60;
-
       if (h > 0) return `${h} ${h === 1 ? 'ora' : 'ore'}${m > 0 ? ' e ' + m + ' min' : ''}`;
       else if (m > 0) return `${m} min${s > 0 ? ' e ' + s + ' sec' : ''}`;
       else return `${s} sec`;
@@ -1030,7 +1078,7 @@
       }
 
       box.classList.add('bg-red-100', 'text-red-800');
-      box.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-1"></i> Nessuna pratica o certificato trovato con il codice <strong>${cod}</strong>.`;
+      box.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-1"></i> Nessuna pratica trovata con il codice <strong>${cod}</strong>.`;
     }
 
     async function salvaPrenotazione(e) {
@@ -1052,11 +1100,9 @@
       appData.prenotazioni.unshift(nuovaPrenotazione);
       salvaTuttoCloud();
 
-      if (appData.webhookUrl) {
-        inviaDiscordEmbedVisita(nuovaPrenotazione);
-      }
+      if (appData.webhookUrl) inviaDiscordEmbedVisita(nuovaPrenotazione);
 
-      alert(`Prenotazione inviata con successo!\nIL TUO CODICE DI PRENOTAZIONE È: ${codiceUnivoco}\nConservalo per verificare lo stato della tua pratica.`);
+      alert(`Prenotazione inviata con successo!\nIL TUO CODICE DI PRENOTAZIONE È: ${codiceUnivoco}`);
       document.getElementById('form-prenotazione').reset();
       showSection('home');
     }
@@ -1072,22 +1118,14 @@
             { name: "Tag Discord", value: p.discord, inline: true },
             { name: "Tipo Prestazione", value: p.tipo, inline: false },
             { name: "Data Preferita", value: p.dataPreferita, inline: true },
-            { name: "Orario Preferito", value: p.orarioPreferito || "Nessuna preferenza", inline: true },
+            { name: "Orario Preferito", value: p.orarioPreferito || "Nessuna", inline: true },
             { name: "Note", value: p.note || "Nessuna nota", inline: false }
           ],
           footer: { text: "Portale CRI RP • Data: " + p.dataInvio }
         }]
       };
-
-      try {
-        await fetch(appData.webhookUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-      } catch (err) {
-        console.warn("Errore Webhook Discord:", err);
-      }
+      try { await fetch(appData.webhookUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }); }
+      catch (err) { console.warn("Errore Webhook Discord:", err); }
     }
 
     // LISTINO PREZZI CON RE-ORDER
@@ -1097,7 +1135,6 @@
         tbody.innerHTML = `<tr><td colspan="3" class="p-4 text-center text-gray-500">Nessuna voce presente nel listino prezzi.</td></tr>`;
         return;
       }
-
       tbody.innerHTML = appData.listinoPrezzi.map(item => `
         <tr class="border-b hover:bg-gray-50">
           <td class="p-3 font-bold text-gray-800">${item.titolo}</td>
@@ -1134,7 +1171,6 @@
         container.innerHTML = `<p class="text-gray-500 col-span-3 py-4 text-center">Nessun farmaco inserito nel catalogo.</p>`;
         return;
       }
-
       container.innerHTML = appData.farmacia.map((f, index) => `
         <div class="bg-white p-5 rounded-lg shadow border border-gray-200 flex flex-col justify-between hover:shadow-md transition">
           <div>
@@ -1155,20 +1191,15 @@
           </div>
         </div>
       `).join('');
-
       document.getElementById('badge-count-carrello').textContent = carrelloFarmacia.reduce((acc, item) => acc + item.qta, 0);
     }
 
     function aggiungiQuantitaAlCarrello(nome, prezzo, indexInput) {
       const inputQta = document.getElementById(`qta-farmaco-${indexInput}`);
       const quantitaDaAggiungere = parseInt(inputQta.value) || 1;
-
       const esistente = carrelloFarmacia.find(item => item.nome === nome);
-      if (esistente) {
-        esistente.qta += quantitaDaAggiungere;
-      } else {
-        carrelloFarmacia.push({ nome, prezzo, qta: quantitaDaAggiungere });
-      }
+      if (esistente) esistente.qta += quantitaDaAggiungere;
+      else carrelloFarmacia.push({ nome, prezzo, qta: quantitaDaAggiungere });
       renderFarmaciaPubblica();
       alert(`Aggiunti ${quantitaDaAggiungere}x "${nome}" al carrello!`);
     }
@@ -1185,7 +1216,6 @@
           const subtotale = valUnitario * item.qta;
           totaleComplessivo += subtotale;
           const sim = item.prezzo.includes('$') ? '$' : '€';
-
           return `
             <div class="py-2 flex justify-between items-center">
               <div>
@@ -1216,7 +1246,6 @@
     async function confermaOrdineMultiplo(e) {
       e.preventDefault();
       if (carrelloFarmacia.length === 0) return alert('Il carrello è vuoto!');
-
       const codFarm = 'FAR-' + Math.floor(1000 + Math.random() * 9000);
       let totaleComplessivo = 0;
       let riepilogoProdottiStr = carrelloFarmacia.map(i => {
@@ -1224,7 +1253,6 @@
         totaleComplessivo += sub;
         return `${i.nome} (x${i.qta})`;
       }).join(', ');
-
       const sim = carrelloFarmacia[0].prezzo.includes('$') ? '$' : '€';
       const totaleStr = `${totaleComplessivo}${sim}`;
 
@@ -1243,10 +1271,8 @@
 
       appData.ordiniFarmacia.unshift(nuovoOrdine);
       salvaTuttoCloud();
-
       if (appData.webhookUrl) inviaDiscordEmbedFarmacia(nuovoOrdine);
-
-      alert(`Ordine multiplo inviato con successo!\nCODICE ORDINE: ${codFarm}\nTOTALE DA PAGARE IN-GAME: ${totaleStr}`);
+      alert(`Ordine multiplo inviato!\nCODICE ORDINE: ${codFarm}\nTOTALE: ${totaleStr}`);
       carrelloFarmacia = [];
       chiudiModalCarrello();
       renderFarmaciaPubblica();
@@ -1262,26 +1288,22 @@
             { name: "Codice Ordine", value: `\`${o.codice}\``, inline: true },
             { name: "Nome RP", value: o.nome, inline: true },
             { name: "Tag Discord", value: o.discord, inline: true },
-            { name: "Prodotti Ordinati", value: o.farmaco, inline: false },
-            { name: "💰 TOTALE DA PAGARE IN-GAME", value: `**${o.totaleInGame}**`, inline: false },
-            { name: "Note Consegna", value: o.note || "Nessuna nota", inline: false }
+            { name: "Prodotti", value: o.farmaco, inline: false },
+            { name: "💰 TOTALE IN-GAME", value: `**${o.totaleInGame}**`, inline: false }
           ],
           footer: { text: "Farmacia CRI RP • Data: " + o.data }
         }]
       };
       try { await fetch(appData.webhookUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }); }
-      catch (err) { console.warn("Errore Webhook Discord:", err); }
+      catch (err) { console.warn("Errore Webhook:", err); }
     }
 
-    // PORTALE CITTADINO & FATTURAZIONE
+    // PORTALE CITTADINO
     function aggiornaCostoIntervento() {
       const tipoSelezionato = document.getElementById('cittadino-tipo-azione').value;
       const voceListino = appData.listinoPrezzi.find(item => item.titolo.toLowerCase() === tipoSelezionato.toLowerCase());
-      if (voceListino) {
-        document.getElementById('cittadino-costo').value = voceListino.prezzo;
-      } else {
-        document.getElementById('cittadino-costo').value = '50€';
-      }
+      if (voceListino) document.getElementById('cittadino-costo').value = voceListino.prezzo;
+      else document.getElementById('cittadino-costo').value = '50€';
     }
 
     function registraInterventoCittadino(e) {
@@ -1296,12 +1318,10 @@
         dettagli: document.getElementById('cittadino-dettagli').value,
         operatore: sessioneCorrente.user.nome
       };
-
       if (!appData.cartelleCliniche) appData.cartelleCliniche = [];
       appData.cartelleCliniche.unshift(nuovaCartella);
       salvaTuttoCloud();
-
-      alert(`Intervento registrato con successo!\nCartella clinica aperta per ${nuovaCartella.cittadino}.\nFATTURA AUTOMATICA GENERATA: ${nuovaCartella.costo}`);
+      alert(`Cartella clinica aperta e fattura generata: ${nuovaCartella.costo}`);
       e.target.reset();
       aggiornaCostoIntervento();
       renderCartelleClinicheOp();
@@ -1310,19 +1330,14 @@
     function renderCartelleClinicheOp() {
       const tbody = document.getElementById('lista-cartelle-cliniche');
       if (!tbody) return;
-
       const querySearch = (document.getElementById('search-cittadino')?.value || '').toLowerCase().trim();
       let filtrate = appData.cartelleCliniche || [];
-
-      if (querySearch) {
-        filtrate = filtrate.filter(c => c.cittadino.toLowerCase().includes(querySearch) || c.discord.toLowerCase().includes(querySearch));
-      }
+      if (querySearch) filtrate = filtrate.filter(c => c.cittadino.toLowerCase().includes(querySearch) || c.discord.toLowerCase().includes(querySearch));
 
       if (filtrate.length === 0) {
         tbody.innerHTML = `<tr><td colspan="6" class="p-3 text-center text-gray-500">Nessuna cartella clinica trovata.</td></tr>`;
         return;
       }
-
       tbody.innerHTML = filtrate.map(c => `
         <tr class="border-b hover:bg-gray-50">
           <td class="p-2 text-gray-500">${c.data}</td>
@@ -1335,11 +1350,10 @@
       `).join('');
     }
 
-    // CONFERMA PRENOTAZIONE CON TERZO WEBHOOK DISCORD
+    // CONFERMA PRENOTAZIONE (TERZO WEBHOOK)
     function apriModalConfermaPrenotazione(pId) {
       const p = appData.prenotazioni.find(item => item.id === pId);
       if (!p) return;
-
       document.getElementById('conf-prenota-id').value = p.id;
       document.getElementById('conf-prenota-info').value = `${p.nome} (${p.codice}) - ${p.tipo}`;
       document.getElementById('conf-prenota-data').value = p.dataPreferita || '';
@@ -1365,45 +1379,34 @@
         salvaTuttoCloud();
 
         const webhookConferma = appData.webhookConfermeUrl || appData.webhookUrl;
-        if (webhookConferma) {
-          inviaDiscordEmbedConfermaVisita(p, webhookConferma);
-        }
+        if (webhookConferma) inviaDiscordEmbedConfermaVisita(p, webhookConferma);
 
-        alert(`Prenotazione ${p.codice} accettata e confermata per il ${dataDef} alle ${orarioDef}!\nNotifica inviata al canale Discord.`);
+        alert(`Prenotazione ${p.codice} confermata per il ${dataDef} alle ${orarioDef}!`);
         chiudiModalConfermaPrenotazione();
         renderOpDashboard();
-        if (document.getElementById('sec-dash-admin').classList.contains('hidden') === false) renderAdmin();
+        if (!document.getElementById('sec-dash-admin').classList.contains('hidden')) renderAdmin();
       }
     }
 
     async function inviaDiscordEmbedConfermaVisita(p, webhookUrl) {
       const payload = {
         embeds: [{
-          title: "✅ CONFERMA APPOINTMENT VISITA / CERTIFICATO CRI",
-          color: 3066993, // Verde
+          title: "✅ CONFERMA APPUNTAMENTO VISITA / CERTIFICATO CRI",
+          color: 3066993,
           fields: [
             { name: "Codice Pratica", value: `\`${p.codice}\``, inline: true },
-            { name: "Paziente RP", value: p.nome, inline: true },
-            { name: "Tag Discord Paziente", value: p.discord, inline: true },
-            { name: "Tipo Prestazione", value: p.tipo, inline: false },
+            { name: "Paziente", value: p.nome, inline: true },
+            { name: "Discord", value: p.discord, inline: true },
+            { name: "Prestazione", value: p.tipo, inline: false },
             { name: "📅 DATA CONFERMATA", value: `**${p.dataConfermata}**`, inline: true },
             { name: "⏰ ORARIO CONFERMATO", value: `**${p.orarioConfermato}**`, inline: true },
-            { name: "Medico Responsabile", value: sessioneCorrente ? sessioneCorrente.user.nome : "Sanità CRI", inline: true },
-            { name: "Note Medico", value: p.noteMedico || "Nessuna nota aggiuntiva", inline: false }
+            { name: "Note Medico", value: p.noteMedico || "Nessuna", inline: false }
           ],
           footer: { text: "Servizio Sanitario CRI RP • Appuntamento Confermato" }
         }]
       };
-
-      try {
-        await fetch(webhookUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-      } catch (err) {
-        console.warn("Errore Webhook Discord Conferme:", err);
-      }
+      try { await fetch(webhookUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }); }
+      catch (err) { console.warn("Errore Webhook:", err); }
     }
 
     // CERTIFICATI ANAMNESTICI
@@ -1433,11 +1436,9 @@
       salvaTuttoCloud();
 
       const webhookTarget = appData.webhookAnamnesticiUrl || appData.webhookUrl;
-      if (webhookTarget) {
-        inviaDiscordEmbedAnamnestico(nuovoCert, webhookTarget);
-      }
+      if (webhookTarget) inviaDiscordEmbedAnamnestico(nuovoCert, webhookTarget);
 
-      alert(`Certificato anamnestico emesso con successo!\nCODICE CERTIFICATO: ${codiceAna}`);
+      alert(`Certificato anamnestico emesso: ${codiceAna}`);
       e.target.reset();
       applicaBozzaAdmin();
     }
@@ -1450,22 +1451,21 @@
 
       const payload = {
         embeds: [{
-          title: `📋 Certificato Anamnestico Emesso - ${pallino}${c.esito}`,
+          title: `📋 Certificato Anamnestico - ${pallino}${c.esito}`,
           color: colorEmbed,
           fields: [
-            { name: "Codice Certificato", value: `\`${c.codice}\``, inline: true },
-            { name: "Paziente RP", value: c.paziente, inline: true },
-            { name: "Discord Paziente", value: c.discord, inline: true },
-            { name: "Tipo Certificato", value: c.tipo, inline: false },
+            { name: "Codice", value: `\`${c.codice}\``, inline: true },
+            { name: "Paziente", value: c.paziente, inline: true },
+            { name: "Tipo", value: c.tipo, inline: false },
             { name: "Esito", value: `**${pallino} ${c.esito}**`, inline: true },
-            { name: "Medico / Operatore", value: c.operatore, inline: true },
-            { name: "Note / Anamnesi", value: c.note || "Nessuna nota", inline: false }
+            { name: "Medico", value: c.operatore, inline: true },
+            { name: "Note", value: c.note || "Nessuna", inline: false }
           ],
-          footer: { text: "Reparto Sanitario CRI RP • Data: " + c.data }
+          footer: { text: "Reparto Sanitario CRI RP" }
         }]
       };
       try { await fetch(webhookUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }); }
-      catch (err) { console.warn("Errore Webhook Discord Anamnestici:", err); }
+      catch (err) { console.warn("Errore Webhook:", err); }
     }
 
     function eliminaCertificatoAnamnestico(id) {
@@ -1475,65 +1475,34 @@
     }
 
     function testWebhook() {
-      if (!appData.webhookUrl) return alert('Inserisci prima un URL per il Webhook Prenotazioni/Farmacia!');
-      inviaDiscordEmbedVisita({
-        codice: "CRI-TEST",
-        nome: "Mario Rossi (TEST)",
-        discord: "@test_user",
-        tipo: "Test Webhook",
-        dataPreferita: "Oggi",
-        orarioPreferito: "Adesso",
-        note: "Messaggio di prova dal gestore CRI RP.",
-        dataInvio: new Date().toLocaleString('it-IT')
-      });
-      alert('Messaggio di prova inviato!');
+      if (!appData.webhookUrl) return alert('Inserisci prima il Webhook Prenotazioni/Farmacia!');
+      inviaDiscordEmbedVisita({ codice: "CRI-TEST", nome: "Mario (TEST)", discord: "@test", tipo: "Test", dataPreferita: "Oggi", orarioPreferito: "Adesso", note: "Test", dataInvio: new Date().toLocaleString('it-IT') });
+      alert('Test inviato!');
     }
 
     function testWebhookConferme() {
       const target = appData.webhookConfermeUrl || appData.webhookUrl;
-      if (!target) return alert('Inserisci prima un URL per il Webhook Conferme!');
-      inviaDiscordEmbedConfermaVisita({
-        codice: "CRI-CONF-TEST",
-        nome: "Mario Rossi (TEST)",
-        discord: "@test_user",
-        tipo: "Visita Medica Semplice",
-        dataConfermata: "Domani",
-        orarioConfermato: "16:00",
-        noteMedico: "Messaggio di prova per la conferma della visita."
-      }, target);
-      alert('Messaggio di prova conferma inviato!');
+      if (!target) return alert('Inserisci prima il Webhook Conferme!');
+      inviaDiscordEmbedConfermaVisita({ codice: "CRI-CONF-TEST", nome: "Mario (TEST)", discord: "@test", tipo: "Visita", dataConfermata: "Domani", orarioConfermato: "16:00", noteMedico: "Test" }, target);
+      alert('Test conferma inviato!');
     }
 
     function testWebhookAnamnestici() {
       const target = appData.webhookAnamnesticiUrl || appData.webhookUrl;
-      if (!target) return alert('Inserisci prima un URL per i Certificati Anamnestici!');
-      inviaDiscordEmbedAnamnestico({
-        codice: "ANA-TEST",
-        data: new Date().toLocaleString('it-IT'),
-        paziente: "Mario Rossi (TEST)",
-        discord: "@test_user",
-        tipo: "Certificato Anamnestico per Porto d'Armi",
-        esito: "Idoneo",
-        note: "Test invio certificato anamnestico.",
-        operatore: "Dott. Test"
-      }, target);
-      alert('Messaggio di prova inviato!');
+      if (!target) return alert('Inserisci prima il Webhook Anamnestici!');
+      inviaDiscordEmbedAnamnestico({ codice: "ANA-TEST", data: new Date().toLocaleString('it-IT'), paziente: "Mario (TEST)", discord: "@test", tipo: "Porto d'armi", esito: "Idoneo", note: "Test", operatore: "Medico" }, target);
+      alert('Test inviato!');
     }
 
-    // ADMIN - LISTINO PREZZI
+    // ADMIN - LISTINO & FARMACIA
     function aggiungiVoceListino(e) {
       e.preventDefault();
-      const nuovo = {
-        id: Date.now(),
-        titolo: document.getElementById('listino-titolo').value,
-        categoria: document.getElementById('listino-categoria').value,
-        prezzo: document.getElementById('listino-prezzo').value
-      };
+      const nuovo = { id: Date.now(), titolo: document.getElementById('listino-titolo').value, categoria: document.getElementById('listino-categoria').value, prezzo: document.getElementById('listino-prezzo').value };
       appData.listinoPrezzi.push(nuovo);
       salvaTuttoCloud();
       renderAdmin();
       renderListinoPubblico();
-      alert('Voce aggiunta al listino prezzi!');
+      alert('Voce aggiunta!');
       e.target.reset();
     }
 
@@ -1544,19 +1513,13 @@
       renderListinoPubblico();
     }
 
-    // ADMIN - FARMACIA
     function aggiungiFarmaco(e) {
       e.preventDefault();
-      const nuovo = {
-        id: Date.now(),
-        nome: document.getElementById('farmaco-nome').value,
-        prezzo: document.getElementById('farmaco-prezzo').value,
-        descrizione: document.getElementById('farmaco-desc').value
-      };
+      const nuovo = { id: Date.now(), nome: document.getElementById('farmaco-nome').value, prezzo: document.getElementById('farmaco-prezzo').value, descrizione: document.getElementById('farmaco-desc').value };
       appData.farmacia.push(nuovo);
       salvaTuttoCloud();
       renderAdmin();
-      alert('Farmaco aggiunto al catalogo!');
+      alert('Farmaco aggiunto!');
       e.target.reset();
     }
 
@@ -1568,11 +1531,7 @@
 
     function cambiaStatoOrdineFarmacia(id, stato) {
       const o = appData.ordiniFarmacia.find(item => item.id === id);
-      if (o) {
-        o.stato = stato;
-        salvaTuttoCloud();
-        renderAdmin();
-      }
+      if (o) { o.stato = stato; salvaTuttoCloud(); renderAdmin(); }
     }
 
     function eliminaOrdineFarmacia(id) {
@@ -1581,12 +1540,11 @@
       renderAdmin();
     }
 
-    // AUTH ADMIN
+    // ADMIN AUTH & RENDER
     function loginAdmin(e) {
       e.preventDefault();
       const u = document.getElementById('admin-user').value;
       const p = document.getElementById('admin-pass').value;
-
       if (u === appData.adminUser && p === appData.adminPass) {
         sessioneCorrente = { tipo: 'admin' };
         showSection('dash-admin');
@@ -1601,7 +1559,6 @@
       document.getElementById('discord-webhook-anamnestici-url').value = appData.webhookAnamnesticiUrl || '';
       document.getElementById('admin-bozza-note').value = appData.bozzaNoteAdmin || '';
 
-      // Checkboxes Ruoli Admin
       const ruoliPresenti = [...new Set(appData.operatori.map(o => o.ruolo))];
       if (ruoliPresenti.length === 0) ruoliPresenti.push('Soccorritore 118', 'Medico Chirurgo');
 
@@ -1621,7 +1578,6 @@
         </label>
       `).join('');
 
-      // Stats
       document.getElementById('stat-prenotazioni').textContent = appData.prenotazioni.length;
       document.getElementById('stat-ordini-farmacia').textContent = appData.ordiniFarmacia.length;
       document.getElementById('stat-op-servizio').textContent = appData.operatori.filter(o => o.inServizio).length;
@@ -1630,13 +1586,13 @@
       appData.operatori.forEach(o => { if (o.turni) o.turni.forEach(t => totaleSecondiTutti += (t.durataSecondi || 0)); });
       document.getElementById('stat-ore-totali').textContent = formattaTempoPreciso(totaleSecondiTutti);
 
-      // Render Listino Admin con Pulsanti Re-order
+      // Listino Admin con Re-Order
       const tbodyListino = document.getElementById('lista-listino-admin');
       tbodyListino.innerHTML = appData.listinoPrezzi.map((item, index) => `
         <tr class="border-b hover:bg-gray-50">
           <td class="p-2 space-x-1">
-            <button onclick="spostaListinoSu(${index})" class="text-xs bg-gray-200 hover:bg-gray-300 px-1.5 py-0.5 rounded" title="Sposta Su">⬆️</button>
-            <button onclick="spostaListinoGiu(${index})" class="text-xs bg-gray-200 hover:bg-gray-300 px-1.5 py-0.5 rounded" title="Sposta Giù">⬇️</button>
+            <button onclick="spostaListinoSu(${index})" class="text-xs bg-gray-200 hover:bg-gray-300 px-1.5 py-0.5 rounded">⬆️</button>
+            <button onclick="spostaListinoGiu(${index})" class="text-xs bg-gray-200 hover:bg-gray-300 px-1.5 py-0.5 rounded">⬇️</button>
           </td>
           <td class="p-2 font-bold">${item.titolo}</td>
           <td class="p-2">${item.categoria}</td>
@@ -1647,7 +1603,6 @@
         </tr>
       `).join('');
 
-      // Farmaci Admin
       const tbodyFarm = document.getElementById('lista-farmaci-admin');
       tbodyFarm.innerHTML = appData.farmacia.map(f => `
         <tr class="border-b hover:bg-gray-50">
@@ -1660,7 +1615,6 @@
         </tr>
       `).join('');
 
-      // Ordini Farmacia Admin
       const tbodyOrd = document.getElementById('lista-ordini-farmacia-admin');
       tbodyOrd.innerHTML = appData.ordiniFarmacia.map(o => `
         <tr class="border-b hover:bg-gray-50">
@@ -1670,20 +1624,18 @@
           <td class="p-2 text-indigo-600 font-semibold">${o.discord}</td>
           <td class="p-2 text-xs">${o.farmaco}</td>
           <td class="p-2 text-xs font-bold text-green-600">${o.totaleInGame || '-'}</td>
-          <td class="p-2"><span class="px-2 py-0.5 rounded text-xs font-bold ${o.stato === 'In Consegna' ? 'bg-blue-100 text-blue-800' : (o.stato === 'Consegnato' ? 'bg-green-100 text-green-800' : (o.stato === 'Annullato' ? 'bg-red-100 text-red-800' : 'bg-amber-100 text-amber-800'))}">${o.stato}</span></td>
+          <td class="p-2"><span class="px-2 py-0.5 rounded text-xs font-bold ${o.stato === 'In Consegna' ? 'bg-blue-100 text-blue-800' : (o.stato === 'Consegnato' ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800')}">${o.stato}</span></td>
           <td class="p-2 text-right space-x-1">
             <button onclick="cambiaStatoOrdineFarmacia(${o.id}, 'In Consegna')" class="bg-blue-600 text-white text-xs px-2 py-1 rounded">In Consegna</button>
             <button onclick="cambiaStatoOrdineFarmacia(${o.id}, 'Consegnato')" class="bg-green-600 text-white text-xs px-2 py-1 rounded">Consegna</button>
-            <button onclick="cambiaStatoOrdineFarmacia(${o.id}, 'Annullato')" class="bg-amber-600 text-white text-xs px-2 py-1 rounded">Annulla</button>
             <button onclick="eliminaOrdineFarmacia(${o.id})" class="bg-gray-400 text-white text-xs px-2 py-1 rounded">x</button>
           </td>
         </tr>
       `).join('');
 
-      // Certificati Admin
       const tbodyCert = document.getElementById('lista-certificati-admin');
       if (!appData.certificatiAnamnestici || appData.certificatiAnamnestici.length === 0) {
-        tbodyCert.innerHTML = `<tr><td colspan="7" class="p-3 text-center text-gray-500">Nessun certificato anamnestico emesso.</td></tr>`;
+        tbodyCert.innerHTML = `<tr><td colspan="7" class="p-3 text-center text-gray-500">Nessun certificato emesso.</td></tr>`;
       } else {
         tbodyCert.innerHTML = appData.certificatiAnamnestici.map(c => `
           <tr class="border-b hover:bg-gray-50">
@@ -1700,12 +1652,10 @@
         `).join('');
       }
 
-      // Operatori Admin
       const tbodyOp = document.getElementById('lista-operatori');
       tbodyOp.innerHTML = appData.operatori.map(o => {
         let secOp = 0;
         if (o.turni) o.turni.forEach(t => secOp += (t.durataSecondi || 0));
-
         return `
           <tr class="border-b hover:bg-gray-50">
             <td class="p-2 font-semibold">${o.nome}</td>
@@ -1714,8 +1664,8 @@
             <td class="p-2">${o.provvisoria ? '<span class="text-amber-600 font-bold text-xs">Provvisoria</span>' : '<span class="text-green-600 text-xs">Definitiva</span>'}</td>
             <td class="p-2 font-mono font-bold text-xs text-indigo-700">${formattaTempoPreciso(secOp)}</td>
             <td class="p-2 text-right space-x-1">
-              <button onclick="modificaRuoloOp(${o.id})" class="bg-blue-600 text-white text-xs px-2 py-1 rounded" title="Modifica Ruolo"><i class="fa-solid fa-user-pen mr-1"></i> Ruolo</button>
-              <button onclick="apriModalOre(${o.id})" class="bg-amber-600 text-white text-xs px-2 py-1 rounded" title="Gestisci Ore"><i class="fa-solid fa-clock-rotate-left mr-1"></i> Ore</button>
+              <button onclick="modificaRuoloOp(${o.id})" class="bg-blue-600 text-white text-xs px-2 py-1 rounded">Ruolo</button>
+              <button onclick="apriModalOre(${o.id})" class="bg-amber-600 text-white text-xs px-2 py-1 rounded">Ore</button>
               <button onclick="apriStoricoTurni(${o.id})" class="bg-indigo-600 text-white text-xs px-2 py-1 rounded">Storico</button>
               <button onclick="resetPassOp(${o.id})" class="bg-amber-500 text-white text-xs px-2 py-1 rounded">Pass</button>
               <button onclick="eliminaOp(${o.id})" class="bg-red-600 text-white text-xs px-2 py-1 rounded">x</button>
@@ -1724,7 +1674,6 @@
         `;
       }).join('');
 
-      // Prenotazioni Admin
       const tbodyPre = document.getElementById('lista-prenotazioni');
       tbodyPre.innerHTML = appData.prenotazioni.map(p => `
         <tr class="border-b hover:bg-gray-50">
@@ -1747,21 +1696,17 @@
     function salvaPermessiRuoliAdmin() {
       const portale = Array.from(document.querySelectorAll('.chk-ruolo-portale:checked')).map(c => c.value);
       const certificati = Array.from(document.querySelectorAll('.chk-ruolo-certificati:checked')).map(c => c.value);
-
       appData.ruoliAbilitatiPortale = portale;
       appData.ruoliAbilitatiCertificati = certificati;
       salvaTuttoCloud();
-      alert('Configurazione permessi ruoli salvata con successo!');
+      alert('Permessi ruoli salvati!');
     }
 
-    // GESTIONE ORE OPERATORE
     function apriModalOre(opId) {
       const op = appData.operatori.find(o => o.id === opId);
       if (!op) return;
       document.getElementById('ore-op-id-hidden').value = op.id;
       document.getElementById('titolo-modal-ore').textContent = `Gestisci Ore: ${op.nome}`;
-      document.getElementById('ore-valore').value = 0;
-      document.getElementById('minuti-valore').value = 0;
       document.getElementById('modal-modifica-ore').classList.remove('hidden');
     }
 
@@ -1778,15 +1723,12 @@
       const op = appData.operatori.find(o => o.id === opId);
       if (op) {
         if (!op.turni) op.turni = [];
-        if (azione === 'aggiungi') {
-          op.turni.push({ inizio: 'Modifica Admin', fine: new Date().toLocaleString('it-IT'), durataSecondi: secondiTotaliDelta });
-        } else {
-          op.turni.push({ inizio: 'Storno Admin', fine: new Date().toLocaleString('it-IT'), durataSecondi: -secondiTotaliDelta });
-        }
+        if (azione === 'aggiungi') op.turni.push({ inizio: 'Modifica Admin', fine: new Date().toLocaleString('it-IT'), durataSecondi: secondiTotaliDelta });
+        else op.turni.push({ inizio: 'Storno Admin', fine: new Date().toLocaleString('it-IT'), durataSecondi: -secondiTotaliDelta });
         salvaTuttoCloud();
         chiudiModalOre();
         renderAdmin();
-        alert('Monte ore aggiornato!');
+        alert('Ore aggiornate!');
       }
     }
 
@@ -1795,19 +1737,19 @@
         appData.operatori.forEach(o => { o.turni = []; });
         salvaTuttoCloud();
         renderAdmin();
-        alert('Ore azzerate con successo!');
+        alert('Ore azzerate!');
       }
     }
 
     function modificaRuoloOp(id) {
       const op = appData.operatori.find(o => o.id === id);
       if (op) {
-        const nuovoRuolo = prompt(`Modifica Ruolo per ${op.nome}\nRuolo Attuale: "${op.ruolo}"`, op.ruolo);
+        const nuovoRuolo = prompt(`Modifica Ruolo per ${op.nome}`, op.ruolo);
         if (nuovoRuolo !== null && nuovoRuolo.trim() !== '') {
           op.ruolo = nuovoRuolo.trim();
           salvaTuttoCloud();
           renderAdmin();
-          alert(`Ruolo aggiornato per ${op.nome}!`);
+          alert('Ruolo aggiornato!');
         }
       }
     }
@@ -1815,13 +1757,10 @@
     function apriStoricoTurni(opId) {
       const op = appData.operatori.find(o => o.id === opId);
       if (!op) return;
-
       document.getElementById('titolo-modal-storico').textContent = `Storico Turni: ${op.nome}`;
       const divContenuto = document.getElementById('contenuto-storico-turni');
-
-      if (!op.turni || op.turni.length === 0) {
-        divContenuto.innerHTML = `<p class="text-gray-500 py-2">Nessun turno salvato.</p>`;
-      } else {
+      if (!op.turni || op.turni.length === 0) divContenuto.innerHTML = `<p class="text-gray-500 py-2">Nessun turno salvato.</p>`;
+      else {
         divContenuto.innerHTML = op.turni.map(t => `
           <div class="py-2 flex justify-between items-center">
             <div>
@@ -1832,7 +1771,6 @@
           </div>
         `).join('');
       }
-
       document.getElementById('modal-storico-turni').classList.remove('hidden');
     }
 
@@ -1855,11 +1793,10 @@
         inizioTurno: null,
         turni: []
       };
-
       appData.operatori.push(nuovo);
       salvaTuttoCloud();
       renderAdmin();
-      alert('Operatore creato con successo!');
+      alert('Operatore creato!');
       e.target.reset();
     }
 
@@ -1871,7 +1808,7 @@
         op.provvisoria = true;
         salvaTuttoCloud();
         renderAdmin();
-        alert(`Nuova password salvata: ${nuova}`);
+        alert(`Nuova password: ${nuova}`);
       }
     }
 
@@ -1887,8 +1824,8 @@
       if (pre) {
         pre.stato = stato;
         salvaTuttoCloud();
-        if (document.getElementById('sec-dash-admin').classList.contains('hidden') === false) renderAdmin();
-        if (document.getElementById('sec-dash-op').classList.contains('hidden') === false) renderOpDashboard();
+        if (!document.getElementById('sec-dash-admin').classList.contains('hidden')) renderAdmin();
+        if (!document.getElementById('sec-dash-op').classList.contains('hidden')) renderOpDashboard();
       }
     }
 
@@ -1898,36 +1835,16 @@
       renderAdmin();
     }
 
-    function salvaWebhook() {
-      appData.webhookUrl = document.getElementById('discord-webhook-url').value;
-      salvaTuttoCloud();
-      alert('Webhook Richieste Prenotazioni/Farmacia salvato!');
-    }
+    function salvaWebhook() { appData.webhookUrl = document.getElementById('discord-webhook-url').value; salvaTuttoCloud(); alert('Webhook salvato!'); }
+    function salvaWebhookConferme() { appData.webhookConfermeUrl = document.getElementById('discord-webhook-conferme-url').value; salvaTuttoCloud(); alert('Webhook salvato!'); }
+    function salvaWebhookAnamnestici() { appData.webhookAnamnesticiUrl = document.getElementById('discord-webhook-anamnestici-url').value; salvaTuttoCloud(); alert('Webhook salvato!'); }
+    function salvaBozzaAdmin() { appData.bozzaNoteAdmin = document.getElementById('admin-bozza-note').value; salvaTuttoCloud(); alert('Bozza aggiornata!'); }
 
-    function salvaWebhookConferme() {
-      appData.webhookConfermeUrl = document.getElementById('discord-webhook-conferme-url').value;
-      salvaTuttoCloud();
-      alert('Webhook Conferme Prenotazioni salvato sul Cloud!');
-    }
-
-    function salvaWebhookAnamnestici() {
-      appData.webhookAnamnesticiUrl = document.getElementById('discord-webhook-anamnestici-url').value;
-      salvaTuttoCloud();
-      alert('Webhook Certificati Anamnestici salvato!');
-    }
-
-    function salvaBozzaAdmin() {
-      appData.bozzaNoteAdmin = document.getElementById('admin-bozza-note').value;
-      salvaTuttoCloud();
-      alert('Bozza predefinita aggiornata!');
-    }
-
-    // AUTH OPERATORE
+    // AUTH OPERATORE & DASHBOARD
     function loginOperatore(e) {
       e.preventDefault();
       const u = document.getElementById('op-user').value;
       const p = document.getElementById('op-pass').value;
-
       const op = appData.operatori.find(o => o.user === u && o.pass === p);
       if (op) {
         sessioneCorrente = { tipo: 'operatore', user: op };
@@ -1942,10 +1859,8 @@
       document.getElementById('op-welcome-name').textContent = 'Benvenuto, ' + op.nome;
       document.getElementById('op-badge-ruolo').textContent = op.ruolo;
 
-      // Permessi Portale Cittadino & Certificati
       const wrapperPortale = document.getElementById('wrapper-portale-cittadino');
-      const ruoliPort = appData.ruoliAbilitatiPortale || [];
-      if (ruoliPort.includes(op.ruolo)) {
+      if ((appData.ruoliAbilitatiPortale || []).includes(op.ruolo)) {
         wrapperPortale.classList.remove('hidden');
         renderCartelleClinicheOp();
         aggiornaCostoIntervento();
@@ -1954,18 +1869,11 @@
       }
 
       const wrapperCert = document.getElementById('wrapper-certificati-op');
-      const ruoliCert = appData.ruoliAbilitatiCertificati || [];
-      if (ruoliCert.includes(op.ruolo)) {
-        wrapperCert.classList.remove('hidden');
-      } else {
-        wrapperCert.classList.add('hidden');
-      }
+      if ((appData.ruoliAbilitatiCertificati || []).includes(op.ruolo)) wrapperCert.classList.remove('hidden');
+      else wrapperCert.classList.add('hidden');
 
-      if (op.provvisoria) {
-        document.getElementById('banner-pass-provvisoria').classList.remove('hidden');
-      } else {
-        document.getElementById('banner-pass-provvisoria').classList.add('hidden');
-      }
+      if (op.provvisoria) document.getElementById('banner-pass-provvisoria').classList.remove('hidden');
+      else document.getElementById('banner-pass-provvisoria').classList.add('hidden');
 
       const btnIn = document.getElementById('btn-in-servizio');
       const btnOut = document.getElementById('btn-out-servizio');
@@ -1974,26 +1882,19 @@
       if (op.inServizio) {
         badgeStato.textContent = 'In Servizio';
         badgeStato.className = 'bg-green-100 text-green-800 text-xs font-bold px-2.5 py-1 rounded';
-        btnIn.disabled = true;
-        btnIn.classList.add('opacity-50');
-        btnOut.disabled = false;
-        btnOut.classList.remove('opacity-50');
+        btnIn.disabled = true; btnIn.classList.add('opacity-50');
+        btnOut.disabled = false; btnOut.classList.remove('opacity-50');
         avviaTimer();
       } else {
         badgeStato.textContent = 'Fuori Servizio';
         badgeStato.className = 'bg-red-100 text-red-800 text-xs font-bold px-2.5 py-1 rounded';
-        btnIn.disabled = false;
-        btnIn.classList.remove('opacity-50');
-        btnOut.disabled = true;
-        btnOut.classList.add('opacity-50');
+        btnIn.disabled = false; btnIn.classList.remove('opacity-50');
+        btnOut.disabled = true; btnOut.classList.add('opacity-50');
         fermaTimer();
       }
 
-      if (!document.getElementById('cert-note').value) {
-        applicaBozzaAdmin();
-      }
+      if (!document.getElementById('cert-note').value) applicaBozzaAdmin();
 
-      // Render Prenotazioni per Operatore
       const tbodyOpPre = document.getElementById('lista-prenotazioni-op');
       tbodyOpPre.innerHTML = appData.prenotazioni.map(p => `
         <tr class="border-b hover:bg-gray-50">
@@ -2011,13 +1912,10 @@
         </tr>
       `).join('');
 
-      // Storico Turni Operatore
       const tbodyOpStorico = document.getElementById('lista-storico-op-personale');
       let totaleSecondiOp = 0;
-
-      if (!op.turni || op.turni.length === 0) {
-        tbodyOpStorico.innerHTML = `<tr><td colspan="4" class="p-3 text-center text-gray-500">Nessun turno salvato fino ad ora.</td></tr>`;
-      } else {
+      if (!op.turni || op.turni.length === 0) tbodyOpStorico.innerHTML = `<tr><td colspan="4" class="p-3 text-center text-gray-500">Nessun turno salvato.</td></tr>`;
+      else {
         tbodyOpStorico.innerHTML = op.turni.map((t, index) => {
           totaleSecondiOp += (t.durataSecondi || 0);
           return `
@@ -2030,39 +1928,31 @@
           `;
         }).join('');
       }
-
       document.getElementById('op-ore-totali-badge').textContent = `Totale: ${formattaTempoPreciso(totaleSecondiOp)}`;
     }
 
-    // RISOLUZIONE BUG CONTEGGIO TURNO
     function toggleServizio(stato) {
       const opInDb = appData.operatori.find(o => o.id === sessioneCorrente.user.id);
       if (!opInDb) return;
 
       if (stato) {
         if (opInDb.inServizio) return;
-        const oraAttuale = Date.now();
         opInDb.inServizio = true;
-        opInDb.inizioTurno = oraAttuale;
+        opInDb.inizioTurno = Date.now();
       } else {
         if (!opInDb.inServizio || !opInDb.inizioTurno) return;
-
         const durataSecondi = Math.floor((Date.now() - opInDb.inizioTurno) / 1000);
         if (durataSecondi > 0) {
-          const nuovoTurno = {
+          if (!opInDb.turni) opInDb.turni = [];
+          opInDb.turni.push({
             inizio: new Date(opInDb.inizioTurno).toLocaleString('it-IT'),
             fine: new Date().toLocaleString('it-IT'),
             durataSecondi: durataSecondi
-          };
-
-          if (!opInDb.turni) opInDb.turni = [];
-          opInDb.turni.push(nuovoTurno);
+          });
         }
-
         opInDb.inServizio = false;
         opInDb.inizioTurno = null;
       }
-
       sessioneCorrente.user = opInDb;
       salvaTuttoCloud();
       renderOpDashboard();
@@ -2092,11 +1982,7 @@
       e.preventDefault();
       const nuova = document.getElementById('nuova-pass-op').value;
       const opInDb = appData.operatori.find(o => o.id === sessioneCorrente.user.id);
-      if (opInDb) {
-        opInDb.pass = nuova;
-        opInDb.provvisoria = false;
-        sessioneCorrente.user = opInDb;
-      }
+      if (opInDb) { opInDb.pass = nuova; opInDb.provvisoria = false; sessioneCorrente.user = opInDb; }
       salvaTuttoCloud();
       chiudiModalPass();
       renderOpDashboard();
@@ -2115,7 +2001,7 @@
       appData.adminPass = document.getElementById('nuovo-admin-pass').value;
       salvaTuttoCloud();
       chiudiModalAdmin();
-      alert('Credenziali Admin aggiornate sul Cloud!');
+      alert('Credenziali Admin aggiornate!');
     }
 
     function logout() {
