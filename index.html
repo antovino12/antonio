@@ -82,9 +82,9 @@
         <!-- Verifica Codice Prenotazione, Ordine o Anamnestico -->
         <div class="bg-white p-6 rounded-lg shadow border-l-4 border-blue-600 max-w-2xl mx-auto space-y-3">
           <h3 class="font-bold text-gray-800 text-lg flex items-center"><i class="fa-solid fa-magnifying-glass text-blue-600 mr-2"></i> Verifica Stato Pratica / Prenotazione / Ordine</h3>
-          <p class="text-xs text-gray-500">Inserisci il codice univoco (es. CRI-8492, FAR-1029 o ANA-3041).</p>
+          <p class="text-xs text-gray-500">Inserisci il codice univoco (es. CRI-8492, BAN-1234, FAR-1029 o ANA-3041).</p>
           <div class="flex gap-2">
-            <input type="text" id="check-codice-input" placeholder="Es. CRI-1234, FAR-5678 o ANA-9012" class="flex-1 border p-2 rounded text-sm uppercase outline-none focus:ring-2 focus:ring-blue-500">
+            <input type="text" id="check-codice-input" placeholder="Es. CRI-1234, BAN-5678, FAR-9012" class="flex-1 border p-2 rounded text-sm uppercase outline-none focus:ring-2 focus:ring-blue-500">
             <button onclick="verificaStatoGenerale()" class="bg-blue-600 text-white font-bold px-4 py-2 rounded text-sm hover:bg-blue-700 transition">Verifica</button>
           </div>
           <div id="esito-codice" class="hidden p-3 rounded text-sm font-semibold mt-2"></div>
@@ -525,7 +525,7 @@
         </div>
       </section>
 
-      <!-- DASHBOARD ADMIN -->
+      <!-- DASHBOARD ADMIN (ORGANIZZATA CON CARD GRANDI) -->
       <section id="sec-dash-admin" class="hidden space-y-6">
         <div class="flex justify-between items-center bg-gray-800 text-white p-4 rounded-lg shadow flex-wrap gap-2">
           <div>
@@ -557,78 +557,81 @@
           </div>
         </div>
 
-        <!-- CONFIGURAZIONE PERMESSI RUOLI -->
-        <div class="bg-white p-6 rounded-lg shadow space-y-4 border-l-4 border-blue-600">
-          <h3 class="font-bold text-gray-800 flex items-center"><i class="fa-solid fa-user-gear text-blue-600 mr-2"></i> Configurazione Permessi Ruoli / Gradi</h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-gray-50 p-4 rounded border">
+        <!-- RIQUADRI / CARD GRANDI PER SELEZIONE SEZIONI ADMIN -->
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div onclick="toggleAdminCard('bandi')" class="bg-white p-5 rounded-xl shadow-md border-2 border-transparent hover:border-amber-600 cursor-pointer transition transform hover:-translate-y-1 flex flex-col justify-between">
             <div>
-              <h4 class="font-bold text-sm text-gray-700 mb-2">Accesso Portale del Cittadino:</h4>
-              <div id="checkboxes-ruoli-portale" class="space-y-1 max-h-40 overflow-y-auto"></div>
+              <div class="text-amber-600 text-3xl mb-2"><i class="fa-solid fa-file-lines"></i></div>
+              <h3 class="text-lg font-bold text-gray-800 mb-1">Gestione Bandi</h3>
+              <p class="text-gray-600 text-xs">Candidature e accettazione via Discord.</p>
             </div>
-            <div>
-              <h4 class="font-bold text-sm text-gray-700 mb-2">Accesso Certificati Anamnestici:</h4>
-              <div id="checkboxes-ruoli-certificati" class="space-y-1 max-h-40 overflow-y-auto"></div>
-            </div>
+            <div class="mt-3 text-amber-600 font-bold text-xs">Apri &rarr;</div>
           </div>
-          <div class="flex justify-end">
-            <button onclick="salvaPermessiRuoliAdmin()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded text-sm transition">Salva Configurazione Permessi</button>
+
+          <div onclick="toggleAdminCard('prenotazioni')" class="bg-white p-5 rounded-xl shadow-md border-2 border-transparent hover:border-blue-600 cursor-pointer transition transform hover:-translate-y-1 flex flex-col justify-between">
+            <div>
+              <div class="text-blue-600 text-3xl mb-2"><i class="fa-solid fa-clipboard-list"></i></div>
+              <h3 class="text-lg font-bold text-gray-800 mb-1">Visite &amp; Prenotazioni</h3>
+              <p class="text-gray-600 text-xs">Gestione appuntamenti e colloqui.</p>
+            </div>
+            <div class="mt-3 text-blue-600 font-bold text-xs">Apri &rarr;</div>
+          </div>
+
+          <div onclick="toggleAdminCard('farmacia')" class="bg-white p-5 rounded-xl shadow-md border-2 border-transparent hover:border-indigo-600 cursor-pointer transition transform hover:-translate-y-1 flex flex-col justify-between">
+            <div>
+              <div class="text-indigo-600 text-3xl mb-2"><i class="fa-solid fa-pills"></i></div>
+              <h3 class="text-lg font-bold text-gray-800 mb-1">Farmacia &amp; Ordini</h3>
+              <p class="text-gray-600 text-xs">Catalogo farmaci e ordini ricevuti.</p>
+            </div>
+            <div class="mt-3 text-indigo-600 font-bold text-xs">Apri &rarr;</div>
+          </div>
+
+          <div onclick="toggleAdminCard('certificati')" class="bg-white p-5 rounded-xl shadow-md border-2 border-transparent hover:border-cri-red cursor-pointer transition transform hover:-translate-y-1 flex flex-col justify-between">
+            <div>
+              <div class="text-cri-red text-3xl mb-2"><i class="fa-solid fa-file-medical"></i></div>
+              <h3 class="text-lg font-bold text-gray-800 mb-1">Certificati Anamnestici</h3>
+              <p class="text-gray-600 text-xs">Archivio certificati e bozze.</p>
+            </div>
+            <div class="mt-3 text-cri-red font-bold text-xs">Apri &rarr;</div>
+          </div>
+
+          <div onclick="toggleAdminCard('operatori')" class="bg-white p-5 rounded-xl shadow-md border-2 border-transparent hover:border-green-600 cursor-pointer transition transform hover:-translate-y-1 flex flex-col justify-between">
+            <div>
+              <div class="text-green-600 text-3xl mb-2"><i class="fa-solid fa-users"></i></div>
+              <h3 class="text-lg font-bold text-gray-800 mb-1">Operatori &amp; Ore</h3>
+              <p class="text-gray-600 text-xs">Gestione staff, turni e permessi ruoli.</p>
+            </div>
+            <div class="mt-3 text-green-600 font-bold text-xs">Apri &rarr;</div>
+          </div>
+
+          <div onclick="toggleAdminCard('listino')" class="bg-white p-5 rounded-xl shadow-md border-2 border-transparent hover:border-red-600 cursor-pointer transition transform hover:-translate-y-1 flex flex-col justify-between">
+            <div>
+              <div class="text-red-600 text-3xl mb-2"><i class="fa-solid fa-tags"></i></div>
+              <h3 class="text-lg font-bold text-gray-800 mb-1">Listino Prezzi</h3>
+              <p class="text-gray-600 text-xs">Modifica e ordinamento listino ufficiale.</p>
+            </div>
+            <div class="mt-3 text-red-600 font-bold text-xs">Apri &rarr;</div>
+          </div>
+
+          <div onclick="toggleAdminCard('webhook')" class="bg-white p-5 rounded-xl shadow-md border-2 border-transparent hover:border-purple-600 cursor-pointer transition transform hover:-translate-y-1 flex flex-col justify-between">
+            <div>
+              <div class="text-purple-600 text-3xl mb-2"><i class="fa-brands fa-discord"></i></div>
+              <h3 class="text-lg font-bold text-gray-800 mb-1">Webhook Discord</h3>
+              <p class="text-gray-600 text-xs">Configurazione dei 4 canali webhook.</p>
+            </div>
+            <div class="mt-3 text-purple-600 font-bold text-xs">Apri &rarr;</div>
           </div>
         </div>
 
-        <!-- 4 CANALI WEBHOOK -->
-        <div class="bg-white p-6 rounded-lg shadow space-y-4 border-l-4 border-indigo-600">
-          <h3 class="font-bold text-gray-800 flex items-center"><i class="fa-brands fa-discord text-indigo-600 mr-2 text-xl"></i> Configurazione Canali Discord Webhook</h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div>
-              <label class="block text-xs font-bold text-gray-600 mb-1">Webhook Prenotazioni &amp; Farmacia</label>
-              <div class="space-y-2">
-                <input type="url" id="discord-webhook-url" placeholder="https://discord.com/api/webhooks/..." class="w-full border p-2 rounded text-xs outline-none">
-                <div class="flex gap-1">
-                  <button onclick="salvaWebhook()" class="flex-1 bg-indigo-600 text-white py-1.5 rounded font-bold text-xs hover:bg-indigo-700">Salva</button>
-                  <button onclick="testWebhook()" class="bg-gray-200 text-gray-800 px-3 py-1.5 rounded font-bold text-xs">Test</button>
-                </div>
-              </div>
-            </div>
-            <div>
-              <label class="block text-xs font-bold text-gray-600 mb-1">Webhook Conferme Appuntamenti</label>
-              <div class="space-y-2">
-                <input type="url" id="discord-webhook-conferme-url" placeholder="https://discord.com/api/webhooks/..." class="w-full border p-2 rounded text-xs outline-none">
-                <div class="flex gap-1">
-                  <button onclick="salvaWebhookConferme()" class="flex-1 bg-indigo-600 text-white py-1.5 rounded font-bold text-xs">Salva</button>
-                  <button onclick="testWebhookConferme()" class="bg-gray-200 text-gray-800 px-3 py-1.5 rounded font-bold text-xs">Test</button>
-                </div>
-              </div>
-            </div>
-            <div>
-              <label class="block text-xs font-bold text-gray-600 mb-1">Webhook Certificati Anamnestici</label>
-              <div class="space-y-2">
-                <input type="url" id="discord-webhook-anamnestici-url" placeholder="https://discord.com/api/webhooks/..." class="w-full border p-2 rounded text-xs outline-none">
-                <div class="flex gap-1">
-                  <button onclick="salvaWebhookAnamnestici()" class="flex-1 bg-indigo-600 text-white py-1.5 rounded font-bold text-xs">Salva</button>
-                  <button onclick="testWebhookAnamnestici()" class="bg-gray-200 text-gray-800 px-3 py-1.5 rounded font-bold text-xs">Test</button>
-                </div>
-              </div>
-            </div>
-            <div>
-              <label class="block text-xs font-bold text-gray-600 mb-1">Webhook Bando / Reclutamento</label>
-              <div class="space-y-2">
-                <input type="url" id="discord-webhook-bandi-url" placeholder="https://discord.com/api/webhooks/..." class="w-full border p-2 rounded text-xs outline-none">
-                <div class="flex gap-1">
-                  <button onclick="salvaWebhookBandi()" class="flex-1 bg-indigo-600 text-white py-1.5 rounded font-bold text-xs hover:bg-indigo-700">Salva</button>
-                  <button onclick="testWebhookBandi()" class="bg-gray-200 text-gray-800 px-3 py-1.5 rounded font-bold text-xs">Test</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- GESTIONE / ACCETTAZIONE BANDO (ADMIN) -->
-        <div class="bg-white p-6 rounded-lg shadow space-y-4 border-l-4 border-amber-600">
+        <!-- CONTENITORE ESPANSIVO: GESTIONE BANDI -->
+        <div id="admin-card-bandi" class="hidden bg-white p-6 rounded-lg shadow space-y-4 border-l-4 border-amber-600">
           <div class="border-b pb-2 flex justify-between items-center flex-wrap gap-2">
             <h3 class="font-bold text-gray-800 text-lg"><i class="fa-solid fa-file-lines text-amber-600 mr-2"></i> Gestione Bandi &amp; Candidature Inviate</h3>
-            <button onclick="apriModalAggiungiBando()" class="bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs px-3 py-1.5 rounded transition"><i class="fa-solid fa-plus mr-1"></i> Aggiungi Candidatura Manuale</button>
+            <div class="space-x-2">
+              <button onclick="apriModalAggiungiBando()" class="bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs px-3 py-1.5 rounded transition"><i class="fa-solid fa-plus mr-1"></i> Aggiungi Candidatura Manuale</button>
+              <button onclick="toggleAdminCard('bandi')" class="text-xs text-gray-500 hover:text-gray-800 font-bold">[ Chiudi ]</button>
+            </div>
           </div>
-          <p class="text-xs text-gray-500">Puoi registrare qui le candidature ricevute tramite il Google Moduli e accettarle inviando la notifica sul Discord dei bandi.</p>
           <div class="overflow-x-auto">
             <table class="w-full text-left text-sm border-collapse">
               <thead>
@@ -646,17 +649,201 @@
           </div>
         </div>
 
-        <div class="bg-white p-6 rounded-lg shadow space-y-3 border-l-4 border-amber-600">
-          <h3 class="font-bold text-gray-800 flex items-center"><i class="fa-solid fa-file-pen text-amber-600 mr-2"></i> Gestione Bozza Predefinita Note Anamnestiche</h3>
-          <div class="flex gap-2">
-            <textarea id="admin-bozza-note" rows="2" placeholder="Es. Esame obiettivo regolare..." class="flex-1 border p-2 rounded text-sm outline-none"></textarea>
-            <button onclick="salvaBozzaAdmin()" class="bg-amber-600 text-white font-bold px-4 py-2 rounded text-sm hover:bg-amber-700 transition self-end">Salva Bozza</button>
+        <!-- CONTENITORE ESPANSIVO: PRENOTAZIONI -->
+        <div id="admin-card-prenotazioni" class="hidden bg-white p-6 rounded-lg shadow space-y-4 border-l-4 border-blue-600">
+          <div class="border-b pb-2 flex justify-between items-center flex-wrap gap-2">
+            <h3 class="font-bold text-gray-800 text-lg"><i class="fa-solid fa-clipboard-list text-blue-600 mr-2"></i> Gestione Prenotazioni Ricevute</h3>
+            <button onclick="toggleAdminCard('prenotazioni')" class="text-xs text-gray-500 hover:text-gray-800 font-bold">[ Chiudi ]</button>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm border-collapse">
+              <thead>
+                <tr class="bg-gray-100 text-gray-700 border-b">
+                  <th class="p-2">Codice</th>
+                  <th class="p-2">Data/Ora</th>
+                  <th class="p-2">Nome RP</th>
+                  <th class="p-2">Discord</th>
+                  <th class="p-2">Prestazione</th>
+                  <th class="p-2">Data Pref.</th>
+                  <th class="p-2">Stato</th>
+                  <th class="p-2 text-right">Azioni</th>
+                </tr>
+              </thead>
+              <tbody id="lista-prenotazioni"></tbody>
+            </table>
           </div>
         </div>
 
-        <!-- LISTINO CON RE-ORDER -->
-        <div class="bg-white p-6 rounded-lg shadow space-y-4">
-          <h3 class="font-bold text-gray-800 text-lg border-b pb-2"><i class="fa-solid fa-tags text-cri-red mr-2"></i> Gestione &amp; Ordinamento Listino Prezzi</h3>
+        <!-- CONTENITORE ESPANSIVO: FARMACIA -->
+        <div id="admin-card-farmacia" class="hidden space-y-6">
+          <div class="bg-white p-6 rounded-lg shadow space-y-4 border-l-4 border-indigo-600">
+            <div class="border-b pb-2 flex justify-between items-center flex-wrap gap-2">
+              <h3 class="font-bold text-gray-800 text-lg"><i class="fa-solid fa-pills text-indigo-600 mr-2"></i> Gestione Catalogo Farmacia</h3>
+              <button onclick="toggleAdminCard('farmacia')" class="text-xs text-gray-500 hover:text-gray-800 font-bold">[ Chiudi ]</button>
+            </div>
+            <form onsubmit="aggiungiFarmaco(event)" class="grid grid-cols-1 md:grid-cols-4 gap-3 bg-gray-50 p-4 rounded border">
+              <div>
+                <label class="block text-xs font-bold text-gray-600">Nome Farmaco</label>
+                <input type="text" id="farmaco-nome" required placeholder="Es. Tachipirina" class="w-full border p-2 rounded text-sm mt-1">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-gray-600">Prezzo</label>
+                <input type="text" id="farmaco-prezzo" required placeholder="Es. 50€" class="w-full border p-2 rounded text-sm mt-1">
+              </div>
+              <div class="md:col-span-2">
+                <label class="block text-xs font-bold text-gray-600">Descrizione</label>
+                <input type="text" id="farmaco-desc" placeholder="Descrizione..." class="w-full border p-2 rounded text-sm mt-1">
+              </div>
+              <div class="md:col-span-4 flex justify-end mt-1">
+                <button type="submit" class="bg-blue-600 text-white font-bold px-4 py-2 rounded text-sm hover:bg-blue-700">Aggiungi al Catalogo</button>
+              </div>
+            </form>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-sm border-collapse">
+                <thead>
+                  <tr class="bg-gray-100 text-gray-700 border-b">
+                    <th class="p-2">Nome Farmaco</th>
+                    <th class="p-2">Prezzo Unitario</th>
+                    <th class="p-2">Descrizione</th>
+                    <th class="p-2 text-right">Azioni</th>
+                  </tr>
+                </thead>
+                <tbody id="lista-farmaci-admin"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow space-y-4 border-l-4 border-blue-600">
+            <h3 class="font-bold text-gray-800 text-lg border-b pb-2"><i class="fa-solid fa-boxes-packing text-blue-600 mr-2"></i> Gestione Ordini Farmacia Ricevuti</h3>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-sm border-collapse">
+                <thead>
+                  <tr class="bg-gray-100 text-gray-700 border-b">
+                    <th class="p-2">Codice</th>
+                    <th class="p-2">Data</th>
+                    <th class="p-2">Nome RP</th>
+                    <th class="p-2">Discord</th>
+                    <th class="p-2">Prodotti &amp; Qta</th>
+                    <th class="p-2">Totale</th>
+                    <th class="p-2">Stato</th>
+                    <th class="p-2 text-right">Azioni</th>
+                  </tr>
+                </thead>
+                <tbody id="lista-ordini-farmacia-admin"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTENITORE ESPANSIVO: CERTIFICATI -->
+        <div id="admin-card-certificati" class="hidden space-y-6">
+          <div class="bg-white p-6 rounded-lg shadow space-y-4 border-l-4 border-cri-red">
+            <div class="border-b pb-2 flex justify-between items-center flex-wrap gap-2">
+              <h3 class="font-bold text-gray-800 text-lg"><i class="fa-solid fa-file-medical text-cri-red mr-2"></i> Certificati Anamnestici Emessi</h3>
+              <button onclick="toggleAdminCard('certificati')" class="text-xs text-gray-500 hover:text-gray-800 font-bold">[ Chiudi ]</button>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-sm border-collapse">
+                <thead>
+                  <tr class="bg-gray-100 text-gray-700 border-b">
+                    <th class="p-2">Codice</th>
+                    <th class="p-2">Data</th>
+                    <th class="p-2">Paziente</th>
+                    <th class="p-2">Discord</th>
+                    <th class="p-2">Tipo</th>
+                    <th class="p-2">Esito</th>
+                    <th class="p-2 text-right">Azioni</th>
+                  </tr>
+                </thead>
+                <tbody id="lista-certificati-admin"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow space-y-3 border-l-4 border-amber-600">
+            <h3 class="font-bold text-gray-800 flex items-center"><i class="fa-solid fa-file-pen text-amber-600 mr-2"></i> Gestione Bozza Predefinita Note Anamnestiche</h3>
+            <div class="flex gap-2">
+              <textarea id="admin-bozza-note" rows="2" placeholder="Es. Esame obiettivo regolare..." class="flex-1 border p-2 rounded text-sm outline-none"></textarea>
+              <button onclick="salvaBozzaAdmin()" class="bg-amber-600 text-white font-bold px-4 py-2 rounded text-sm hover:bg-amber-700 transition self-end">Salva Bozza</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTENITORE ESPANSIVO: OPERATORI & PERMESSI -->
+        <div id="admin-card-operatori" class="hidden space-y-6">
+          <div class="bg-white p-6 rounded-lg shadow space-y-4 border-l-4 border-green-600">
+            <div class="border-b pb-2 flex justify-between items-center flex-wrap gap-2">
+              <h3 class="font-bold text-gray-800 text-lg"><i class="fa-solid fa-users text-green-600 mr-2"></i> Gestione Operatori &amp; Staff</h3>
+              <div class="space-x-2">
+                <button onclick="resettaOreTuttiOp()" class="bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs px-3 py-1.5 rounded transition">Resetta Ore Tutti</button>
+                <button onclick="toggleAdminCard('operatori')" class="text-xs text-gray-500 hover:text-gray-800 font-bold">[ Chiudi ]</button>
+              </div>
+            </div>
+            <form onsubmit="creaOperatore(event)" class="grid grid-cols-1 md:grid-cols-4 gap-3 bg-gray-50 p-4 rounded border">
+              <div>
+                <label class="block text-xs font-bold text-gray-600">Nome Operatore</label>
+                <input type="text" id="nuovo-op-nome" required placeholder="Es. Marco Rossi" class="w-full border p-2 rounded text-sm mt-1">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-gray-600">Username Accesso</label>
+                <input type="text" id="nuovo-op-user" required placeholder="Es. m.rossi" class="w-full border p-2 rounded text-sm mt-1">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-gray-600">Ruolo / Qualifica</label>
+                <input type="text" id="nuovo-op-ruolo" required placeholder="Es. Medico" class="w-full border p-2 rounded text-sm mt-1">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-gray-600">Password</label>
+                <div class="flex gap-1 mt-1">
+                  <input type="text" id="nuovo-op-pass" required placeholder="Password" class="w-full border p-2 rounded text-sm">
+                  <button type="button" onclick="generaPassProvvisoria()" class="bg-gray-200 text-xs px-2 rounded font-bold">Crea</button>
+                </div>
+              </div>
+              <div class="md:col-span-4 flex justify-end mt-2">
+                <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-bold px-4 py-2 rounded text-sm">Aggiungi Operatore</button>
+              </div>
+            </form>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-sm border-collapse">
+                <thead>
+                  <tr class="bg-gray-100 text-gray-700 border-b">
+                    <th class="p-2">Nome</th>
+                    <th class="p-2">Username</th>
+                    <th class="p-2">Ruolo</th>
+                    <th class="p-2">Pass</th>
+                    <th class="p-2">Tempo Servizio</th>
+                    <th class="p-2 text-right">Azioni</th>
+                  </tr>
+                </thead>
+                <tbody id="lista-operatori"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow space-y-4 border-l-4 border-blue-600">
+            <h3 class="font-bold text-gray-800 flex items-center"><i class="fa-solid fa-user-gear text-blue-600 mr-2"></i> Configurazione Permessi Ruoli / Gradi</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-gray-50 p-4 rounded border">
+              <div>
+                <h4 class="font-bold text-sm text-gray-700 mb-2">Accesso Portale del Cittadino:</h4>
+                <div id="checkboxes-ruoli-portale" class="space-y-1 max-h-40 overflow-y-auto"></div>
+              </div>
+              <div>
+                <h4 class="font-bold text-sm text-gray-700 mb-2">Accesso Certificati Anamnestici:</h4>
+                <div id="checkboxes-ruoli-certificati" class="space-y-1 max-h-40 overflow-y-auto"></div>
+              </div>
+            </div>
+            <div class="flex justify-end">
+              <button onclick="salvaPermessiRuoliAdmin()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded text-sm transition">Salva Configurazione Permessi</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTENITORE ESPANSIVO: LISTINO PREZZI -->
+        <div id="admin-card-listino" class="hidden bg-white p-6 rounded-lg shadow space-y-4 border-l-4 border-red-600">
+          <div class="border-b pb-2 flex justify-between items-center flex-wrap gap-2">
+            <h3 class="font-bold text-gray-800 text-lg"><i class="fa-solid fa-tags text-red-600 mr-2"></i> Gestione &amp; Ordinamento Listino Prezzi</h3>
+            <button onclick="toggleAdminCard('listino')" class="text-xs text-gray-500 hover:text-gray-800 font-bold">[ Chiudi ]</button>
+          </div>
           <form onsubmit="aggiungiVoceListino(event)" class="grid grid-cols-1 md:grid-cols-4 gap-3 bg-gray-50 p-4 rounded border">
             <div>
               <label class="block text-xs font-bold text-gray-600">Titolo Servizio / Prestazione</label>
@@ -690,152 +877,56 @@
           </div>
         </div>
 
-        <!-- GESTIONE FARMACIA -->
-        <div class="bg-white p-6 rounded-lg shadow space-y-4">
-          <h3 class="font-bold text-gray-800 text-lg border-b pb-2"><i class="fa-solid fa-pills text-blue-600 mr-2"></i> Gestione Catalogo Farmacia</h3>
-          <form onsubmit="aggiungiFarmaco(event)" class="grid grid-cols-1 md:grid-cols-4 gap-3 bg-gray-50 p-4 rounded border">
-            <div>
-              <label class="block text-xs font-bold text-gray-600">Nome Farmaco</label>
-              <input type="text" id="farmaco-nome" required placeholder="Es. Tachipirina" class="w-full border p-2 rounded text-sm mt-1">
-            </div>
-            <div>
-              <label class="block text-xs font-bold text-gray-600">Prezzo</label>
-              <input type="text" id="farmaco-prezzo" required placeholder="Es. 50€" class="w-full border p-2 rounded text-sm mt-1">
-            </div>
-            <div class="md:col-span-2">
-              <label class="block text-xs font-bold text-gray-600">Descrizione</label>
-              <input type="text" id="farmaco-desc" placeholder="Descrizione..." class="w-full border p-2 rounded text-sm mt-1">
-            </div>
-            <div class="md:col-span-4 flex justify-end mt-1">
-              <button type="submit" class="bg-blue-600 text-white font-bold px-4 py-2 rounded text-sm hover:bg-blue-700">Aggiungi al Catalogo</button>
-            </div>
-          </form>
-          <div class="overflow-x-auto">
-            <table class="w-full text-left text-sm border-collapse">
-              <thead>
-                <tr class="bg-gray-100 text-gray-700 border-b">
-                  <th class="p-2">Nome Farmaco</th>
-                  <th class="p-2">Prezzo Unitario</th>
-                  <th class="p-2">Descrizione</th>
-                  <th class="p-2 text-right">Azioni</th>
-                </tr>
-              </thead>
-              <tbody id="lista-farmaci-admin"></tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- ORDINI FARMACIA RICEVUTI -->
-        <div class="bg-white p-6 rounded-lg shadow space-y-4">
-          <h3 class="font-bold text-gray-800 text-lg border-b pb-2"><i class="fa-solid fa-boxes-packing text-blue-600 mr-2"></i> Gestione Ordini Farmacia Ricevuti</h3>
-          <div class="overflow-x-auto">
-            <table class="w-full text-left text-sm border-collapse">
-              <thead>
-                <tr class="bg-gray-100 text-gray-700 border-b">
-                  <th class="p-2">Codice</th>
-                  <th class="p-2">Data</th>
-                  <th class="p-2">Nome RP</th>
-                  <th class="p-2">Discord</th>
-                  <th class="p-2">Prodotti &amp; Qta</th>
-                  <th class="p-2">Totale</th>
-                  <th class="p-2">Stato</th>
-                  <th class="p-2 text-right">Azioni</th>
-                </tr>
-              </thead>
-              <tbody id="lista-ordini-farmacia-admin"></tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- CERTIFICATI ANAMNESTICI EMESSI -->
-        <div class="bg-white p-6 rounded-lg shadow space-y-4">
-          <h3 class="font-bold text-gray-800 text-lg border-b pb-2"><i class="fa-solid fa-file-medical text-cri-red mr-2"></i> Certificati Anamnestici Emessi</h3>
-          <div class="overflow-x-auto">
-            <table class="w-full text-left text-sm border-collapse">
-              <thead>
-                <tr class="bg-gray-100 text-gray-700 border-b">
-                  <th class="p-2">Codice</th>
-                  <th class="p-2">Data</th>
-                  <th class="p-2">Paziente</th>
-                  <th class="p-2">Discord</th>
-                  <th class="p-2">Tipo</th>
-                  <th class="p-2">Esito</th>
-                  <th class="p-2 text-right">Azioni</th>
-                </tr>
-              </thead>
-              <tbody id="lista-certificati-admin"></tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- OPERATORI -->
-        <div class="bg-white p-6 rounded-lg shadow space-y-4">
+        <!-- CONTENITORE ESPANSIVO: WEBHOOK DISCORD -->
+        <div id="admin-card-webhook" class="hidden bg-white p-6 rounded-lg shadow space-y-4 border-l-4 border-purple-600">
           <div class="border-b pb-2 flex justify-between items-center flex-wrap gap-2">
-            <h3 class="font-bold text-gray-800 text-lg"><i class="fa-solid fa-users text-cri-red mr-2"></i> Gestione Operatori</h3>
-            <button onclick="resettaOreTuttiOp()" class="bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs px-3 py-1.5 rounded transition">Resetta Ore Tutti</button>
+            <h3 class="font-bold text-gray-800 text-lg flex items-center"><i class="fa-brands fa-discord text-purple-600 mr-2 text-xl"></i> Configurazione Canali Discord Webhook</h3>
+            <button onclick="toggleAdminCard('webhook')" class="text-xs text-gray-500 hover:text-gray-800 font-bold">[ Chiudi ]</button>
           </div>
-          <form onsubmit="creaOperatore(event)" class="grid grid-cols-1 md:grid-cols-4 gap-3 bg-gray-50 p-4 rounded border">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <div>
-              <label class="block text-xs font-bold text-gray-600">Nome Operatore</label>
-              <input type="text" id="nuovo-op-nome" required placeholder="Es. Marco Rossi" class="w-full border p-2 rounded text-sm mt-1">
-            </div>
-            <div>
-              <label class="block text-xs font-bold text-gray-600">Username Accesso</label>
-              <input type="text" id="nuovo-op-user" required placeholder="Es. m.rossi" class="w-full border p-2 rounded text-sm mt-1">
-            </div>
-            <div>
-              <label class="block text-xs font-bold text-gray-600">Ruolo / Qualifica</label>
-              <input type="text" id="nuovo-op-ruolo" required placeholder="Es. Medico" class="w-full border p-2 rounded text-sm mt-1">
-            </div>
-            <div>
-              <label class="block text-xs font-bold text-gray-600">Password</label>
-              <div class="flex gap-1 mt-1">
-                <input type="text" id="nuovo-op-pass" required placeholder="Password" class="w-full border p-2 rounded text-sm">
-                <button type="button" onclick="generaPassProvvisoria()" class="bg-gray-200 text-xs px-2 rounded font-bold">Crea</button>
+              <label class="block text-xs font-bold text-gray-600 mb-1">Webhook Prenotazioni &amp; Farmacia</label>
+              <div class="space-y-2">
+                <input type="url" id="discord-webhook-url" placeholder="https://discord.com/api/webhooks/..." class="w-full border p-2 rounded text-xs outline-none">
+                <div class="flex gap-1">
+                  <button onclick="salvaWebhook()" class="flex-1 bg-purple-600 text-white py-1.5 rounded font-bold text-xs hover:bg-purple-700">Salva</button>
+                  <button onclick="testWebhook()" class="bg-gray-200 text-gray-800 px-3 py-1.5 rounded font-bold text-xs">Test</button>
+                </div>
               </div>
             </div>
-            <div class="md:col-span-4 flex justify-end mt-2">
-              <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-bold px-4 py-2 rounded text-sm">Aggiungi Operatore</button>
+            <div>
+              <label class="block text-xs font-bold text-gray-600 mb-1">Webhook Conferme Appuntamenti</label>
+              <div class="space-y-2">
+                <input type="url" id="discord-webhook-conferme-url" placeholder="https://discord.com/api/webhooks/..." class="w-full border p-2 rounded text-xs outline-none">
+                <div class="flex gap-1">
+                  <button onclick="salvaWebhookConferme()" class="flex-1 bg-purple-600 text-white py-1.5 rounded font-bold text-xs hover:bg-purple-700">Salva</button>
+                  <button onclick="testWebhookConferme()" class="bg-gray-200 text-gray-800 px-3 py-1.5 rounded font-bold text-xs">Test</button>
+                </div>
+              </div>
             </div>
-          </form>
-          <div class="overflow-x-auto">
-            <table class="w-full text-left text-sm border-collapse">
-              <thead>
-                <tr class="bg-gray-100 text-gray-700 border-b">
-                  <th class="p-2">Nome</th>
-                  <th class="p-2">Username</th>
-                  <th class="p-2">Ruolo</th>
-                  <th class="p-2">Pass</th>
-                  <th class="p-2">Tempo Servizio</th>
-                  <th class="p-2 text-right">Azioni</th>
-                </tr>
-              </thead>
-              <tbody id="lista-operatori"></tbody>
-            </table>
+            <div>
+              <label class="block text-xs font-bold text-gray-600 mb-1">Webhook Certificati Anamnestici</label>
+              <div class="space-y-2">
+                <input type="url" id="discord-webhook-anamnestici-url" placeholder="https://discord.com/api/webhooks/..." class="w-full border p-2 rounded text-xs outline-none">
+                <div class="flex gap-1">
+                  <button onclick="salvaWebhookAnamnestici()" class="flex-1 bg-purple-600 text-white py-1.5 rounded font-bold text-xs hover:bg-purple-700">Salva</button>
+                  <button onclick="testWebhookAnamnestici()" class="bg-gray-200 text-gray-800 px-3 py-1.5 rounded font-bold text-xs">Test</button>
+                </div>
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-gray-600 mb-1">Webhook Bando / Reclutamento</label>
+              <div class="space-y-2">
+                <input type="url" id="discord-webhook-bandi-url" placeholder="https://discord.com/api/webhooks/..." class="w-full border p-2 rounded text-xs outline-none">
+                <div class="flex gap-1">
+                  <button onclick="salvaWebhookBandi()" class="flex-1 bg-purple-600 text-white py-1.5 rounded font-bold text-xs hover:bg-purple-700">Salva</button>
+                  <button onclick="testWebhookBandi()" class="bg-gray-200 text-gray-800 px-3 py-1.5 rounded font-bold text-xs">Test</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- PRENOTAZIONI ADMIN -->
-        <div class="bg-white p-6 rounded-lg shadow space-y-4">
-          <h3 class="font-bold text-gray-800 text-lg border-b pb-2"><i class="fa-solid fa-clipboard-list text-cri-red mr-2"></i> Gestione Prenotazioni Ricevute</h3>
-          <div class="overflow-x-auto">
-            <table class="w-full text-left text-sm border-collapse">
-              <thead>
-                <tr class="bg-gray-100 text-gray-700 border-b">
-                  <th class="p-2">Codice</th>
-                  <th class="p-2">Data/Ora</th>
-                  <th class="p-2">Nome RP</th>
-                  <th class="p-2">Discord</th>
-                  <th class="p-2">Prestazione</th>
-                  <th class="p-2">Data Pref.</th>
-                  <th class="p-2">Stato</th>
-                  <th class="p-2 text-right">Azioni</th>
-                </tr>
-              </thead>
-              <tbody id="lista-prenotazioni"></tbody>
-            </table>
-          </div>
-        </div>
       </section>
 
     </main>
@@ -905,7 +996,7 @@
     </div>
   </div>
 
-  <!-- ALTRE MODALI (Conferma Prenotazione, Ordine Farmacia, Carrello, ecc.) -->
+  <!-- MODALE CONFERMA PRENOTAZIONE -->
   <div id="modal-conferma-prenotazione" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
     <div class="bg-white rounded-lg shadow-xl max-w-md w-full p-6 space-y-4">
       <h3 class="text-lg font-bold text-gray-800 flex items-center"><i class="fa-solid fa-calendar-check text-blue-600 mr-2"></i> Accetta &amp; Conferma Appuntamento / Colloquio</h3>
@@ -935,6 +1026,7 @@
     </div>
   </div>
 
+  <!-- MODALE CONFERMA ORDINE FARMACIA -->
   <div id="modal-conferma-ordine-farmacia" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
     <div class="bg-white rounded-lg shadow-xl max-w-md w-full p-6 space-y-4">
       <h3 class="text-lg font-bold text-gray-800 flex items-center"><i class="fa-solid fa-boxes-packing text-blue-600 mr-2"></i> Accetta &amp; Conferma Ordine Farmacia</h3>
@@ -967,6 +1059,7 @@
     </div>
   </div>
 
+  <!-- MODALE CARRELLO -->
   <div id="modal-carrello" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
     <div class="bg-white rounded-lg shadow-xl max-w-lg w-full p-6 space-y-4">
       <h3 class="text-lg font-bold text-gray-800 flex items-center"><i class="fa-solid fa-cart-shopping text-blue-600 mr-2"></i> Carrello Farmacia &amp; Checkout</h3>
@@ -996,6 +1089,7 @@
     </div>
   </div>
 
+  <!-- ALTRE MODALI (Storico, Ore, Password Admin) -->
   <div id="modal-storico-turni" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
     <div class="bg-white rounded-lg shadow-xl max-w-lg w-full p-6 space-y-4">
       <h3 class="text-lg font-bold text-gray-800" id="titolo-modal-storico">Storico Turni Operatore</h3>
@@ -1216,6 +1310,19 @@
       }
     }
 
+    function toggleAdminCard(cardKey) {
+      const ids = ['bandi', 'prenotazioni', 'farmacia', 'certificati', 'operatori', 'listino', 'webhook'];
+      ids.forEach(id => {
+        const el = document.getElementById('admin-card-' + id);
+        if (el) el.classList.add('hidden');
+      });
+
+      const target = document.getElementById('admin-card-' + cardKey);
+      if (target && target.classList.contains('hidden')) {
+        target.classList.remove('hidden');
+      }
+    }
+
     function verificaStatoGenerale() {
       const cod = document.getElementById('check-codice-input').value.trim().toUpperCase();
       const box = document.getElementById('esito-codice');
@@ -1226,10 +1333,7 @@
       if (cod.startsWith('CRI-')) {
         const p = appData.prenotazioni.find(item => item.codice === cod);
         if (p) {
-          let colorClass = 'bg-amber-100 text-amber-800';
-          if (p.stato === 'Accettata') colorClass = 'bg-blue-100 text-blue-800';
-          if (p.stato === 'Completata') colorClass = 'bg-green-100 text-green-800';
-          box.classList.add(...colorClass.split(' '));
+          box.classList.add('bg-blue-100', 'text-blue-800');
           box.innerHTML = `<i class="fa-solid fa-circle-info mr-1"></i> Pratica <strong>${p.codice}</strong> (${p.tipo}) per <strong>${p.nome}</strong>: <span class="uppercase font-bold">${p.stato}</span> ${p.dataConfermata ? `<br><small>Appuntamento Confermato per il: <strong>${p.dataConfermata} ore ${p.orarioConfermato}</strong></small>` : ''}`;
           return;
         }
@@ -1264,8 +1368,8 @@
     function apriModalAggiungiBando() { document.getElementById('modal-aggiungi-bando').classList.remove('hidden'); }
     function chiudiModalAggiungiBando() { document.getElementById('modal-aggiungi-bando').classList.add('hidden'); }
 
-    function registraBandoManuale(e) {
-      e.preventDefault();
+    function registraBandoManuale(event) {
+      event.preventDefault();
       const codiceBando = 'BAN-' + Math.floor(1000 + Math.random() * 9000);
       const nuovoBando = {
         id: Date.now(),
@@ -1281,7 +1385,7 @@
       salvaTuttoCloud();
       alert(`Candidatura registrata con codice: ${codiceBando}`);
       chiudiModalAggiungiBando();
-      e.target.reset();
+      event.target.reset();
       renderAdmin();
     }
 
@@ -1297,8 +1401,8 @@
 
     function chiudiModalConfermaBando() { document.getElementById('modal-conferma-bando').classList.add('hidden'); }
 
-    async function confermaAccettazioneBando(e) {
-      e.preventDefault();
+    async function confermaAccettazioneBando(event) {
+      event.preventDefault();
       const bId = parseInt(document.getElementById('conf-bando-id').value);
       const esito = document.getElementById('conf-bando-esito').value;
       const noteEsito = document.getElementById('conf-bando-note').value;
@@ -1343,8 +1447,8 @@
       renderAdmin();
     }
 
-    async function salvaPrenotazione(e) {
-      e.preventDefault();
+    async function salvaPrenotazione(event) {
+      event.preventDefault();
       const codiceUnivoco = 'CRI-' + Math.floor(1000 + Math.random() * 9000);
       const nuovaPrenotazione = {
         id: Date.now(),
@@ -1504,8 +1608,8 @@
 
     function chiudiModalCarrello() { document.getElementById('modal-carrello').classList.add('hidden'); }
 
-    async function confermaOrdineMultiplo(e) {
-      e.preventDefault();
+    async function confermaOrdineMultiplo(event) {
+      event.preventDefault();
       if (carrelloFarmacia.length === 0) return alert('Il carrello è vuoto!');
       const codFarm = 'FAR-' + Math.floor(1000 + Math.random() * 9000);
       let totaleComplessivo = 0;
@@ -1572,8 +1676,8 @@
 
     function chiudiModalConfermaOrdineFarmacia() { document.getElementById('modal-conferma-ordine-farmacia').classList.add('hidden'); }
 
-    async function confermaAccettazioneOrdineFarmacia(e) {
-      e.preventDefault();
+    async function confermaAccettazioneOrdineFarmacia(event) {
+      event.preventDefault();
       const oId = parseInt(document.getElementById('conf-ord-id').value);
       const nuovoStato = document.getElementById('conf-ord-stato').value;
       const orarioConsegna = document.getElementById('conf-ord-orario').value;
@@ -1625,8 +1729,8 @@
       else document.getElementById('cittadino-costo').value = '50€';
     }
 
-    function registraInterventoCittadino(e) {
-      e.preventDefault();
+    function registraInterventoCittadino(event) {
+      event.preventDefault();
       const nuovaCartella = {
         id: Date.now(),
         data: new Date().toLocaleString('it-IT'),
@@ -1641,7 +1745,7 @@
       appData.cartelleCliniche.unshift(nuovaCartella);
       salvaTuttoCloud();
       alert(`Cartella clinica aperta e fattura generata: ${nuovaCartella.costo}`);
-      e.target.reset();
+      event.target.reset();
       aggiornaCostoIntervento();
       renderCartelleClinicheOp();
     }
@@ -1681,8 +1785,8 @@
 
     function chiudiModalConfermaPrenotazione() { document.getElementById('modal-conferma-prenotazione').classList.add('hidden'); }
 
-    async function confermaAccettazionePrenotazione(e) {
-      e.preventDefault();
+    async function confermaAccettazionePrenotazione(event) {
+      event.preventDefault();
       const pId = parseInt(document.getElementById('conf-prenota-id').value);
       const dataDef = document.getElementById('conf-prenota-data').value;
       const orarioDef = document.getElementById('conf-prenota-orario').value;
@@ -1732,8 +1836,8 @@
       document.getElementById('cert-note').value = appData.bozzaNoteAdmin || '';
     }
 
-    async function emettiCertificatoAnamnestico(e) {
-      e.preventDefault();
+    async function emettiCertificatoAnamnestico(event) {
+      event.preventDefault();
       const codiceAna = 'ANA-' + Math.floor(1000 + Math.random() * 9000);
       const esito = document.getElementById('cert-esito').value;
       const op = sessioneCorrente.user;
@@ -1757,7 +1861,7 @@
       if (webhookTarget) inviaDiscordEmbedAnamnestico(nuovoCert, webhookTarget);
 
       alert(`Certificato anamnestico emesso: ${codiceAna}`);
-      e.target.reset();
+      event.target.reset();
       applicaBozzaAdmin();
     }
 
