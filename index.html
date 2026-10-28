@@ -297,66 +297,71 @@
         <span class="text-xs text-gray-400 mt-2">I dati sul tempo lavorato vengono salvati automaticamente nel tuo storico turni.</span>
       </div>
 
-      <!-- PORTALE DEL CITTADINO & CARTELLA CLINICA (VISIBILE SOLO SE AUTORIZZATO) -->
+      <!-- PORTALE DEL CITTADINO & CARTELLA CLINICA (VISIBILE SOLO SE AUTORIZZATO DALL'ADMIN) -->
       <div id="wrapper-portale-cittadino" class="hidden space-y-6">
         <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-blue-600 space-y-4">
           <div class="border-b pb-2 flex justify-between items-center flex-wrap gap-2">
-            <h3 class="font-bold text-gray-800 text-lg flex items-center"><i class="fa-solid fa-address-book text-blue-600 mr-2"></i> Portale del Cittadino &amp; Cartelle Cliniche</h3>
-            <span class="text-xs text-gray-500">Registrazione operatore &amp; generazione fattura automatica</span>
+            <h3 class="font-bold text-gray-800 text-lg flex items-center"><i class="fa-solid fa-address-book text-blue-600 mr-2"></i> Portale del Cittadino &amp; Cartella Clinica Digitale</h3>
+            <span class="text-xs text-gray-500 font-semibold">Ricerca Sanitaria &amp; Generatore Fatture In-Game</span>
           </div>
 
-          <!-- Form Registrazione / Ricerca Cittadino -->
+          <!-- Modulo Registrazione Nuovo Intervento Sanitario -->
           <form onsubmit="registraInterventoCittadino(event)" class="space-y-4 bg-blue-50/50 p-4 rounded-lg border border-blue-100">
-            <h4 class="font-bold text-blue-900 text-sm"><i class="fa-solid fa-user-plus mr-1"></i> Nuova Prestazione / Intervento Sanitario</h4>
+            <h4 class="font-bold text-blue-900 text-sm flex items-center"><i class="fa-solid fa-file-medical-step mr-2"></i> Nuova Registrazione Sanitaria / Intervento</h4>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label class="block text-xs font-bold text-gray-700">Nome e Cognome Cittadino (RP)</label>
-                <input type="text" id="cittadino-nome" required placeholder="Es. John Doe" class="w-full border p-2 rounded text-sm mt-1 bg-white">
+                <input type="text" id="cittadino-nome" required placeholder="Es. Mario Rossi" class="w-full border p-2 rounded text-sm mt-1 bg-white">
               </div>
               <div>
                 <label class="block text-xs font-bold text-gray-700">Tag Discord Cittadino</label>
-                <input type="text" id="cittadino-discord" required placeholder="Es. @johndoe" class="w-full border p-2 rounded text-sm mt-1 bg-white">
+                <input type="text" id="cittadino-discord" required placeholder="Es. @mario_rossi" class="w-full border p-2 rounded text-sm mt-1 bg-white">
               </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label class="block text-xs font-bold text-gray-700">Tipo di Azione / Intervento</label>
+                <label class="block text-xs font-bold text-gray-700">Tipo di Prestazione / Intervento</label>
                 <select id="cittadino-tipo-azione" onchange="aggiornaCostoIntervento()" required class="w-full border p-2 rounded text-sm mt-1 bg-white font-bold">
-                  <option value="Rianimazione">🚑 Rianimazione</option>
+                  <option value="Rianimazione">🚑 Rianimazione Intervento 118</option>
                   <option value="Visita Medica Semplice">🩺 Visita Medica Semplice</option>
                   <option value="Visita Psicologica">🧠 Visita Psicologica</option>
                   <option value="Visita Chirurgica">💉 Visita Chirurgica</option>
                   <option value="Certificato Anamnestico">📋 Certificato Anamnestico</option>
-                  <option value="Altro Intervento / Emergenza">⚡ Altro Intervento / Emergenza</option>
+                  <option value="Altro Intervento / Emergenza">⚡ Altro Intervento / Prestazione</option>
                 </select>
               </div>
               <div>
-                <label class="block text-xs font-bold text-gray-700">Costo Automatico da Listino (Modificabile)</label>
+                <label class="block text-xs font-bold text-gray-700">Costo Automatico da Listino Prezzi</label>
                 <input type="text" id="cittadino-costo" required placeholder="Es. 100€" class="w-full border p-2 rounded text-sm mt-1 bg-white font-black text-cri-red">
               </div>
             </div>
             <div>
-              <label class="block text-xs font-bold text-gray-700">Cartella Clinica / Dettagli Azione Eseguita</label>
-              <textarea id="cittadino-dettagli" rows="2" required placeholder="Descrivi l'intervento, cure somministrate o note cliniche..." class="w-full border p-2 rounded text-sm mt-1 bg-white"></textarea>
+              <label class="block text-xs font-bold text-gray-700">Cartella Clinica / Azioni Eseguite &amp; Note Sanitarie</label>
+              <textarea id="cittadino-dettagli" rows="2" required placeholder="Inserisci trattamenti, diagnosi o parametri clinici rilevati..." class="w-full border p-2 rounded text-sm mt-1 bg-white"></textarea>
             </div>
             <div class="flex justify-end">
-              <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-5 py-2 rounded text-sm transition shadow"><i class="fa-solid fa-file-invoice-dollar mr-2"></i> Registra Intervento &amp; Genera Fattura In-Game</button>
+              <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-5 py-2 rounded text-sm transition shadow"><i class="fa-solid fa-receipt mr-2"></i> Salva in Cartella &amp; Genera Fattura In-Game</button>
             </div>
           </form>
 
-          <!-- Lista Storico Cartelle Cliniche Cittadini -->
-          <div class="space-y-2 pt-2">
-            <h4 class="font-bold text-gray-800 text-sm">Archivio Cartelle Cliniche &amp; Fatture Generate</h4>
+          <!-- Modulo Ricerca & Consultazione Cartelle Cliniche Cittadini -->
+          <div class="space-y-3 pt-4 border-t">
+            <div class="flex justify-between items-center flex-wrap gap-2">
+              <h4 class="font-bold text-gray-800 text-sm"><i class="fa-solid fa-magnifying-glass text-blue-600 mr-1"></i> Ricerca Cartella Clinica Cittadino</h4>
+              <div class="w-full md:w-1/2">
+                <input type="text" id="search-cittadino-input" onkeyup="filtrarCartelleCliniche()" placeholder="Cerca per Nome, Discord o Prestazione..." class="w-full border p-2 rounded text-xs outline-none focus:ring-2 focus:ring-blue-500">
+              </div>
+            </div>
             <div class="overflow-x-auto">
               <table class="w-full text-left text-xs border-collapse">
                 <thead>
                   <tr class="bg-gray-100 text-gray-700 border-b">
                     <th class="p-2">Data</th>
-                    <th class="p-2">Cittadino</th>
-                    <th class="p-2">Intervento</th>
-                    <th class="p-2">Dettagli / Cartella</th>
+                    <th class="p-2">Cittadino RP</th>
+                    <th class="p-2">Intervento / Prestazione</th>
+                    <th class="p-2">Cartella Clinica / Dettagli</th>
                     <th class="p-2">Importo Fattura</th>
-                    <th class="p-2">Operatore</th>
+                    <th class="p-2">Operatore Sanitario</th>
                   </tr>
                 </thead>
                 <tbody id="lista-cartelle-cliniche">
@@ -368,8 +373,8 @@
         </div>
       </div>
 
-      <!-- EMISSIONE CERTIFICATI ANAMNESTICI (AREA OPERATORI) -->
-      <div class="bg-white p-6 rounded-lg shadow space-y-4">
+      <!-- EMISSIONE CERTIFICATI ANAMNESTICI (AREA OPERATORI - VISIBILE SOLO SE AUTORIZZATO) -->
+      <div id="wrapper-certificati-anamnestici" class="hidden bg-white p-6 rounded-lg shadow space-y-4 border-l-4 border-cri-red">
         <div class="border-b pb-2 flex justify-between items-center flex-wrap gap-2">
           <h3 class="font-bold text-gray-800 text-lg"><i class="fa-solid fa-file-medical text-cri-red mr-2"></i> Emetti Certificato Medico Anamnestico</h3>
           <button type="button" onclick="applicaBozzaAdmin()" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold text-xs px-3 py-1.5 rounded transition"><i class="fa-solid fa-file-lines mr-1"></i> Applica Bozza Admin</button>
@@ -486,15 +491,31 @@
         </div>
       </div>
 
-      <!-- CONFIGURAZIONE RUOLI AUTORIZZATI PORTALE CITTADINO -->
-      <div class="bg-white p-6 rounded-lg shadow space-y-3 border-l-4 border-blue-600">
-        <h3 class="font-bold text-gray-800 flex items-center"><i class="fa-solid fa-shield-halved text-blue-600 mr-2"></i> Configurazione Permessi: Ruolo Abilitato al Portale del Cittadino</h3>
-        <p class="text-xs text-gray-500">Seleziona quale grado/ruolo minimo degli operatori può visualizzare il Portale del Cittadino e aprire cartelle cliniche.</p>
-        <div class="flex gap-2 items-center">
-          <select id="admin-ruolo-portale" class="border p-2 rounded text-sm w-full md:w-1/3 bg-white font-bold">
-            <!-- Popolato via JS -->
-          </select>
-          <button onclick="salvaRuoloPortaleAdmin()" class="bg-blue-600 text-white font-bold px-4 py-2 rounded text-sm hover:bg-blue-700 transition">Salva Ruolo</button>
+      <!-- CONFIGURAZIONE RUOLI AUTORIZZATI MULTIPLI (AREA ADMIN) -->
+      <div class="bg-white p-6 rounded-lg shadow space-y-4 border-l-4 border-blue-600">
+        <h3 class="font-bold text-gray-800 flex items-center"><i class="fa-solid fa-user-gear text-blue-600 mr-2"></i> Gestione Permessi &amp; Abilitazione Ruoli Operatori</h3>
+        <p class="text-xs text-gray-500">Seleziona quali ruoli/gradi degli operatori hanno accesso al Portale del Cittadino e alla gestione dei Certificati Anamnestici.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+          <!-- Permessi Portale Cittadino -->
+          <div class="bg-gray-50 p-4 rounded border">
+            <h4 class="font-bold text-sm text-gray-800 mb-2 flex items-center"><i class="fa-solid fa-address-book text-blue-600 mr-2"></i> Ruoli Abilitati al Portale Cittadino</h4>
+            <div id="box-ruoli-portale" class="space-y-1.5 max-h-40 overflow-y-auto">
+              <!-- Checkbox inseriti via JS -->
+            </div>
+          </div>
+
+          <!-- Permessi Certificati Anamnestici -->
+          <div class="bg-gray-50 p-4 rounded border">
+            <h4 class="font-bold text-sm text-gray-800 mb-2 flex items-center"><i class="fa-solid fa-file-medical text-cri-red mr-2"></i> Ruoli Abilitati ai Certificati Anamnestici</h4>
+            <div id="box-ruoli-certificati" class="space-y-1.5 max-h-40 overflow-y-auto">
+              <!-- Checkbox inseriti via JS -->
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-end pt-2">
+          <button onclick="salvaPermessiRuoliAdmin()" class="bg-blue-600 text-white font-bold px-5 py-2 rounded text-sm hover:bg-blue-700 transition shadow"><i class="fa-solid fa-floppy-disk mr-1"></i> Salva Permessi Ruoli</button>
         </div>
       </div>
 
@@ -719,7 +740,7 @@
 
   </main>
 
-  <!-- Modal Carrello / Ordine Farmacia Multiplo con Selezione Quantità -->
+  <!-- Modal Carrello / Ordine Farmacia Multiplo -->
   <div id="modal-carrello" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
     <div class="bg-white rounded-lg shadow-xl max-w-lg w-full p-6 space-y-4">
       <h3 class="text-lg font-bold text-gray-800 flex items-center"><i class="fa-solid fa-cart-shopping text-blue-600 mr-2"></i> Carrello Farmacia &amp; Checkout</h3>
@@ -854,7 +875,8 @@
       webhookUrl: '',
       webhookAnamnesticiUrl: '',
       bozzaNoteAdmin: 'Esame obiettivo regolare, assenza di patologie di rilievo, idoneità rilasciata con riserva.',
-      ruoloMinimoPortale: 'Soccorritore 118', // Ruolo minimo per vedere il portale cittadino
+      ruoliAbilitatiPortale: ['Soccorritore 118', 'Medico Chirurgo', 'Capo Turno'], // Multi-ruoli abilitati al Portale Cittadino
+      ruoliAbilitatiCertificati: ['Medico Chirurgo', 'Capo Turno'], // Multi-ruoli abilitati ai Certificati Anamnestici
       operatori: [
         { id: 1, nome: 'Mario Rossi', user: 'm.rossi', pass: 'CRI-2024', provvisoria: true, ruolo: 'Soccorritore 118', inServizio: false, inizioTurno: null, turni: [] }
       ],
@@ -926,7 +948,8 @@
         if (data.webhookUrl !== undefined) appData.webhookUrl = data.webhookUrl;
         if (data.webhookAnamnesticiUrl !== undefined) appData.webhookAnamnesticiUrl = data.webhookAnamnesticiUrl;
         if (data.bozzaNoteAdmin !== undefined) appData.bozzaNoteAdmin = data.bozzaNoteAdmin;
-        if (data.ruoloMinimoPortale !== undefined) appData.ruoloMinimoPortale = data.ruoloMinimoPortale;
+        if (data.ruoliAbilitatiPortale) appData.ruoliAbilitatiPortale = Object.values(data.ruoliAbilitatiPortale);
+        if (data.ruoliAbilitatiCertificati) appData.ruoliAbilitatiCertificati = Object.values(data.ruoliAbilitatiCertificati);
         if (data.operatori) appData.operatori = Object.values(data.operatori).map(o => ({ ...o, turni: o.turni ? Object.values(o.turni) : [] }));
         if (data.prenotazioni) appData.prenotazioni = Object.values(data.prenotazioni);
         if (data.farmacia) appData.farmacia = Object.values(data.farmacia);
@@ -1098,7 +1121,7 @@
       `).join('');
     }
 
-    // FARMACIA - CARRELLO MULTIPLO & QUANTITÀ DIRETTA
+    // FARMACIA - CARRELLO MULTIPLO & SELEZIONE QUANTITÀ
     function renderFarmaciaPubblica() {
       const container = document.getElementById('catalogo-farmaci-pubblico');
       if (!appData.farmacia || appData.farmacia.length === 0) {
@@ -1284,21 +1307,36 @@
       appData.cartelleCliniche.unshift(nuovaCartella);
       salvaTuttoCloud();
 
-      alert(`Intervento registrato con successo!\nCartella clinica aperta per ${nuovaCartella.cittadino}.\nFATTURA AUTOMATICA GENERATA: ${nuovaCartella.costo} (Pronta da replicare in game).`);
+      alert(`Intervento registrato con successo!\nCartella clinica salvata per ${nuovaCartella.cittadino}.\nFATTURA AUTOMATICA: ${nuovaCartella.costo} (Pronta da replicare in game).`);
       e.target.reset();
       aggiornaCostoIntervento();
       renderCartelleClinicheOp();
     }
 
-    function renderCartelleClinicheOp() {
+    function filtrarCartelleCliniche() {
+      const query = document.getElementById('search-cittadino-input').value.toLowerCase().trim();
+      renderCartelleClinicheOp(query);
+    }
+
+    function renderCartelleClinicheOp(queryFiltro = '') {
       const tbody = document.getElementById('lista-cartelle-cliniche');
       if (!tbody) return;
-      if (!appData.cartelleCliniche || appData.cartelleCliniche.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="6" class="p-3 text-center text-gray-500">Nessuna cartella clinica o intervento registrato.</td></tr>`;
+      
+      let cartelle = appData.cartelleCliniche || [];
+      if (queryFiltro) {
+        cartelle = cartelle.filter(c => 
+          (c.cittadino && c.cittadino.toLowerCase().includes(queryFiltro)) ||
+          (c.discord && c.discord.toLowerCase().includes(queryFiltro)) ||
+          (c.tipoIntervento && c.tipoIntervento.toLowerCase().includes(queryFiltro))
+        );
+      }
+
+      if (cartelle.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" class="p-3 text-center text-gray-500">Nessuna cartella clinica trovata.</td></tr>`;
         return;
       }
 
-      tbody.innerHTML = appData.cartelleCliniche.map(c => `
+      tbody.innerHTML = cartelle.map(c => `
         <tr class="border-b hover:bg-gray-50">
           <td class="p-2 text-gray-500">${c.data}</td>
           <td class="p-2 font-bold text-gray-800">${c.cittadino} <br><span class="text-xs text-indigo-600 font-normal">${c.discord}</span></td>
@@ -1496,12 +1534,26 @@
       document.getElementById('discord-webhook-anamnestici-url').value = appData.webhookAnamnesticiUrl || '';
       document.getElementById('admin-bozza-note').value = appData.bozzaNoteAdmin || '';
 
-      // Popola select ruoli minimi portale cittadino
-      const selectRuoli = document.getElementById('admin-ruolo-portale');
-      const ruoliUnici = [...new Set(appData.operatori.map(o => o.ruolo))];
-      if (ruoliUnici.length === 0) ruoliUnici.push('Soccorritore 118');
-      
-      selectRuoli.innerHTML = ruoliUnici.map(r => `<option value="${r}" ${appData.ruoloMinimoPortale === r ? 'selected' : ''}>Grado Minimo: ${r}</option>`).join('');
+      // Popola checkbox permessi ruoli
+      const ruoliEsistenti = [...new Set(appData.operatori.map(o => o.ruolo))];
+      if (ruoliEsistenti.length === 0) ruoliEsistenti.push('Soccorritore 118', 'Medico Chirurgo');
+
+      const boxPortale = document.getElementById('box-ruoli-portale');
+      const boxCertificati = document.getElementById('box-ruoli-certificati');
+
+      boxPortale.innerHTML = ruoliEsistenti.map(r => `
+        <label class="flex items-center space-x-2 text-xs font-semibold text-gray-700 cursor-pointer">
+          <input type="checkbox" value="${r}" class="chk-ruolo-portale rounded text-blue-600 focus:ring-blue-500" ${appData.ruoliAbilitatiPortale.includes(r) ? 'checked' : ''}>
+          <span>${r}</span>
+        </label>
+      `).join('');
+
+      boxCertificati.innerHTML = ruoliEsistenti.map(r => `
+        <label class="flex items-center space-x-2 text-xs font-semibold text-gray-700 cursor-pointer">
+          <input type="checkbox" value="${r}" class="chk-ruolo-certificati rounded text-red-600 focus:ring-red-500" ${appData.ruoliAbilitatiCertificati.includes(r) ? 'checked' : ''}>
+          <span>${r}</span>
+        </label>
+      `).join('');
 
       // Statistiche
       document.getElementById('stat-prenotazioni').textContent = appData.prenotazioni.length;
@@ -1633,10 +1685,14 @@
       `).join('');
     }
 
-    function salvaRuoloPortaleAdmin() {
-      appData.ruoloMinimoPortale = document.getElementById('admin-ruolo-portale').value;
+    function salvaPermessiRuoliAdmin() {
+      const portaleChecked = Array.from(document.querySelectorAll('.chk-ruolo-portale:checked')).map(el => el.value);
+      const certificatiChecked = Array.from(document.querySelectorAll('.chk-ruolo-certificati:checked')).map(el => el.value);
+
+      appData.ruoliAbilitatiPortale = portaleChecked;
+      appData.ruoliAbilitatiCertificati = certificatiChecked;
       salvaTuttoCloud();
-      alert('Ruolo minimo abilitato al Portale del Cittadino aggiornato con successo!');
+      alert('Permessi dei ruoli salvati con successo sul Database Cloud!');
     }
 
     // GESTIONE ORE OPERATORE (MODALE ADMIN)
@@ -1831,15 +1887,18 @@
     }
 
     function renderOpDashboard() {
-      const op = sessioneCorrente.user;
-      document.getElementById('op-welcome-name').textContent = 'Benvenuto, ' + op.nome;
-      document.getElementById('op-badge-ruolo').textContent = op.ruolo;
+      // Usa direttamente l'operatore presente nell'array principale per evitare disallineamenti o doppi inserimenti
+      const opInDb = appData.operatori.find(o => o.id === sessioneCorrente.user.id) || sessioneCorrente.user;
+      sessioneCorrente.user = opInDb;
 
-      // Controllo visibilità Portale del Cittadino in base al ruolo minimo configurato dall'admin
+      document.getElementById('op-welcome-name').textContent = 'Benvenuto, ' + opInDb.nome;
+      document.getElementById('op-badge-ruolo').textContent = opInDb.ruolo;
+
+      // Controllo Permessi Portale Cittadino & Certificati Anamnestici
       const wrapperPortale = document.getElementById('wrapper-portale-cittadino');
-      const ruoliDisponibili = appData.operatori.map(o => o.ruolo);
-      // Semplice controllo di autorizzazione basato sul ruolo o se l'operatore ha un ruolo pari/superiore nel listino
-      if (op.ruolo === appData.ruoloMinimoPortale || op.ruolo.toLowerCase().includes('medico') || op.ruolo.toLowerCase().includes('capo') || op.ruolo.toLowerCase().includes('dirigente')) {
+      const wrapperCertificati = document.getElementById('wrapper-certificati-anamnestici');
+
+      if (appData.ruoliAbilitatiPortale.includes(opInDb.ruolo)) {
         wrapperPortale.classList.remove('hidden');
         renderCartelleClinicheOp();
         aggiornaCostoIntervento();
@@ -1847,7 +1906,13 @@
         wrapperPortale.classList.add('hidden');
       }
 
-      if (op.provvisoria) {
+      if (appData.ruoliAbilitatiCertificati.includes(opInDb.ruolo)) {
+        wrapperCertificati.classList.remove('hidden');
+      } else {
+        wrapperCertificati.classList.add('hidden');
+      }
+
+      if (opInDb.provvisoria) {
         document.getElementById('banner-pass-provvisoria').classList.remove('hidden');
       } else {
         document.getElementById('banner-pass-provvisoria').classList.add('hidden');
@@ -1857,7 +1922,7 @@
       const btnOut = document.getElementById('btn-out-servizio');
       const badgeStato = document.getElementById('op-stato-badge');
 
-      if (op.inServizio) {
+      if (opInDb.inServizio) {
         badgeStato.textContent = 'In Servizio';
         badgeStato.className = 'bg-green-100 text-green-800 text-xs font-bold px-2.5 py-1 rounded';
         btnIn.disabled = true;
@@ -1882,10 +1947,10 @@
       const tbodyOpStorico = document.getElementById('lista-storico-op-personale');
       let totaleSecondiOp = 0;
 
-      if (!op.turni || op.turni.length === 0) {
+      if (!opInDb.turni || opInDb.turni.length === 0) {
         tbodyOpStorico.innerHTML = `<tr><td colspan="4" class="p-3 text-center text-gray-500">Nessun turno salvato fino ad ora.</td></tr>`;
       } else {
-        tbodyOpStorico.innerHTML = op.turni.map((t, index) => {
+        tbodyOpStorico.innerHTML = opInDb.turni.map((t, index) => {
           totaleSecondiOp += (t.durataSecondi || 0);
           return `
             <tr class="border-b hover:bg-gray-50">
@@ -1901,47 +1966,38 @@
       document.getElementById('op-ore-totali-badge').textContent = `Totale: ${formattaTempoPreciso(totaleSecondiOp)}`;
     }
 
+    // CORREZIONE BUG TURNO DOPPIO: Modificato per operare su un'unica istanza dell'operatore
     function toggleServizio(stato) {
-      const op = sessioneCorrente.user;
-      const opInDb = appData.operatori.find(o => o.id === op.id);
+      if (!sessioneCorrente || sessioneCorrente.tipo !== 'operatore') return;
+      
+      const opInDb = appData.operatori.find(o => o.id === sessioneCorrente.user.id);
+      if (!opInDb) return;
 
       if (stato) {
-        if (op.inServizio) return;
+        if (opInDb.inServizio) return;
         const oraAttuale = Date.now();
-        op.inServizio = true;
-        op.inizioTurno = oraAttuale;
-        if (opInDb) {
-          opInDb.inServizio = true;
-          opInDb.inizioTurno = oraAttuale;
-        }
+        opInDb.inServizio = true;
+        opInDb.inizioTurno = oraAttuale;
       } else {
-        if (!op.inServizio || !op.inizioTurno) return;
+        if (!opInDb.inServizio || !opInDb.inizioTurno) return;
 
-        const durataSecondi = Math.floor((Date.now() - op.inizioTurno) / 1000);
+        const durataSecondi = Math.floor((Date.now() - opInDb.inizioTurno) / 1000);
         if (durataSecondi > 0) {
           const nuovoTurno = {
-            inizio: new Date(op.inizioTurno).toLocaleString('it-IT'),
+            inizio: new Date(opInDb.inizioTurno).toLocaleString('it-IT'),
             fine: new Date().toLocaleString('it-IT'),
             durataSecondi: durataSecondi
           };
 
-          if (!op.turni) op.turni = [];
-          op.turni.push(nuovoTurno);
-
-          if (opInDb) {
-            if (!opInDb.turni) opInDb.turni = [];
-            opInDb.turni.push(nuovoTurno);
-          }
+          if (!opInDb.turni) opInDb.turni = [];
+          opInDb.turni.push(nuovoTurno);
         }
 
-        op.inServizio = false;
-        op.inizioTurno = null;
-        if (opInDb) {
-          opInDb.inServizio = false;
-          opInDb.inizioTurno = null;
-        }
+        opInDb.inServizio = false;
+        opInDb.inizioTurno = null;
       }
 
+      sessioneCorrente.user = opInDb;
       salvaTuttoCloud();
       renderOpDashboard();
     }
@@ -1969,13 +2025,12 @@
     function salvaNuovaPasswordOp(e) {
       e.preventDefault();
       const nuova = document.getElementById('nuova-pass-op').value;
-      sessioneCorrente.user.pass = nuova;
-      sessioneCorrente.user.provvisoria = false;
-
+      
       const opInDb = appData.operatori.find(o => o.id === sessioneCorrente.user.id);
       if (opInDb) {
         opInDb.pass = nuova;
         opInDb.provvisoria = false;
+        sessioneCorrente.user = opInDb;
       }
 
       salvaTuttoCloud();
