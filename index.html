@@ -291,7 +291,6 @@
 
         <!-- RIQUADRI / CARD GRANDI PER SELEZIONE SERVIZI OPERATORE -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <!-- Card 1: Portale Cittadino -->
           <div onclick="toggleOpCard('portale')" class="bg-white p-6 rounded-xl shadow-md border-2 border-transparent hover:border-blue-600 cursor-pointer transition transform hover:-translate-y-1 flex flex-col justify-between">
             <div>
               <div class="text-blue-600 text-4xl mb-3"><i class="fa-solid fa-address-book"></i></div>
@@ -301,7 +300,6 @@
             <div class="mt-4 text-blue-600 font-bold text-xs flex items-center">Apri sezione &rarr;</div>
           </div>
 
-          <!-- Card 2: Certificati Anamnestici -->
           <div onclick="toggleOpCard('certificati')" class="bg-white p-6 rounded-xl shadow-md border-2 border-transparent hover:border-cri-red cursor-pointer transition transform hover:-translate-y-1 flex flex-col justify-between">
             <div>
               <div class="text-cri-red text-4xl mb-3"><i class="fa-solid fa-file-medical"></i></div>
@@ -311,7 +309,6 @@
             <div class="mt-4 text-cri-red font-bold text-xs flex items-center">Apri sezione &rarr;</div>
           </div>
 
-          <!-- Card 3: Prenotazioni & Farmacia -->
           <div onclick="toggleOpCard('prenotazioni')" class="bg-white p-6 rounded-xl shadow-md border-2 border-transparent hover:border-indigo-600 cursor-pointer transition transform hover:-translate-y-1 flex flex-col justify-between">
             <div>
               <div class="text-indigo-600 text-4xl mb-3"><i class="fa-solid fa-clipboard-list"></i></div>
@@ -322,7 +319,7 @@
           </div>
         </div>
 
-        <!-- CONTENUTO PORTALE DEL CITTADINO (ESPANSIVO) -->
+        <!-- CONTENUTO PORTALE DEL CITTADINO -->
         <div id="wrapper-portale-cittadino" class="hidden space-y-6">
           <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-blue-600 space-y-4">
             <div class="border-b pb-2 flex justify-between items-center flex-wrap gap-2">
@@ -361,7 +358,7 @@
               </div>
               <div>
                 <label class="block text-xs font-bold text-gray-700">Cartella Clinica / Dettagli Azione Eseguita</label>
-                <textarea id="cittadino-dettagli" rows="2" required placeholder="Descrivi l'intervento, cure somministrate o note cliniche..." class="w-full border p-2 rounded text-sm mt-1 bg-white"></textarea>
+                <textarea id="cittadino-dettagli" rows="2" required placeholder="Descrivi l'intervento..." class="w-full border p-2 rounded text-sm mt-1 bg-white"></textarea>
               </div>
               <div class="flex justify-end">
                 <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-5 py-2 rounded text-sm transition shadow"><i class="fa-solid fa-file-invoice-dollar mr-2"></i> Registra Intervento &amp; Genera Fattura In-Game</button>
@@ -394,7 +391,7 @@
           </div>
         </div>
 
-        <!-- EMISSIONE CERTIFICATI ANAMNESTICI (ESPANSIVO) -->
+        <!-- EMISSIONE CERTIFICATI ANAMNESTICI -->
         <div id="wrapper-certificati-op" class="hidden bg-white p-6 rounded-lg shadow space-y-4 border-l-4 border-cri-red">
           <div class="border-b pb-2 flex justify-between items-center flex-wrap gap-2">
             <h3 class="font-bold text-gray-800 text-lg"><i class="fa-solid fa-file-medical text-cri-red mr-2"></i> Emetti Certificato Medico Anamnestico</h3>
@@ -407,17 +404,17 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label class="block text-sm font-medium text-gray-700">Nome e Cognome Paziente RP</label>
-                <input type="text" id="cert-paziente" required class="w-full border p-2 rounded mt-1 focus:ring-2 focus:ring-red-500 outline-none" placeholder="Es. Mario Rossi">
+                <input type="text" id="cert-paziente" required class="w-full border p-2 rounded mt-1 outline-none" placeholder="Es. Mario Rossi">
               </div>
               <div>
                 <label class="block text-sm font-medium text-gray-700">Tag Discord Paziente</label>
-                <input type="text" id="cert-discord" required class="w-full border p-2 rounded mt-1 focus:ring-2 focus:ring-red-500 outline-none" placeholder="Es. @mario_rossi">
+                <input type="text" id="cert-discord" required class="w-full border p-2 rounded mt-1 outline-none" placeholder="Es. @mario_rossi">
               </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label class="block text-sm font-medium text-gray-700">Tipo di Certificato Anamnestico</label>
-                <select id="cert-tipo" required class="w-full border p-2 rounded mt-1 focus:ring-2 focus:ring-red-500 outline-none bg-white">
+                <select id="cert-tipo" required class="w-full border p-2 rounded mt-1 outline-none bg-white">
                   <option value="Certificato Anamnestico per Porto d'Armi">Certificato Anamnestico per Porto d'Armi</option>
                   <option value="Certificato Anamnestico per Idoneità Lavorativa">Certificato Anamnestico per Idoneità Lavorativa</option>
                   <option value="Certificato Anamnestico per Arruolamento in FdO">Certificato Anamnestico per Arruolamento in FdO</option>
@@ -425,7 +422,7 @@
               </div>
               <div>
                 <label class="block text-sm font-medium text-gray-700">Esito della Visita</label>
-                <select id="cert-esito" required class="w-full border p-2 rounded mt-1 focus:ring-2 focus:ring-red-500 outline-none bg-white font-bold">
+                <select id="cert-esito" required class="w-full border p-2 rounded mt-1 outline-none bg-white font-bold">
                   <option value="Idoneo">🟢 Idoneo</option>
                   <option value="Non Idoneo">🔴 Non Idoneo</option>
                   <option value="Rimandata / Sospesa">🟡 Rimandata / Sospesa</option>
@@ -433,18 +430,18 @@
               </div>
             </div>
             <div>
-              <label class="block text-sm font-medium text-gray-700">Note Mediche / Anamnesi (Modificabili)</label>
-              <textarea id="cert-note" rows="3" required class="w-full border p-2 rounded mt-1 focus:ring-2 focus:ring-red-500 outline-none" placeholder="Inserisci dettagli..."></textarea>
+              <label class="block text-sm font-medium text-gray-700">Note Mediche / Anamnesi</label>
+              <textarea id="cert-note" rows="3" required class="w-full border p-2 rounded mt-1 outline-none" placeholder="Inserisci dettagli..."></textarea>
             </div>
-            <button type="submit" class="bg-cri-red hover:bg-red-700 text-white font-bold px-6 py-2.5 rounded text-sm transition shadow"><i class="fa-solid fa-paper-plane mr-2"></i> Emetti e Invia su Discord Certificati</button>
+            <button type="submit" class="bg-cri-red hover:bg-red-700 text-white font-bold px-6 py-2.5 rounded text-sm transition shadow"><i class="fa-solid fa-paper-plane mr-2"></i> Emetti e Invia su Discord</button>
           </form>
         </div>
 
-        <!-- GESTIONE PRENOTAZIONI & ORDINI FARMACIA (ESPANSIVO) -->
+        <!-- GESTIONE PRENOTAZIONI & ORDINI FARMACIA -->
         <div id="wrapper-prenotazioni-op" class="hidden space-y-6">
           <div class="bg-white p-6 rounded-lg shadow space-y-4 border-l-4 border-indigo-600">
             <div class="border-b pb-2 flex justify-between items-center flex-wrap gap-2">
-              <h3 class="font-bold text-gray-800 text-lg"><i class="fa-solid fa-clipboard-list text-indigo-600 mr-2"></i> Gestione Prenotazioni Visite &amp; Colloqui Ricevuti</h3>
+              <h3 class="font-bold text-gray-800 text-lg"><i class="fa-solid fa-clipboard-list text-indigo-600 mr-2"></i> Gestione Prenotazioni Visite &amp; Colloqui</h3>
               <button onclick="toggleOpCard('prenotazioni')" class="text-xs text-gray-500 hover:text-gray-800 font-bold">[ Chiudi Riquadro ]</button>
             </div>
             <div class="overflow-x-auto">
@@ -578,10 +575,10 @@
           </div>
         </div>
 
-        <!-- 3 CANALI WEBHOOK -->
+        <!-- 4 CANALI WEBHOOK -->
         <div class="bg-white p-6 rounded-lg shadow space-y-4 border-l-4 border-indigo-600">
           <h3 class="font-bold text-gray-800 flex items-center"><i class="fa-brands fa-discord text-indigo-600 mr-2 text-xl"></i> Configurazione Canali Discord Webhook</h3>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <div>
               <label class="block text-xs font-bold text-gray-600 mb-1">Webhook Prenotazioni &amp; Farmacia</label>
               <div class="space-y-2">
@@ -593,11 +590,11 @@
               </div>
             </div>
             <div>
-              <label class="block text-xs font-bold text-gray-600 mb-1">Webhook Conferme Appuntamenti / Ordini</label>
+              <label class="block text-xs font-bold text-gray-600 mb-1">Webhook Conferme Appuntamenti</label>
               <div class="space-y-2">
                 <input type="url" id="discord-webhook-conferme-url" placeholder="https://discord.com/api/webhooks/..." class="w-full border p-2 rounded text-xs outline-none">
                 <div class="flex gap-1">
-                  <button onclick="salvaWebhookConferme()" class="flex-1 bg-indigo-600 text-white py-1.5 rounded font-bold text-xs hover:bg-indigo-700">Salva</button>
+                  <button onclick="salvaWebhookConferme()" class="flex-1 bg-indigo-600 text-white py-1.5 rounded font-bold text-xs">Salva</button>
                   <button onclick="testWebhookConferme()" class="bg-gray-200 text-gray-800 px-3 py-1.5 rounded font-bold text-xs">Test</button>
                 </div>
               </div>
@@ -607,11 +604,45 @@
               <div class="space-y-2">
                 <input type="url" id="discord-webhook-anamnestici-url" placeholder="https://discord.com/api/webhooks/..." class="w-full border p-2 rounded text-xs outline-none">
                 <div class="flex gap-1">
-                  <button onclick="salvaWebhookAnamnestici()" class="flex-1 bg-indigo-600 text-white py-1.5 rounded font-bold text-xs hover:bg-indigo-700">Salva</button>
+                  <button onclick="salvaWebhookAnamnestici()" class="flex-1 bg-indigo-600 text-white py-1.5 rounded font-bold text-xs">Salva</button>
                   <button onclick="testWebhookAnamnestici()" class="bg-gray-200 text-gray-800 px-3 py-1.5 rounded font-bold text-xs">Test</button>
                 </div>
               </div>
             </div>
+            <div>
+              <label class="block text-xs font-bold text-gray-600 mb-1">Webhook Bando / Reclutamento</label>
+              <div class="space-y-2">
+                <input type="url" id="discord-webhook-bandi-url" placeholder="https://discord.com/api/webhooks/..." class="w-full border p-2 rounded text-xs outline-none">
+                <div class="flex gap-1">
+                  <button onclick="salvaWebhookBandi()" class="flex-1 bg-indigo-600 text-white py-1.5 rounded font-bold text-xs hover:bg-indigo-700">Salva</button>
+                  <button onclick="testWebhookBandi()" class="bg-gray-200 text-gray-800 px-3 py-1.5 rounded font-bold text-xs">Test</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GESTIONE / ACCETTAZIONE BANDO (ADMIN) -->
+        <div class="bg-white p-6 rounded-lg shadow space-y-4 border-l-4 border-amber-600">
+          <div class="border-b pb-2 flex justify-between items-center flex-wrap gap-2">
+            <h3 class="font-bold text-gray-800 text-lg"><i class="fa-solid fa-file-lines text-amber-600 mr-2"></i> Gestione Bandi &amp; Candidature Inviate</h3>
+            <button onclick="apriModalAggiungiBando()" class="bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs px-3 py-1.5 rounded transition"><i class="fa-solid fa-plus mr-1"></i> Aggiungi Candidatura Manuale</button>
+          </div>
+          <p class="text-xs text-gray-500">Puoi registrare qui le candidature ricevute tramite il Google Moduli e accettarle inviando la notifica sul Discord dei bandi.</p>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm border-collapse">
+              <thead>
+                <tr class="bg-gray-100 text-gray-700 border-b">
+                  <th class="p-2">Codice</th>
+                  <th class="p-2">Data</th>
+                  <th class="p-2">Candidato RP</th>
+                  <th class="p-2">Tag Discord</th>
+                  <th class="p-2">Stato</th>
+                  <th class="p-2 text-right">Azioni Admin</th>
+                </tr>
+              </thead>
+              <tbody id="lista-bandi-admin"></tbody>
+            </table>
           </div>
         </div>
 
@@ -818,7 +849,63 @@
     </div>
   </footer>
 
-  <!-- MODALE CONFERMA PRENOTAZIONE -->
+  <!-- MODALE ACCETTAZIONE BANDO VIA DISCORD -->
+  <div id="modal-conferma-bando" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+    <div class="bg-white rounded-lg shadow-xl max-w-md w-full p-6 space-y-4">
+      <h3 class="text-lg font-bold text-gray-800 flex items-center"><i class="fa-solid fa-file-lines text-amber-600 mr-2"></i> Accetta Candidatura Bando</h3>
+      <p class="text-xs text-gray-500">Conferma l'esito della candidatura. Verrà inviata una notifica sul canale Discord dedicato ai bandi.</p>
+      <form onsubmit="confermaAccettazioneBando(event)" class="space-y-3">
+        <input type="hidden" id="conf-bando-id">
+        <div>
+          <label class="block text-xs font-bold text-gray-600">Candidato / Codice</label>
+          <input type="text" id="conf-bando-info" readonly class="w-full border p-2 rounded text-sm bg-gray-100 font-bold">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-gray-600">Esito Candidatura</label>
+          <select id="conf-bando-esito" class="w-full border p-2 rounded text-sm mt-1 bg-white font-bold">
+            <option value="Approvata / Convocato a Colloquio">🟢 Approvata / Convocato a Colloquio</option>
+            <option value="Assunto in Prova">⭐ Assunto in Prova</option>
+            <option value="Non Accolta">🔴 Non Accolta</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-gray-600">Note o Data Colloquio</label>
+          <textarea id="conf-bando-note" rows="2" placeholder="Es. Presentarsi in sede CRI..." class="w-full border p-2 rounded text-sm mt-1"></textarea>
+        </div>
+        <div class="flex justify-end space-x-2 pt-2">
+          <button type="button" onclick="chiudiModalConfermaBando()" class="px-3 py-1.5 border rounded text-sm hover:bg-gray-100">Annulla</button>
+          <button type="submit" class="bg-amber-600 text-white font-bold px-4 py-1.5 rounded text-sm hover:bg-amber-700">Invia Notifica Discord</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODALE AGGIUNGI CANDIDATURA MANUALE BANDO -->
+  <div id="modal-aggiungi-bando" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+    <div class="bg-white rounded-lg shadow-xl max-w-md w-full p-6 space-y-4">
+      <h3 class="text-lg font-bold text-gray-800 flex items-center"><i class="fa-solid fa-user-plus text-amber-600 mr-2"></i> Registra Candidatura Bando</h3>
+      <form onsubmit="registraBandoManuale(event)" class="space-y-3">
+        <div>
+          <label class="block text-xs font-bold text-gray-600">Nome e Cognome Candidato (RP)</label>
+          <input type="text" id="bando-reg-nome" required placeholder="Es. Mario Rossi" class="w-full border p-2 rounded text-sm mt-1">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-gray-600">Tag Discord</label>
+          <input type="text" id="bando-reg-discord" required placeholder="Es. @mario_rossi" class="w-full border p-2 rounded text-sm mt-1">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-gray-600">Note o Esperienze (Opzionale)</label>
+          <textarea id="bando-reg-note" rows="2" placeholder="Note dal modulo Google..." class="w-full border p-2 rounded text-sm mt-1"></textarea>
+        </div>
+        <div class="flex justify-end space-x-2 pt-2">
+          <button type="button" onclick="chiudiModalAggiungiBando()" class="px-3 py-1.5 border rounded text-sm hover:bg-gray-100">Annulla</button>
+          <button type="submit" class="bg-amber-600 text-white font-bold px-4 py-1.5 rounded text-sm hover:bg-amber-700">Registra Candidatura</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ALTRE MODALI (Conferma Prenotazione, Ordine Farmacia, Carrello, ecc.) -->
   <div id="modal-conferma-prenotazione" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
     <div class="bg-white rounded-lg shadow-xl max-w-md w-full p-6 space-y-4">
       <h3 class="text-lg font-bold text-gray-800 flex items-center"><i class="fa-solid fa-calendar-check text-blue-600 mr-2"></i> Accetta &amp; Conferma Appuntamento / Colloquio</h3>
@@ -848,7 +935,6 @@
     </div>
   </div>
 
-  <!-- MODALE CONFERMA ORDINE FARMACIA -->
   <div id="modal-conferma-ordine-farmacia" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
     <div class="bg-white rounded-lg shadow-xl max-w-md w-full p-6 space-y-4">
       <h3 class="text-lg font-bold text-gray-800 flex items-center"><i class="fa-solid fa-boxes-packing text-blue-600 mr-2"></i> Accetta &amp; Conferma Ordine Farmacia</h3>
@@ -866,11 +952,11 @@
           </select>
         </div>
         <div>
-          <label class="block text-xs font-bold text-gray-600">Orario Indicativo Consegna / Punto Incontro</label>
-          <input type="text" id="conf-ord-orario" required placeholder="Es. Entro le 19:00 presso Ospedale" class="w-full border p-2 rounded text-sm mt-1">
+          <label class="block text-xs font-bold text-gray-600">Orario Indicativo Consegna</label>
+          <input type="text" id="conf-ord-orario" required placeholder="Es. Entro le 19:00" class="w-full border p-2 rounded text-sm mt-1">
         </div>
         <div>
-          <label class="block text-xs font-bold text-gray-600">Note Operatore (Opzionale)</label>
+          <label class="block text-xs font-bold text-gray-600">Note Operatore</label>
           <textarea id="conf-ord-note" rows="2" placeholder="Indicazioni..." class="w-full border p-2 rounded text-sm mt-1"></textarea>
         </div>
         <div class="flex justify-end space-x-2 pt-2">
@@ -881,7 +967,6 @@
     </div>
   </div>
 
-  <!-- MODALE CARRELLO -->
   <div id="modal-carrello" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
     <div class="bg-white rounded-lg shadow-xl max-w-lg w-full p-6 space-y-4">
       <h3 class="text-lg font-bold text-gray-800 flex items-center"><i class="fa-solid fa-cart-shopping text-blue-600 mr-2"></i> Carrello Farmacia &amp; Checkout</h3>
@@ -911,7 +996,6 @@
     </div>
   </div>
 
-  <!-- ALTRE MODALI (Storico, Ore, Password, Admin) -->
   <div id="modal-storico-turni" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
     <div class="bg-white rounded-lg shadow-xl max-w-lg w-full p-6 space-y-4">
       <h3 class="text-lg font-bold text-gray-800" id="titolo-modal-storico">Storico Turni Operatore</h3>
@@ -992,6 +1076,7 @@
       webhookUrl: '',
       webhookConfermeUrl: '',
       webhookAnamnesticiUrl: '',
+      webhookBandiUrl: '',
       bozzaNoteAdmin: 'Esame obiettivo regolare, assenza di patologie di rilievo, idoneità rilasciata con riserva.',
       ruoliAbilitatiPortale: ['Soccorritore 118', 'Medico Chirurgo'],
       ruoliAbilitatiCertificati: ['Medico Chirurgo'],
@@ -999,6 +1084,7 @@
         { id: 1, nome: 'Mario Rossi', user: 'm.rossi', pass: 'CRI-2024', provvisoria: true, ruolo: 'Soccorritore 118', inServizio: false, inizioTurno: null, turni: [] }
       ],
       prenotazioni: [],
+      bandi: [],
       farmacia: [
         { id: 1, nome: 'Kit Primo Soccorso', prezzo: '50€', descrizione: 'Garze sterili e disinfettante.' },
         { id: 2, nome: 'Morfina 10mg', prezzo: '150€', descrizione: 'Analgesico per traumi.' }
@@ -1058,11 +1144,13 @@
         if (data.webhookUrl !== undefined) appData.webhookUrl = data.webhookUrl;
         if (data.webhookConfermeUrl !== undefined) appData.webhookConfermeUrl = data.webhookConfermeUrl;
         if (data.webhookAnamnesticiUrl !== undefined) appData.webhookAnamnesticiUrl = data.webhookAnamnesticiUrl;
+        if (data.webhookBandiUrl !== undefined) appData.webhookBandiUrl = data.webhookBandiUrl;
         if (data.bozzaNoteAdmin !== undefined) appData.bozzaNoteAdmin = data.bozzaNoteAdmin;
         if (data.ruoliAbilitatiPortale) appData.ruoliAbilitatiPortale = Object.values(data.ruoliAbilitatiPortale);
         if (data.ruoliAbilitatiCertificati) appData.ruoliAbilitatiCertificati = Object.values(data.ruoliAbilitatiCertificati);
         if (data.operatori) appData.operatori = Object.values(data.operatori).map(o => ({ ...o, turni: o.turni ? Object.values(o.turni) : [] }));
         if (data.prenotazioni) appData.prenotazioni = Object.values(data.prenotazioni);
+        if (data.bandi) appData.bandi = Object.values(data.bandi);
         if (data.farmacia) appData.farmacia = Object.values(data.farmacia);
         if (data.ordiniFarmacia) appData.ordiniFarmacia = Object.values(data.ordiniFarmacia);
         if (data.certificatiAnamnestici) appData.certificatiAnamnestici = Object.values(data.certificatiAnamnestici);
@@ -1141,40 +1229,118 @@
           let colorClass = 'bg-amber-100 text-amber-800';
           if (p.stato === 'Accettata') colorClass = 'bg-blue-100 text-blue-800';
           if (p.stato === 'Completata') colorClass = 'bg-green-100 text-green-800';
-          if (p.stato === 'Rifiutata') colorClass = 'bg-red-100 text-red-800';
-
           box.classList.add(...colorClass.split(' '));
           box.innerHTML = `<i class="fa-solid fa-circle-info mr-1"></i> Pratica <strong>${p.codice}</strong> (${p.tipo}) per <strong>${p.nome}</strong>: <span class="uppercase font-bold">${p.stato}</span> ${p.dataConfermata ? `<br><small>Appuntamento Confermato per il: <strong>${p.dataConfermata} ore ${p.orarioConfermato}</strong></small>` : ''}`;
+          return;
+        }
+      } else if (cod.startsWith('BAN-')) {
+        const b = appData.bandi.find(item => item.codice === cod);
+        if (b) {
+          box.classList.add('bg-blue-100', 'text-blue-800');
+          box.innerHTML = `<i class="fa-solid fa-file-lines mr-1"></i> Candidatura Bando <strong>${b.codice}</strong> per <strong>${b.nome}</strong>: <span class="uppercase font-bold">${b.stato}</span> ${b.noteEsito ? `<br><small>Note: <strong>${b.noteEsito}</strong></small>` : ''}`;
           return;
         }
       } else if (cod.startsWith('FAR-')) {
         const o = appData.ordiniFarmacia.find(item => item.codice === cod);
         if (o) {
-          let colorClass = 'bg-amber-100 text-amber-800';
-          if (o.stato === 'In Consegna') colorClass = 'bg-blue-100 text-blue-800';
-          if (o.stato === 'Consegnato') colorClass = 'bg-green-100 text-green-800';
-          if (o.stato === 'Annullato') colorClass = 'bg-red-100 text-red-800';
-
-          box.classList.add(...colorClass.split(' '));
-          box.innerHTML = `<i class="fa-solid fa-pills mr-1"></i> Ordine Farmacia <strong>${o.codice}</strong> - Totale: <strong>${o.totaleInGame || '-'}</strong> - Stato: <span class="uppercase font-bold">${o.stato}</span> ${o.orarioConsegna ? `<br><small>Dettagli Consegna: <strong>${o.orarioConsegna}</strong></small>` : ''}`;
+          box.classList.add('bg-blue-100', 'text-blue-800');
+          box.innerHTML = `<i class="fa-solid fa-pills mr-1"></i> Ordine Farmacia <strong>${o.codice}</strong> - Stato: <span class="uppercase font-bold">${o.stato}</span>`;
           return;
         }
       } else if (cod.startsWith('ANA-')) {
         const c = appData.certificatiAnamnestici.find(item => item.codice === cod);
         if (c) {
-          let colorClass = 'bg-amber-100 text-amber-800';
-          let pallino = '🟡';
-          if (c.esito === 'Idoneo') { colorClass = 'bg-green-100 text-green-800'; pallino = '🟢'; }
-          else if (c.esito === 'Non Idoneo') { colorClass = 'bg-red-100 text-red-800'; pallino = '🔴'; }
-
-          box.classList.add(...colorClass.split(' '));
-          box.innerHTML = `<i class="fa-solid fa-file-medical mr-1"></i> Certificato Anamnestico <strong>${c.codice}</strong> (${c.tipo}) per <strong>${c.paziente}</strong> - Esito: <strong>${pallino} ${c.esito}</strong>`;
+          box.classList.add('bg-green-100', 'text-green-800');
+          box.innerHTML = `<i class="fa-solid fa-file-medical mr-1"></i> Certificato <strong>${c.codice}</strong> - Esito: <strong>${c.esito}</strong>`;
           return;
         }
       }
 
       box.classList.add('bg-red-100', 'text-red-800');
       box.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-1"></i> Nessuna pratica trovata con il codice <strong>${cod}</strong>.`;
+    }
+
+    // GESTIONE BANDI & ACCETTAZIONE VIA DISCORD
+    function apriModalAggiungiBando() { document.getElementById('modal-aggiungi-bando').classList.remove('hidden'); }
+    function chiudiModalAggiungiBando() { document.getElementById('modal-aggiungi-bando').classList.add('hidden'); }
+
+    function registraBandoManuale(e) {
+      e.preventDefault();
+      const codiceBando = 'BAN-' + Math.floor(1000 + Math.random() * 9000);
+      const nuovoBando = {
+        id: Date.now(),
+        codice: codiceBando,
+        data: new Date().toLocaleString('it-IT'),
+        nome: document.getElementById('bando-reg-nome').value,
+        discord: document.getElementById('bando-reg-discord').value,
+        note: document.getElementById('bando-reg-note').value,
+        stato: 'In Attesa'
+      };
+      if (!appData.bandi) appData.bandi = [];
+      appData.bandi.unshift(nuovoBando);
+      salvaTuttoCloud();
+      alert(`Candidatura registrata con codice: ${codiceBando}`);
+      chiudiModalAggiungiBando();
+      e.target.reset();
+      renderAdmin();
+    }
+
+    function apriModalConfermaBando(bId) {
+      const b = appData.bandi.find(item => item.id === bId);
+      if (!b) return;
+      document.getElementById('conf-bando-id').value = b.id;
+      document.getElementById('conf-bando-info').value = `${b.nome} (${b.codice})`;
+      document.getElementById('conf-bando-esito').value = 'Approvata / Convocato a Colloquio';
+      document.getElementById('conf-bando-note').value = b.note || '';
+      document.getElementById('modal-conferma-bando').classList.remove('hidden');
+    }
+
+    function chiudiModalConfermaBando() { document.getElementById('modal-conferma-bando').classList.add('hidden'); }
+
+    async function confermaAccettazioneBando(e) {
+      e.preventDefault();
+      const bId = parseInt(document.getElementById('conf-bando-id').value);
+      const esito = document.getElementById('conf-bando-esito').value;
+      const noteEsito = document.getElementById('conf-bando-note').value;
+
+      const b = appData.bandi.find(item => item.id === bId);
+      if (b) {
+        b.stato = esito;
+        b.noteEsito = noteEsito;
+        salvaTuttoCloud();
+
+        const webhookTarget = appData.webhookBandiUrl || appData.webhookUrl;
+        if (webhookTarget) inviaDiscordEmbedBando(b, webhookTarget);
+
+        alert(`Candidatura ${b.codice} aggiornata e notificata su Discord!`);
+        chiudiModalConfermaBando();
+        renderAdmin();
+      }
+    }
+
+    async function inviaDiscordEmbedBando(b, webhookUrl) {
+      const payload = {
+        embeds: [{
+          title: "📄 ESITO CANDIDATURA BANDO CRI",
+          color: 15844367,
+          fields: [
+            { name: "Codice Pratica", value: `\`${b.codice}\``, inline: true },
+            { name: "Candidato RP", value: b.nome, inline: true },
+            { name: "Tag Discord", value: b.discord, inline: true },
+            { name: "📋 STATO ESITO", value: `**${b.stato}**`, inline: false },
+            { name: "Note / Dettagli", value: b.noteEsito || "Nessuna", inline: false }
+          ],
+          footer: { text: "Reclutamento Croce Rossa Italiana RP" }
+        }]
+      };
+      try { await fetch(webhookUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }); }
+      catch (err) { console.warn("Errore Webhook:", err); }
+    }
+
+    function eliminaBando(id) {
+      appData.bandi = appData.bandi.filter(b => b.id !== id);
+      salvaTuttoCloud();
+      renderAdmin();
     }
 
     async function salvaPrenotazione(e) {
@@ -1222,7 +1388,7 @@
         }]
       };
       try { await fetch(appData.webhookUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }); }
-      catch (err) { console.warn("Errore Webhook Discord:", err); }
+      catch (err) { console.warn("Errore Webhook:", err); }
     }
 
     function renderListinoPubblico() {
@@ -1646,15 +1812,22 @@
       alert('Test inviato!');
     }
 
-    function aggiungiVoceListino(e) {
-      e.preventDefault();
+    function testWebhookBandi() {
+      const target = appData.webhookBandiUrl || appData.webhookUrl;
+      if (!target) return alert('Inserisci prima il Webhook Bandi!');
+      inviaDiscordEmbedBando({ codice: "BAN-TEST", nome: "Mario (TEST)", discord: "@test", stato: "Approvata / Convocato a Colloquio", noteEsito: "Test bando" }, target);
+      alert('Test bando inviato!');
+    }
+
+    function aggiungiVoceListino(event) {
+      event.preventDefault();
       const nuovo = { id: Date.now(), titolo: document.getElementById('listino-titolo').value, categoria: document.getElementById('listino-categoria').value, prezzo: document.getElementById('listino-prezzo').value };
       appData.listinoPrezzi.push(nuovo);
       salvaTuttoCloud();
       renderAdmin();
       renderListinoPubblico();
       alert('Voce aggiunta!');
-      e.target.reset();
+      event.target.reset();
     }
 
     function eliminaVoceListino(id) {
@@ -1664,14 +1837,14 @@
       renderListinoPubblico();
     }
 
-    function aggiungiFarmaco(e) {
-      e.preventDefault();
+    function aggiungiFarmaco(event) {
+      event.preventDefault();
       const nuovo = { id: Date.now(), nome: document.getElementById('farmaco-nome').value, prezzo: document.getElementById('farmaco-prezzo').value, descrizione: document.getElementById('farmaco-desc').value };
       appData.farmacia.push(nuovo);
       salvaTuttoCloud();
       renderAdmin();
       alert('Farmaco aggiunto!');
-      e.target.reset();
+      event.target.reset();
     }
 
     function eliminaFarmaco(id) {
@@ -1686,8 +1859,8 @@
       renderAdmin();
     }
 
-    function loginAdmin(e) {
-      e.preventDefault();
+    function loginAdmin(event) {
+      event.preventDefault();
       const u = document.getElementById('admin-user').value;
       const p = document.getElementById('admin-pass').value;
       if (u === appData.adminUser && p === appData.adminPass) {
@@ -1702,6 +1875,7 @@
       document.getElementById('discord-webhook-url').value = appData.webhookUrl || '';
       document.getElementById('discord-webhook-conferme-url').value = appData.webhookConfermeUrl || '';
       document.getElementById('discord-webhook-anamnestici-url').value = appData.webhookAnamnesticiUrl || '';
+      document.getElementById('discord-webhook-bandi-url').value = appData.webhookBandiUrl || '';
       document.getElementById('admin-bozza-note').value = appData.bozzaNoteAdmin || '';
 
       const ruoliPresenti = [...new Set(appData.operatori.map(o => o.ruolo))];
@@ -1731,6 +1905,26 @@
       appData.operatori.forEach(o => { if (o.turni) o.turni.forEach(t => totaleSecondiTutti += (t.durataSecondi || 0)); });
       document.getElementById('stat-ore-totali').textContent = formattaTempoPreciso(totaleSecondiTutti);
 
+      // Rendering Tabella Bandi Admin
+      const tbodyBandi = document.getElementById('lista-bandi-admin');
+      if (!appData.bandi || appData.bandi.length === 0) {
+        tbodyBandi.innerHTML = `<tr><td colspan="6" class="p-3 text-center text-gray-500">Nessuna candidatura registrata.</td></tr>`;
+      } else {
+        tbodyBandi.innerHTML = appData.bandi.map(b => `
+          <tr class="border-b hover:bg-gray-50">
+            <td class="p-2 font-mono font-bold text-xs text-amber-600">${b.codice}</td>
+            <td class="p-2 text-xs text-gray-500">${b.data}</td>
+            <td class="p-2 font-bold">${b.nome}</td>
+            <td class="p-2 text-indigo-600 font-semibold">${b.discord}</td>
+            <td class="p-2"><span class="px-2 py-0.5 rounded text-xs font-bold ${b.stato.includes('Approvata') || b.stato.includes('Assunto') ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800'}">${b.stato}</span></td>
+            <td class="p-2 text-right space-x-1">
+              <button onclick="apriModalConfermaBando(${b.id})" class="bg-amber-600 text-white text-xs px-2 py-1 rounded">Gestisci / Accetta</button>
+              <button onclick="eliminaBando(${b.id})" class="bg-gray-400 text-white text-xs px-2 py-1 rounded">x</button>
+            </td>
+          </tr>
+        `).join('');
+      }
+
       const tbodyListino = document.getElementById('lista-listino-admin');
       tbodyListino.innerHTML = appData.listinoPrezzi.map((item, index) => `
         <tr class="border-b hover:bg-gray-50">
@@ -1741,9 +1935,7 @@
           <td class="p-2 font-bold">${item.titolo}</td>
           <td class="p-2">${item.categoria}</td>
           <td class="p-2 text-cri-red font-semibold">${item.prezzo}</td>
-          <td class="p-2 text-right">
-            <button onclick="eliminaVoceListino(${item.id})" class="bg-red-600 text-white text-xs px-2 py-1 rounded">Elimina</button>
-          </td>
+          <td class="p-2 text-right"><button onclick="eliminaVoceListino(${item.id})" class="bg-red-600 text-white text-xs px-2 py-1 rounded">Elimina</button></td>
         </tr>
       `).join('');
 
@@ -1766,9 +1958,9 @@
           <td class="p-2 text-indigo-600 font-semibold">${o.discord}</td>
           <td class="p-2 text-xs">${o.farmaco}</td>
           <td class="p-2 text-xs font-bold text-green-600">${o.totaleInGame || '-'}</td>
-          <td class="p-2"><span class="px-2 py-0.5 rounded text-xs font-bold ${o.stato === 'In Consegna' ? 'bg-blue-100 text-blue-800' : (o.stato === 'Consegnato' ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800')}">${o.stato}</span></td>
+          <td class="p-2"><span class="px-2 py-0.5 rounded text-xs font-bold ${o.stato === 'In Consegna' ? 'bg-blue-100 text-blue-800' : 'bg-green-100 text-green-800'}">${o.stato}</span></td>
           <td class="p-2 text-right space-x-1">
-            <button onclick="apriModalConfermaOrdineFarmacia(${o.id})" class="bg-blue-600 text-white text-xs px-2 py-1 rounded">Gestisci / Conferma</button>
+            <button onclick="apriModalConfermaOrdineFarmacia(${o.id})" class="bg-blue-600 text-white text-xs px-2 py-1 rounded">Gestisci</button>
             <button onclick="eliminaOrdineFarmacia(${o.id})" class="bg-gray-400 text-white text-xs px-2 py-1 rounded">x</button>
           </td>
         </tr>
@@ -1822,7 +2014,7 @@
           <td class="p-2 text-indigo-600 font-semibold">${p.discord}</td>
           <td class="p-2 text-xs">${p.tipo}</td>
           <td class="p-2 text-xs">${p.dataPreferita || '-'}</td>
-          <td class="p-2"><span class="px-2 py-0.5 rounded text-xs font-bold ${p.stato === 'Accettata' ? 'bg-blue-100 text-blue-800' : (p.stato === 'Completata' ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800')}">${p.stato}</span></td>
+          <td class="p-2"><span class="px-2 py-0.5 rounded text-xs font-bold ${p.stato === 'Accettata' ? 'bg-blue-100 text-blue-800' : 'bg-green-100 text-green-800'}">${p.stato}</span></td>
           <td class="p-2 text-right space-x-1">
             <button onclick="apriModalConfermaPrenotazione(${p.id})" class="bg-blue-600 text-white text-xs px-2 py-1 rounded">Accetta</button>
             <button onclick="cambiaStatoPrenotazione(${p.id}, 'Completata')" class="bg-green-600 text-white text-xs px-2 py-1 rounded">Completa</button>
@@ -1849,8 +2041,8 @@
 
     function chiudiModalOre() { document.getElementById('modal-modifica-ore').classList.add('hidden'); }
 
-    function confermaModificaOreOp(e) {
-      e.preventDefault();
+    function confermaModificaOreOp(event) {
+      event.preventDefault();
       const opId = parseInt(document.getElementById('ore-op-id-hidden').value);
       const azione = document.getElementById('ore-azione').value;
       const ore = parseInt(document.getElementById('ore-valore').value) || 0;
@@ -1874,7 +2066,7 @@
         appData.operatori.forEach(o => { o.turni = []; });
         salvaTuttoCloud();
         renderAdmin();
-        alert('Azzzerate!');
+        alert('Azzerate!');
       }
     }
 
@@ -1913,8 +2105,8 @@
       document.getElementById('nuovo-op-pass').value = 'CRI-' + Math.random().toString(36).substring(2, 6).toUpperCase();
     }
 
-    function creaOperatore(e) {
-      e.preventDefault();
+    function creaOperatore(event) {
+      event.preventDefault();
       appData.operatori.push({
         id: Date.now(),
         nome: document.getElementById('nuovo-op-nome').value,
@@ -1929,7 +2121,7 @@
       salvaTuttoCloud();
       renderAdmin();
       alert('Operatore aggiunto!');
-      e.target.reset();
+      event.target.reset();
     }
 
     function resetPassOp(id) {
@@ -1970,10 +2162,11 @@
     function salvaWebhook() { appData.webhookUrl = document.getElementById('discord-webhook-url').value; salvaTuttoCloud(); alert('Salvato!'); }
     function salvaWebhookConferme() { appData.webhookConfermeUrl = document.getElementById('discord-webhook-conferme-url').value; salvaTuttoCloud(); alert('Salvato!'); }
     function salvaWebhookAnamnestici() { appData.webhookAnamnesticiUrl = document.getElementById('discord-webhook-anamnestici-url').value; salvaTuttoCloud(); alert('Salvato!'); }
+    function salvaWebhookBandi() { appData.webhookBandiUrl = document.getElementById('discord-webhook-bandi-url').value; salvaTuttoCloud(); alert('Salvato!'); }
     function salvaBozzaAdmin() { appData.bozzaNoteAdmin = document.getElementById('admin-bozza-note').value; salvaTuttoCloud(); alert('Bozza aggiornata!'); }
 
-    function loginOperatore(e) {
-      e.preventDefault();
+    function loginOperatore(event) {
+      event.preventDefault();
       const u = document.getElementById('op-user').value;
       const p = document.getElementById('op-pass').value;
       const op = appData.operatori.find(o => o.user === u && o.pass === p);
@@ -2022,7 +2215,7 @@
           <td class="p-2 text-indigo-600 font-semibold">${p.discord}</td>
           <td class="p-2 text-xs">${p.tipo}</td>
           <td class="p-2 text-xs">${p.dataPreferita || '-'}</td>
-          <td class="p-2"><span class="px-2 py-0.5 rounded text-xs font-bold ${p.stato === 'Accettata' ? 'bg-blue-100 text-blue-800' : (p.stato === 'Completata' ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800')}">${p.stato}</span></td>
+          <td class="p-2"><span class="px-2 py-0.5 rounded text-xs font-bold ${p.stato === 'Accettata' ? 'bg-blue-100 text-blue-800' : 'bg-green-100 text-green-800'}">${p.stato}</span></td>
           <td class="p-2 text-right space-x-1">
             <button onclick="apriModalConfermaPrenotazione(${p.id})" class="bg-blue-600 text-white text-xs px-2 py-1 rounded">Accetta</button>
             <button onclick="cambiaStatoPrenotazione(${p.id}, 'Completata')" class="bg-green-600 text-white text-xs px-2 py-1 rounded">Completa</button>
@@ -2039,7 +2232,7 @@
           <td class="p-2 text-indigo-600 font-semibold">${o.discord}</td>
           <td class="p-2 text-xs">${o.farmaco}</td>
           <td class="p-2 text-xs font-bold text-green-600">${o.totaleInGame || '-'}</td>
-          <td class="p-2"><span class="px-2 py-0.5 rounded text-xs font-bold ${o.stato === 'In Consegna' ? 'bg-blue-100 text-blue-800' : (o.stato === 'Consegnato' ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800')}">${o.stato}</span></td>
+          <td class="p-2"><span class="px-2 py-0.5 rounded text-xs font-bold ${o.stato === 'In Consegna' ? 'bg-blue-100 text-blue-800' : 'bg-green-100 text-green-800'}">${o.stato}</span></td>
           <td class="p-2 text-right">
             <button onclick="apriModalConfermaOrdineFarmacia(${o.id})" class="bg-blue-600 text-white text-xs px-2 py-1 rounded">Gestisci</button>
           </td>
@@ -2112,8 +2305,8 @@
     function apriModalCambioPass() { document.getElementById('modal-cambio-pass').classList.remove('hidden'); }
     function chiudiModalPass() { document.getElementById('modal-cambio-pass').classList.add('hidden'); }
 
-    function salvaNuovaPasswordOp(e) {
-      e.preventDefault();
+    function salvaNuovaPasswordOp(event) {
+      event.preventDefault();
       const np = document.getElementById('nuova-pass-op').value;
       const op = appData.operatori.find(o => o.id === sessioneCorrente.user.id);
       if (op) { op.pass = np; op.provvisoria = false; sessioneCorrente.user = op; }
@@ -2129,8 +2322,8 @@
     }
     function chiudiModalAdmin() { document.getElementById('modal-cred-admin').classList.add('hidden'); }
 
-    function salvaCredenzialiAdmin(e) {
-      e.preventDefault();
+    function salvaCredenzialiAdmin(event) {
+      event.preventDefault();
       appData.adminUser = document.getElementById('nuovo-admin-user').value;
       appData.adminPass = document.getElementById('nuovo-admin-pass').value;
       salvaTuttoCloud();
