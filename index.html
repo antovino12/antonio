@@ -13,6 +13,10 @@
     <!-- FontAwesome per icone -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- FIREBASE SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -69,11 +73,9 @@
     <!-- VISTA 1: SITO PUBBLICO PER I CITTADINI -->
     <!-- ===================================================================== -->
     <div id="public-site-view">
-        <!-- Navbar / Header -->
         <header class="sticky top-0 z-30 bg-darkBg/90 backdrop-blur-md border-b border-amber-500/20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-between h-24">
-                    <!-- Logo & Nome Server -->
                     <div class="flex items-center gap-3.5 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
                         <div class="w-14 h-16 rounded-xl bg-gradient-to-b from-red-950/60 to-black/80 border border-amber-500/40 flex items-center justify-center shadow-lg shadow-amber-500/15 overflow-hidden p-0.5 shrink-0">
                             <img id="nav-logo-img" src="./0EB05BAC-3C6B-4503-BA2E-C8E0FF6D9350.png" onerror="this.src='https://placehold.co/200x200/160d0e/f59e0b?text=SPQR'" alt="Logo Server" class="w-full h-full object-contain">
@@ -84,13 +86,11 @@
                         </div>
                     </div>
 
-                    <!-- Navigazione Desktop -->
                     <nav class="hidden md:flex items-center gap-8 text-sm font-semibold uppercase tracking-wider text-gray-300">
                         <a href="#home" class="hover:text-amber-400 transition-colors">Roma Home</a>
                         <a href="#catalogo" class="hover:text-amber-400 transition-colors">Flotta Bit</a>
                     </nav>
 
-                    <!-- Azioni Header -->
                     <div class="flex items-center gap-3">
                         <button id="return-admin-btn" onclick="openAdminWorkspace()" class="hidden items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-bold bg-red-600/20 border border-red-500/50 text-red-300 hover:bg-red-600/30 transition cursor-pointer">
                             <i class="fa-solid fa-shield-halved"></i>
@@ -105,7 +105,7 @@
             </div>
         </header>
 
-        <!-- HERO SECTION (PANORAMA DI ROMA CON AUTO ALLE SPALLE) -->
+        <!-- HERO SECTION -->
         <section id="home" class="relative min-h-[680px] flex items-center justify-center overflow-hidden border-b border-amber-500/25">
             <div id="hero-bg-image" class="absolute inset-0 bg-cover bg-center animate-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1920&q=85');"></div>
             
@@ -158,7 +158,7 @@
             </div>
         </section>
 
-        <!-- SEZIONE CATALOGO -->
+        <!-- CATALOGO -->
         <main id="catalogo" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
             <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
                 <div>
@@ -188,7 +188,7 @@
     </div>
 
     <!-- ===================================================================== -->
-    <!-- VISTA 2: SCHEDA ADMIN SEPARATA (FULL SCREEN) -->
+    <!-- VISTA 2: SCHEDA ADMIN SEPARATA -->
     <!-- ===================================================================== -->
     <div id="admin-workspace-view" class="hidden min-h-screen bg-[#070505] text-gray-100">
         <header class="sticky top-0 z-40 bg-cardBg/95 backdrop-blur-md border-b border-amber-500/30 shadow-xl">
@@ -198,7 +198,7 @@
                         <i class="fa-solid fa-shield-halved"></i>
                     </div>
                     <div>
-                        <span class="text-[10px] font-bold uppercase tracking-widest accent-text text-amber-400 block">Modalità Gestione Totale</span>
+                        <span class="text-[10px] font-bold uppercase tracking-widest accent-text text-amber-400 block">Modalità Gestione Cloud (Firebase)</span>
                         <h1 class="font-roman font-bold text-lg sm:text-xl text-white">Pannello Controllo Impero Romano</h1>
                     </div>
                 </div>
@@ -232,7 +232,7 @@
                         <i class="fa-solid fa-download"></i> Esporta Backup
                     </button>
                     <button onclick="resetDefaultData()" class="px-3.5 py-2 rounded-xl bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 text-xs font-medium text-red-400 flex items-center gap-1.5 transition cursor-pointer">
-                        <i class="fa-solid fa-rotate-left"></i> Reset Default
+                        <i class="fa-solid fa-rotate-left"></i> Reset Cloud
                     </button>
                 </div>
             </div>
@@ -263,7 +263,6 @@
                             <textarea id="v-desc" rows="4" required placeholder="Inserisci la descrizione del mezzo..." class="w-full bg-darkBg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500"></textarea>
                         </div>
 
-                        <!-- CONTROLLI GRANDEZZA & FORMATO FOTO -->
                         <div class="bg-darkBg/80 p-4 rounded-2xl border border-amber-500/20 space-y-3">
                             <div class="flex items-center justify-between">
                                 <label class="text-xs font-bold uppercase tracking-wider text-amber-400">
@@ -330,7 +329,7 @@
                     <div class="flex items-center justify-between mb-6">
                         <div>
                             <h3 class="font-roman text-xl font-bold text-white">Mezzi Attualmente Pubblicati</h3>
-                            <p class="text-xs text-gray-400 mt-0.5">Gestisci i veicoli presenti nello showroom.</p>
+                            <p class="text-xs text-gray-400 mt-0.5">Sincronizzati in tempo reale con Firebase.</p>
                         </div>
                         <span id="admin-vehicle-count" class="px-3 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-400 text-xs font-bold">0 Mezzi</span>
                     </div>
@@ -425,7 +424,7 @@
 
                         <div class="pt-4">
                             <button type="submit" class="w-full accent-bg bg-amber-500 hover:opacity-90 text-black font-bold py-4 px-4 rounded-xl text-sm transition shadow-lg cursor-pointer">
-                                <i class="fa-solid fa-floppy-disk mr-1.5"></i> Salva Tutte le Modifiche del Sito
+                                <i class="fa-solid fa-floppy-disk mr-1.5"></i> Salva Tutte le Modifiche su Firebase
                             </button>
                         </div>
                     </div>
@@ -503,10 +502,23 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT -->
+    <!-- JAVASCRIPT & FIREBASE SYNC -->
     <script>
-        const STORAGE_VEHICLES_KEY = 'impero_romano_rp_vehicles_v3';
-        const STORAGE_SETTINGS_KEY = 'impero_romano_rp_settings_v3';
+        // Configurazione Firebase fornita
+        const firebaseConfig = {
+            apiKey: "AIzaSyDZqXsnK0ptCVAcYnyQpUqcmLQ3jQtjdmQ",
+            authDomain: "impero-romano-full-rp.firebaseapp.com",
+            databaseURL: "https://impero-romano-full-rp-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "impero-romano-full-rp",
+            storageBucket: "impero-romano-full-rp.firebasestorage.app",
+            messagingSenderId: "378000072307",
+            appId: "1:378000072307:web:d8a8f9ef86dadef2335406",
+            measurementId: "G-V5VZ66K8W3"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+
         const SESSION_AUTH_KEY = 'impero_romano_admin_logged_in';
 
         const defaultSettings = {
@@ -558,40 +570,51 @@
         let isViewingAdminWorkspace = false;
 
         document.addEventListener('DOMContentLoaded', () => {
-            loadData();
+            loadDataFromFirebase();
             checkAuthSession();
-            applySettingsToUI();
-            renderVehicles();
-            renderAdminVehiclesList();
         });
 
-        function loadData() {
-            try {
-                const savedVehicles = localStorage.getItem(STORAGE_VEHICLES_KEY);
-                const savedSettings = localStorage.getItem(STORAGE_SETTINGS_KEY);
+        // Sincronizzazione in tempo reale con Firebase Database
+        function loadDataFromFirebase() {
+            db.ref('store').on('snapshot', (snapshot) => {}) // placeholder o ascoltatore diretto:
+            
+            db.ref('store/settings').on('value', (snapshot) => {
+                const val = snapshot.val();
+                settings = val ? { ...defaultSettings, ...val } : { ...defaultSettings };
+                applySettingsToUI();
+            });
 
-                vehicles = savedVehicles ? JSON.parse(savedVehicles) : [...defaultVehicles];
-                settings = savedSettings ? { ...defaultSettings, ...JSON.parse(savedSettings) } : { ...defaultSettings };
-            } catch (e) {
-                vehicles = [...defaultVehicles];
-                settings = { ...defaultSettings };
-            }
+            db.ref('store/vehicles').on('value', (snapshot) => {
+                const val = snapshot.val();
+                if (val) {
+                    // Firebase restituisce un oggetto, lo convertiamo in array
+                    vehicles = Object.keys(val).map(key => ({ id: key, ...val[key] }));
+                } else {
+                    vehicles = [...defaultVehicles];
+                }
+                renderVehicles();
+                renderAdminVehiclesList();
+            });
         }
 
-        function saveVehiclesToStorage() {
-            try {
-                localStorage.setItem(STORAGE_VEHICLES_KEY, JSON.stringify(vehicles));
-            } catch (e) {
-                showToast('Spazio browser esaurito! Usa link URL.', 'error');
-            }
+        function saveVehiclesToFirebase() {
+            // Convertiamo l'array in oggetto indicizzato per Firebase
+            const vehiclesObj = {};
+            vehicles.forEach(v => {
+                const id = v.id;
+                const copy = { ...v };
+                delete copy.id;
+                vehiclesObj[id] = copy;
+            });
+            db.ref('store/vehicles').set(vehiclesObj).catch(err => {
+                showToast('Errore di salvataggio su Firebase.', 'error');
+            });
         }
 
-        function saveSettingsToStorage() {
-            try {
-                localStorage.setItem(STORAGE_SETTINGS_KEY, JSON.stringify(settings));
-            } catch (e) {
-                showToast('Errore nel salvataggio impostazioni.', 'error');
-            }
+        function saveSettingsToFirebase() {
+            db.ref('store/settings').set(settings).catch(err => {
+                showToast('Errore salvataggio impostazioni su Firebase.', 'error');
+            });
         }
 
         function checkAuthSession() {
@@ -683,7 +706,7 @@
                 closeLoginModal();
                 renderAdminVehiclesList();
                 updateViewMode();
-                showToast('Benvenuto nella Scheda Admin!', 'success');
+                showToast('Accesso effettuato con successo!', 'success');
             } else {
                 showToast('Credenziali errate!', 'error');
             }
@@ -713,6 +736,7 @@
         }
 
         function applySettingsToUI() {
+            if (!settings.serverName) return;
             const nameUpper = settings.serverName.trim();
             if (nameUpper.toUpperCase().endsWith('FULL RP')) {
                 const baseName = nameUpper.slice(0, -7).trim();
@@ -791,7 +815,7 @@
                     const compressedLogo = canvas.toDataURL('image/png');
                     document.getElementById('set-logo-url').value = compressedLogo;
                     document.getElementById('admin-logo-preview').src = compressedLogo;
-                    showToast('Logo caricato! Premi salva.', 'success');
+                    showToast('Logo caricato!', 'success');
                 };
                 img.src = e.target.result;
             };
@@ -817,7 +841,7 @@
 
                     const compressed = canvas.toDataURL('image/jpeg', 0.8);
                     document.getElementById('set-hero-bg').value = compressed;
-                    showToast('Sfondo caricato! Premi salva.', 'success');
+                    showToast('Sfondo caricato!', 'success');
                 };
                 img.src = e.target.result;
             };
@@ -838,9 +862,9 @@
             settings.adminUser = document.getElementById('set-admin-user').value.trim() || defaultSettings.adminUser;
             settings.adminPass = document.getElementById('set-admin-pass').value || defaultSettings.adminPass;
 
-            saveSettingsToStorage();
+            saveSettingsToFirebase();
             applySettingsToUI();
-            showToast('Impostazioni salvate con successo!', 'success');
+            showToast('Impostazioni salvate su Firebase!', 'success');
         }
 
         function updatePreviewImageSize() {
@@ -858,7 +882,10 @@
         function renderVehicles() {
             const grid = document.getElementById('vehicles-grid');
             const emptyState = document.getElementById('empty-state');
-            const searchTerm = document.getElementById('search-input').value.toLowerCase().trim();
+            const searchInput = document.getElementById('search-input');
+            if (!grid || !searchInput) return;
+
+            const searchTerm = searchInput.value.toLowerCase().trim();
 
             const filtered = vehicles.filter(v => {
                 return v.name.toLowerCase().includes(searchTerm) || 
@@ -993,7 +1020,7 @@
                 const index = vehicles.findIndex(v => v.id === editId);
                 if (index !== -1) {
                     vehicles[index] = { id: editId, name, price, description, image, imgHeight, imgFit };
-                    showToast('Mezzo aggiornato!', 'success');
+                    showToast('Mezzo aggiornato su Firebase!', 'success');
                 }
             } else {
                 const newVehicle = {
@@ -1006,12 +1033,10 @@
                     imgFit
                 };
                 vehicles.unshift(newVehicle);
-                showToast('Nuovo mezzo pubblicato!', 'success');
+                showToast('Nuovo mezzo pubblicato su Firebase!', 'success');
             }
 
-            saveVehiclesToStorage();
-            renderVehicles();
-            renderAdminVehiclesList();
+            saveVehiclesToFirebase();
             resetVehicleForm();
         }
 
@@ -1057,10 +1082,8 @@
         function deleteVehicle(id) {
             if (!isAdminLoggedIn) return;
             vehicles = vehicles.filter(v => v.id !== id);
-            saveVehiclesToStorage();
-            renderVehicles();
-            renderAdminVehiclesList();
-            showToast('Mezzo eliminato.', 'info');
+            saveVehiclesToFirebase();
+            showToast('Mezzo eliminato da Firebase.', 'info');
         }
 
         function openVehicleModal(id) {
@@ -1112,13 +1135,14 @@
         }
 
         function resetDefaultData() {
-            localStorage.removeItem(STORAGE_VEHICLES_KEY);
-            localStorage.removeItem(STORAGE_SETTINGS_KEY);
-            loadData();
-            applySettingsToUI();
-            renderVehicles();
-            renderAdminVehiclesList();
-            showToast('Ripristinato ai valori iniziali.', 'info');
+            if (!isAdminLoggedIn) return;
+            if (confirm("Vuoi davvero ripristinare i dati di default su Firebase?")) {
+                settings = { ...defaultSettings };
+                vehicles = [...defaultVehicles];
+                saveSettingsToFirebase();
+                saveVehiclesToFirebase();
+                showToast('Database ripristinato ai valori iniziali.', 'info');
+            }
         }
 
         function showToast(message, type = 'success') {
