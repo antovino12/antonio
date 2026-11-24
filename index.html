@@ -61,12 +61,12 @@
     <div id="toast-container" class="fixed bottom-5 right-5 z-[60] flex flex-col gap-2 pointer-events-none"></div>
 
     <!-- Rotellina Admin Nascosta in basso a sinistra -->
-    <button id="secret-admin-trigger" onclick="handleSecretGearClick()" title="Accesso Riservato Staff" class="fixed bottom-4 left-4 z-50 w-9 h-9 rounded-full bg-white/5 hover:bg-white/15 border border-white/10 text-gray-400 hover:text-amber-400 opacity-15 hover:opacity-100 transition-all duration-300 flex items-center justify-center backdrop-blur-sm">
+    <button id="secret-admin-trigger" onclick="handleSecretGearClick()" title="Accesso Riservato Staff" class="fixed bottom-4 left-4 z-50 w-9 h-9 rounded-full bg-white/5 hover:bg-white/15 border border-white/10 text-gray-400 hover:text-amber-400 opacity-15 hover:opacity-100 transition-all duration-300 flex items-center justify-center backdrop-blur-sm cursor-pointer">
         <i class="fa-solid fa-gear text-sm"></i>
     </button>
 
     <!-- ===================================================================== -->
-    <!-- VISTA 1: SITO PUBBLICO PER I CITTADINI (Nascosta quando sei in Admin) -->
+    <!-- VISTA 1: SITO PUBBLICO PER I CITTADINI -->
     <!-- ===================================================================== -->
     <div id="public-site-view">
         <!-- Navbar / Header -->
@@ -84,15 +84,15 @@
                         </div>
                     </div>
 
-                    <!-- Navigazione Desktop (Rimosso "Senato & Acquisti") -->
+                    <!-- Navigazione Desktop -->
                     <nav class="hidden md:flex items-center gap-8 text-sm font-semibold uppercase tracking-wider text-gray-300">
                         <a href="#home" class="hover:text-amber-400 transition-colors">Roma Home</a>
                         <a href="#catalogo" class="hover:text-amber-400 transition-colors">Flotta Bit</a>
                     </nav>
 
-                    <!-- Azioni Header (Solo Discord Impero Romano + Ritorno Admin se loggato) -->
+                    <!-- Azioni Header -->
                     <div class="flex items-center gap-3">
-                        <button id="return-admin-btn" onclick="openAdminWorkspace()" class="hidden items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-bold bg-red-600/20 border border-red-500/50 text-red-300 hover:bg-red-600/30 transition">
+                        <button id="return-admin-btn" onclick="openAdminWorkspace()" class="hidden items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-bold bg-red-600/20 border border-red-500/50 text-red-300 hover:bg-red-600/30 transition cursor-pointer">
                             <i class="fa-solid fa-shield-halved"></i>
                             <span>Torna ad Admin</span>
                         </button>
@@ -105,39 +105,31 @@
             </div>
         </header>
 
-        <!-- HERO SECTION ADRENALINICA -->
+        <!-- HERO SECTION (PANORAMA DI ROMA CON AUTO ALLE SPALLE) -->
         <section id="home" class="relative min-h-[680px] flex items-center justify-center overflow-hidden border-b border-amber-500/25">
-            <!-- Immagine di sfondo dinamica con zoom lento -->
-            <div id="hero-bg-image" class="absolute inset-0 bg-cover bg-center animate-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=1920&q=85');"></div>
+            <div id="hero-bg-image" class="absolute inset-0 bg-cover bg-center animate-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1920&q=85');"></div>
             
-            <!-- Overlay cinematografico ad alto contrasto -->
             <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-darkBg/75 to-red-950/65"></div>
             <div class="absolute inset-0 bg-gradient-to-r from-darkBg via-transparent to-darkBg"></div>
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#090606_95%)]"></div>
 
             <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center flex flex-col items-center">
-                <!-- Stemma Centrale con effetto bagliore -->
                 <div class="w-36 h-44 sm:w-44 sm:h-52 mb-7 rounded-2xl bg-gradient-to-b from-red-950/80 to-black/95 border border-amber-500/50 p-2 backdrop-blur-md flex items-center justify-center overflow-hidden glow-emblem">
                     <img id="hero-logo-img" src="./0EB05BAC-3C6B-4503-BA2E-C8E0FF6D9350.png" onerror="this.src='https://placehold.co/300x350/160d0e/f59e0b?text=SPQR'" alt="Logo Server" class="w-full h-full object-contain drop-shadow-[0_0_20px_rgba(245,158,11,0.5)]">
                 </div>
 
-                <!-- Badge Adrenalinico -->
                 <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-red-950/80 border border-red-500/40 backdrop-blur-md mb-6 shadow-lg">
                     <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
                     <span class="text-xs font-bold uppercase tracking-[0.2em] text-amber-300">Motori Ruggenti • Edizioni Limitate Bit • Roma</span>
                 </div>
 
-                <!-- Titolo Principale -->
                 <h1 id="hero-title-display" class="font-roman font-black text-4xl sm:text-6xl lg:text-7xl uppercase tracking-tight text-white leading-[1.05] mb-6 drop-shadow-[0_5px_25px_rgba(0,0,0,0.9)]">
                     DOMINA L'ASFALTO DI ROMA
                 </h1>
 
-                <!-- Sottotitolo -->
                 <p id="hero-subtitle-display" class="max-w-2xl mx-auto text-base sm:text-xl text-gray-200 font-light leading-relaxed mb-10 drop-shadow">
                     Oltre 300 km/h tra il Colosseo e il Grande Raccordo Anulare. Scegli la tua fuoriserie esclusiva Bit, lascia il segno sull'asfalto della Capitale e imponi la tua legge.
                 </p>
 
-                <!-- Call to Action Adrenaliniche -->
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
                     <a href="#catalogo" class="w-full sm:w-auto accent-bg bg-amber-500 hover:opacity-95 hover:scale-105 text-black font-extrabold uppercase tracking-wider px-9 py-4 rounded-2xl text-sm sm:text-base transition-all shadow-[0_0_30px_rgba(245,158,11,0.35)] flex items-center justify-center gap-2.5">
                         <i class="fa-solid fa-fire-flame-curved"></i>
@@ -149,7 +141,6 @@
                     </a>
                 </div>
 
-                <!-- Barra Indicatori Adrenalina -->
                 <div class="grid grid-cols-3 gap-4 sm:gap-10 mt-14 pt-8 border-t border-white/10 w-full max-w-2xl text-center">
                     <div>
                         <span class="block font-display font-bold text-2xl sm:text-3xl accent-text text-amber-400">350+ KM/H</span>
@@ -167,28 +158,21 @@
             </div>
         </section>
 
-        <!-- SEZIONE CATALOGO VEICOLI -->
+        <!-- SEZIONE CATALOGO -->
         <main id="catalogo" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-            <!-- Intestazione & Barra Ricerca -->
             <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
                 <div>
                     <span class="text-xs font-bold uppercase tracking-[0.2em] accent-text text-amber-400">Showroom Esclusivo • Roma Capitale</span>
                     <h2 class="font-roman font-bold text-3xl sm:text-5xl text-white uppercase mt-1">Catalogo Veicoli Bit</h2>
                 </div>
-
-                <!-- Ricerca per Modello / Descrizione -->
                 <div class="relative w-full sm:w-80">
                     <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
                     <input type="text" id="search-input" oninput="renderVehicles()" placeholder="Cerca modello o parola chiave..." class="w-full bg-cardBg border border-amber-500/25 rounded-xl pl-11 pr-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
                 </div>
             </div>
 
-            <!-- Griglia Veicoli -->
-            <div id="vehicles-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
-                <!-- Le card dei veicoli vengono generate dinamicamente via JS -->
-            </div>
+            <div id="vehicles-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7"></div>
 
-            <!-- Stato Vuoto -->
             <div id="empty-state" class="hidden text-center py-20 bg-cardBg rounded-3xl border border-white/10">
                 <i class="fa-solid fa-car-tunnel text-4xl text-gray-600 mb-3"></i>
                 <h3 class="font-display text-xl font-bold text-white">Nessun veicolo trovato</h3>
@@ -196,7 +180,6 @@
             </div>
         </main>
 
-        <!-- FOOTER PULITO -->
         <footer class="border-t border-amber-500/20 py-8 text-center text-xs text-gray-500">
             <div class="max-w-7xl mx-auto px-4">
                 <p id="footer-text">© 2026 Impero Romano Full RP - Concessionario Ufficiale Bit Roma. Non affiliato con Rockstar Games o Take-Two Interactive.</p>
@@ -205,10 +188,9 @@
     </div>
 
     <!-- ===================================================================== -->
-    <!-- VISTA 2: SCHEDA DEDICATA INTERAMENTE ALL'ADMIN (FULL SCREEN)          -->
+    <!-- VISTA 2: SCHEDA ADMIN SEPARATA (FULL SCREEN) -->
     <!-- ===================================================================== -->
     <div id="admin-workspace-view" class="hidden min-h-screen bg-[#070505] text-gray-100">
-        <!-- Topbar Admin -->
         <header class="sticky top-0 z-40 bg-cardBg/95 backdrop-blur-md border-b border-amber-500/30 shadow-xl">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
                 <div class="flex items-center gap-3">
@@ -222,11 +204,11 @@
                 </div>
 
                 <div class="flex items-center gap-2 sm:gap-3">
-                    <button onclick="switchToPublicPreview()" class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-xs sm:text-sm font-semibold text-white flex items-center gap-2 transition">
+                    <button onclick="switchToPublicPreview()" class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-xs sm:text-sm font-semibold text-white flex items-center gap-2 transition cursor-pointer">
                         <i class="fa-solid fa-eye text-amber-400"></i>
                         <span>Vedi Sito Cittadini</span>
                     </button>
-                    <button onclick="logoutAdmin()" class="px-4 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-xs sm:text-sm font-bold text-white flex items-center gap-2 transition shadow-lg">
+                    <button onclick="logoutAdmin()" class="px-4 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-xs sm:text-sm font-bold text-white flex items-center gap-2 transition shadow-lg cursor-pointer">
                         <i class="fa-solid fa-right-from-bracket"></i>
                         <span class="hidden sm:inline">Esci da Admin</span>
                     </button>
@@ -234,38 +216,32 @@
             </div>
         </header>
 
-        <!-- Contenuto Workspace Admin -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <!-- Barra Azioni Rapide & Navigazione Schede Admin -->
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
                 <div class="flex flex-wrap gap-2">
-                    <button onclick="switchAdminTab('tab-vehicles')" id="btn-tab-vehicles" class="admin-tab-btn px-5 py-2.5 rounded-xl text-sm font-bold accent-bg bg-amber-500 text-black transition">
-                        <i class="fa-solid fa-car mr-1.5"></i> Gestione Mezzi (Aggiungi / Modifica / Elimina)
+                    <button onclick="switchAdminTab('tab-vehicles')" id="btn-tab-vehicles" class="admin-tab-btn px-5 py-2.5 rounded-xl text-sm font-bold accent-bg bg-amber-500 text-black transition cursor-pointer">
+                        <i class="fa-solid fa-car mr-1.5"></i> Gestione Mezzi
                     </button>
-                    <button onclick="switchAdminTab('tab-home')" id="btn-tab-home" class="admin-tab-btn px-5 py-2.5 rounded-xl text-sm font-semibold bg-cardBg border border-white/10 text-gray-300 hover:bg-white/10 transition">
-                        <i class="fa-solid fa-sliders mr-1.5"></i> Impostazioni Sito, Logo, Titoli & Discord
+                    <button onclick="switchAdminTab('tab-home')" id="btn-tab-home" class="admin-tab-btn px-5 py-2.5 rounded-xl text-sm font-semibold bg-cardBg border border-white/10 text-gray-300 hover:bg-white/10 transition cursor-pointer">
+                        <i class="fa-solid fa-sliders mr-1.5"></i> Impostazioni Sito & Discord
                     </button>
                 </div>
 
                 <div class="flex items-center gap-2">
-                    <button onclick="exportStoreData()" class="px-3.5 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-medium text-gray-300 flex items-center gap-1.5 transition">
+                    <button onclick="exportStoreData()" class="px-3.5 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-medium text-gray-300 flex items-center gap-1.5 transition cursor-pointer">
                         <i class="fa-solid fa-download"></i> Esporta Backup
                     </button>
-                    <button onclick="resetDefaultData()" class="px-3.5 py-2 rounded-xl bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 text-xs font-medium text-red-400 flex items-center gap-1.5 transition">
+                    <button onclick="resetDefaultData()" class="px-3.5 py-2 rounded-xl bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 text-xs font-medium text-red-400 flex items-center gap-1.5 transition cursor-pointer">
                         <i class="fa-solid fa-rotate-left"></i> Reset Default
                     </button>
                 </div>
             </div>
 
-            <!-- ========================================================= -->
-            <!-- TAB 1 ADMIN: AGGIUNGI, MODIFICA E RIMUOVI MEZZI           -->
-            <!-- ========================================================= -->
+            <!-- TAB 1: GESTIONE MEZZI -->
             <div id="tab-vehicles" class="mt-8 space-y-10">
-                <!-- Form Inserimento / Modifica Veicolo -->
                 <form id="vehicle-form" onsubmit="handleSaveVehicle(event)" class="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-cardBg p-6 sm:p-8 rounded-3xl border border-white/10 shadow-xl">
                     <input type="hidden" id="edit-vehicle-id" value="">
                     
-                    <!-- Colonna Sinistra: Modello, Prezzo, Descrizione, Dimensione Immagine -->
                     <div class="lg:col-span-7 space-y-5">
                         <h2 id="form-vehicle-title" class="font-roman text-2xl font-bold text-white flex items-center gap-2.5">
                             <i class="fa-solid fa-plus-circle accent-text text-amber-400"></i> Aggiungi Nuovo Mezzo
@@ -287,7 +263,7 @@
                             <textarea id="v-desc" rows="4" required placeholder="Inserisci la descrizione del mezzo..." class="w-full bg-darkBg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500"></textarea>
                         </div>
 
-                        <!-- CONTROLLI LIBERI GRANDEZZA & ADATTAMENTO IMMAGINE -->
+                        <!-- CONTROLLI GRANDEZZA & FORMATO FOTO -->
                         <div class="bg-darkBg/80 p-4 rounded-2xl border border-amber-500/20 space-y-3">
                             <div class="flex items-center justify-between">
                                 <label class="text-xs font-bold uppercase tracking-wider text-amber-400">
@@ -312,17 +288,14 @@
                         </div>
                     </div>
 
-                    <!-- Colonna Destra: Foto & Anteprima Live con altezza personalizzata -->
                     <div class="lg:col-span-5 flex flex-col justify-between bg-darkBg p-5 rounded-2xl border border-white/10">
                         <div class="space-y-4">
                             <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400">Foto del Mezzo (Anteprima Reale)</label>
                             
-                            <!-- Contenitore Anteprima che rispecchia la grandezza scelta -->
                             <div id="v-preview-box" style="height: 240px;" class="relative w-full rounded-xl overflow-hidden bg-black border border-dashed border-white/25 flex items-center justify-center transition-all">
                                 <img id="v-image-preview" src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=800&q=80" alt="Anteprima" class="w-full h-full object-cover">
                             </div>
 
-                            <!-- Upload File Locale -->
                             <div>
                                 <label class="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 cursor-pointer text-sm font-medium text-white transition">
                                     <i class="fa-solid fa-upload accent-text text-amber-400"></i>
@@ -337,60 +310,52 @@
                                 <div class="flex-grow border-t border-white/10"></div>
                             </div>
 
-                            <!-- Input URL -->
                             <div>
                                 <input type="text" id="v-image-url" placeholder="https://esempio.com/foto-auto.jpg" oninput="handleImageUrlInput(this.value)" class="w-full bg-cardBg border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-amber-500">
                             </div>
                         </div>
 
-                        <!-- Pulsanti Submit Form -->
                         <div class="flex items-center gap-3 mt-6 pt-4 border-t border-white/10">
-                            <button type="submit" class="flex-1 accent-bg bg-amber-500 hover:opacity-90 text-black font-bold py-3.5 px-4 rounded-xl text-sm transition shadow-lg">
+                            <button type="submit" class="flex-1 accent-bg bg-amber-500 hover:opacity-90 text-black font-bold py-3.5 px-4 rounded-xl text-sm transition shadow-lg cursor-pointer">
                                 <i class="fa-solid fa-check mr-1.5"></i> <span id="btn-save-vehicle-text">Pubblica Mezzo</span>
                             </button>
-                            <button type="button" id="btn-cancel-edit" onclick="resetVehicleForm()" class="hidden px-4 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold text-white transition">
+                            <button type="button" id="btn-cancel-edit" onclick="resetVehicleForm()" class="hidden px-4 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold text-white transition cursor-pointer">
                                 Annulla
                             </button>
                         </div>
                     </div>
                 </form>
 
-                <!-- LISTA MEZZI ATTUALI NEL CATALOGO (Gestibile direttamente da qui) -->
                 <div class="bg-cardBg p-6 sm:p-8 rounded-3xl border border-white/10 shadow-xl">
                     <div class="flex items-center justify-between mb-6">
                         <div>
                             <h3 class="font-roman text-xl font-bold text-white">Mezzi Attualmente Pubblicati</h3>
-                            <p class="text-xs text-gray-400 mt-0.5">Clicca su Modifica per cambiare modello, prezzo, descrizione o dimensioni foto, oppure Elimina per rimuoverlo.</p>
+                            <p class="text-xs text-gray-400 mt-0.5">Gestisci i veicoli presenti nello showroom.</p>
                         </div>
                         <span id="admin-vehicle-count" class="px-3 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-400 text-xs font-bold">0 Mezzi</span>
                     </div>
 
-                    <div id="admin-vehicles-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                        <!-- Popolato dinamicamente via JS -->
-                    </div>
+                    <div id="admin-vehicles-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
                 </div>
             </div>
 
-            <!-- ========================================================= -->
-            <!-- TAB 2 ADMIN: IMPOSTAZIONI SITO, LOGO, TITOLI & DISCORD    -->
-            <!-- ========================================================= -->
+            <!-- TAB 2: IMPOSTAZIONI SITO -->
             <div id="tab-home" class="hidden mt-8">
                 <form onsubmit="handleSaveHomeSettings(event)" class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-cardBg p-6 sm:p-8 rounded-3xl border border-white/10 shadow-xl">
-                    <!-- Colonna 1: Titoli, Descrizioni & Credenziali -->
                     <div class="space-y-5">
                         <h3 class="font-roman text-xl font-bold text-white flex items-center gap-2">
                             <i class="fa-solid fa-heading accent-text text-amber-400"></i> Titoli, Testi & Link Discord
                         </h3>
                         <div>
-                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Nome Server (Intestazione in alto)</label>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Nome Server</label>
                             <input type="text" id="set-server-name" class="w-full bg-darkBg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Titolo Principale Home (Hero)</label>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Titolo Principale Home</label>
                             <input type="text" id="set-hero-title" class="w-full bg-darkBg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Descrizione / Sottotitolo Home</label>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Descrizione Home</label>
                             <textarea id="set-hero-subtitle" rows="3" class="w-full bg-darkBg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500"></textarea>
                         </div>
                         <div>
@@ -398,7 +363,6 @@
                             <input type="url" id="set-discord-url" placeholder="https://discord.gg/tuoserver" class="w-full bg-darkBg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
                         </div>
 
-                        <!-- Credenziali Admin -->
                         <div class="pt-4 border-t border-white/10">
                             <h4 class="font-display text-base font-bold text-amber-400 uppercase mb-3">
                                 <i class="fa-solid fa-key mr-1"></i> Credenziali Accesso Admin
@@ -416,21 +380,20 @@
                         </div>
                     </div>
 
-                    <!-- Colonna 2: Logo, Sfondo & Colori -->
                     <div class="space-y-5">
                         <h3 class="font-roman text-xl font-bold text-white flex items-center gap-2">
-                            <i class="fa-solid fa-shield-halved accent-text text-amber-400"></i> Logo, Sfondo Home & Colore Tema
+                            <i class="fa-solid fa-shield-halved accent-text text-amber-400"></i> Logo & Sfondo Home
                         </h3>
                         <div>
-                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Logo Server (Carica file o incolla link)</label>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Logo Server</label>
                             <div class="flex items-center gap-3 mb-2">
                                 <div class="w-14 h-14 rounded-xl bg-darkBg border border-white/15 p-1 flex items-center justify-center shrink-0 overflow-hidden">
-                                    <img id="admin-logo-preview" src="./0EB05BAC-3C6B-4503-BA2E-C8E0FF6D9350.png" onerror="this.src='https://placehold.co/100x100/160d0e/f59e0b?text=LOGO'" alt="Preview Logo" class="w-full h-full object-contain">
+                                    <img id="admin-logo-preview" src="./0EB05BAC-3C6B-4503-BA2E-C8E0FF6D9350.png" onerror="this.src='https://placehold.co/100x100/160d0e/f59e0b?text=LOGO'" alt="Preview" class="w-full h-full object-contain">
                                 </div>
                                 <div class="flex-1 flex gap-2">
                                     <input type="text" id="set-logo-url" oninput="document.getElementById('admin-logo-preview').src = this.value" placeholder="URL logo o carica..." class="flex-1 bg-darkBg border border-white/10 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-amber-500">
-                                    <label class="px-4 py-2.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/40 cursor-pointer text-sm font-medium text-amber-300 flex items-center justify-center transition shrink-0">
-                                        <i class="fa-solid fa-upload mr-1.5"></i> Scegli Logo
+                                    <label class="px-4 py-2.5 rounded-xl bg-amber-500/25 hover:bg-amber-500/35 border border-amber-500/40 cursor-pointer text-sm font-medium text-amber-300 flex items-center justify-center transition shrink-0">
+                                        <i class="fa-solid fa-upload mr-1.5"></i> Scegli
                                         <input type="file" accept="image/*" class="hidden" onchange="handleLogoUpload(event)">
                                     </label>
                                 </div>
@@ -438,7 +401,7 @@
                         </div>
 
                         <div>
-                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Immagine Sfondo Home (URL o Carica)</label>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Immagine Sfondo Home</label>
                             <div class="flex gap-2">
                                 <input type="text" id="set-hero-bg" placeholder="https://..." class="flex-1 bg-darkBg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
                                 <label class="px-4 py-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 cursor-pointer text-sm font-medium text-white flex items-center justify-center transition">
@@ -451,17 +414,17 @@
                         <div>
                             <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Colore Tema Principale</label>
                             <div class="flex items-center gap-3">
-                                <button type="button" onclick="selectAccentColor('#f59e0b')" class="w-10 h-10 rounded-full bg-amber-500 border-2 border-white hover:scale-110 transition" title="Oro Imperiale"></button>
-                                <button type="button" onclick="selectAccentColor('#dc2626')" class="w-10 h-10 rounded-full bg-red-600 border-2 border-white/40 hover:scale-110 transition" title="Rosso Porpora"></button>
-                                <button type="button" onclick="selectAccentColor('#06b6d4')" class="w-10 h-10 rounded-full bg-cyan-500 border-2 border-white/40 hover:scale-110 transition" title="Ciano"></button>
-                                <button type="button" onclick="selectAccentColor('#10b981')" class="w-10 h-10 rounded-full bg-emerald-500 border-2 border-white/40 hover:scale-110 transition" title="Verde"></button>
-                                <button type="button" onclick="selectAccentColor('#a855f7')" class="w-10 h-10 rounded-full bg-purple-500 border-2 border-white/40 hover:scale-110 transition" title="Viola"></button>
+                                <button type="button" onclick="selectAccentColor('#f59e0b')" class="w-10 h-10 rounded-full bg-amber-500 border-2 border-white hover:scale-110 transition cursor-pointer" title="Oro"></button>
+                                <button type="button" onclick="selectAccentColor('#dc2626')" class="w-10 h-10 rounded-full bg-red-600 border-2 border-white/40 hover:scale-110 transition cursor-pointer" title="Rosso"></button>
+                                <button type="button" onclick="selectAccentColor('#06b6d4')" class="w-10 h-10 rounded-full bg-cyan-500 border-2 border-white/40 hover:scale-110 transition cursor-pointer" title="Ciano"></button>
+                                <button type="button" onclick="selectAccentColor('#10b981')" class="w-10 h-10 rounded-full bg-emerald-500 border-2 border-white/40 hover:scale-110 transition cursor-pointer" title="Verde"></button>
+                                <button type="button" onclick="selectAccentColor('#a855f7')" class="w-10 h-10 rounded-full bg-purple-500 border-2 border-white/40 hover:scale-110 transition cursor-pointer" title="Viola"></button>
                                 <input type="hidden" id="set-accent-hex" value="#f59e0b">
                             </div>
                         </div>
 
                         <div class="pt-4">
-                            <button type="submit" class="w-full accent-bg bg-amber-500 hover:opacity-90 text-black font-bold py-4 px-4 rounded-xl text-sm transition shadow-lg">
+                            <button type="submit" class="w-full accent-bg bg-amber-500 hover:opacity-90 text-black font-bold py-4 px-4 rounded-xl text-sm transition shadow-lg cursor-pointer">
                                 <i class="fa-solid fa-floppy-disk mr-1.5"></i> Salva Tutte le Modifiche del Sito
                             </button>
                         </div>
@@ -471,10 +434,10 @@
         </div>
     </div>
 
-    <!-- MODALE LOGIN ADMIN (Si apre cliccando la rotellina in basso a sinistra) -->
+    <!-- MODALE LOGIN ADMIN -->
     <div id="admin-login-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/85 backdrop-blur-md">
         <div class="bg-cardBg border border-amber-500/30 rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative">
-            <button onclick="closeLoginModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/5 hover:bg-white/15 text-gray-400 hover:text-white flex items-center justify-center transition">
+            <button onclick="closeLoginModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/5 hover:bg-white/15 text-gray-400 hover:text-white flex items-center justify-center transition cursor-pointer">
                 <i class="fa-solid fa-xmark"></i>
             </button>
 
@@ -483,31 +446,31 @@
                     <i class="fa-solid fa-lock"></i>
                 </div>
                 <h3 class="font-roman font-bold text-2xl text-white">Accesso Area Admin</h3>
-                <p class="text-xs text-gray-400 mt-1">Inserisci le credenziali dello staff per gestire l'intero sito.</p>
+                <p class="text-xs text-gray-400 mt-1">Inserisci le credenziali dello staff.</p>
             </div>
 
             <form onsubmit="handleAdminLogin(event)" class="space-y-4">
                 <div>
                     <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Username</label>
-                    <input type="text" id="login-username" required autocomplete="off" placeholder="Inserisci username" class="w-full bg-darkBg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
+                    <input type="text" id="login-username" required autocomplete="off" placeholder="Username" class="w-full bg-darkBg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
                 </div>
                 <div>
                     <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Password</label>
                     <input type="password" id="login-password" required placeholder="••••••••" class="w-full bg-darkBg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
                 </div>
-                <button type="submit" class="w-full accent-bg bg-amber-500 hover:opacity-90 text-black font-bold py-3.5 rounded-xl text-sm transition shadow-lg mt-2">
-                    <i class="fa-solid fa-right-to-bracket mr-1.5"></i> Accedi alla Gestione
+                <button type="submit" class="w-full accent-bg bg-amber-500 hover:opacity-90 text-black font-bold py-3.5 rounded-xl text-sm transition shadow-lg mt-2 cursor-pointer">
+                    <i class="fa-solid fa-right-to-bracket mr-1.5"></i> Accedi
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- MODALE DETTAGLI VEICOLO & ACQUISTO PER I CITTADINI -->
-    <div id="vehicle-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/85 backdrop-blur-sm">
+    <!-- MODALE DETTAGLI VEICOLO -->
+    <div id="vehicle-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/85 backdrop-blur-md">
         <div class="bg-cardBg border border-amber-500/25 rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl">
             <div id="modal-img-container" class="relative bg-black flex items-center justify-center" style="max-height: 420px;">
                 <img id="modal-img" src="" alt="Veicolo" class="w-full max-h-[420px] object-contain">
-                <button onclick="closeVehicleModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/70 hover:bg-black text-white flex items-center justify-center transition border border-white/15">
+                <button onclick="closeVehicleModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/70 hover:bg-black text-white flex items-center justify-center transition border border-white/15 cursor-pointer">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
@@ -523,14 +486,11 @@
 
                 <div class="bg-darkBg/80 p-4 rounded-2xl border border-white/5 mb-6">
                     <span class="text-[11px] font-semibold uppercase tracking-wider text-gray-400 block mb-1">Descrizione</span>
-                    <p id="modal-desc" class="text-sm text-gray-200 leading-relaxed whitespace-pre-line">
-                        Descrizione veicolo...
-                    </p>
+                    <p id="modal-desc" class="text-sm text-gray-200 leading-relaxed whitespace-pre-line">Descrizione veicolo...</p>
                 </div>
 
-                <!-- Azioni Acquisto -->
                 <div class="flex flex-col sm:flex-row items-center gap-3">
-                    <button onclick="copyOrderTicket()" class="w-full sm:flex-1 accent-bg bg-amber-500 hover:opacity-90 text-black font-bold py-3.5 px-5 rounded-xl text-sm transition flex items-center justify-center gap-2 shadow-lg">
+                    <button onclick="copyOrderTicket()" class="w-full sm:flex-1 accent-bg bg-amber-500 hover:opacity-90 text-black font-bold py-3.5 px-5 rounded-xl text-sm transition flex items-center justify-center gap-2 shadow-lg cursor-pointer">
                         <i class="fa-solid fa-copy"></i>
                         <span>Copia Dati per Ticket Discord</span>
                     </button>
@@ -543,7 +503,7 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT APPLICATIVO -->
+    <!-- JAVASCRIPT -->
     <script>
         const STORAGE_VEHICLES_KEY = 'impero_romano_rp_vehicles_v3';
         const STORAGE_SETTINGS_KEY = 'impero_romano_rp_settings_v3';
@@ -553,7 +513,7 @@
             serverName: 'IMPERO ROMANO FULL RP',
             heroTitle: "DOMINA L'ASFALTO DI ROMA",
             heroSubtitle: "Oltre 300 km/h tra il Colosseo e il Grande Raccordo Anulare. Scegli la tua fuoriserie esclusiva Bit, lascia il segno sull'asfalto della Capitale e imponi la tua legge.",
-            heroBg: 'https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=1920&q=85',
+            heroBg: 'https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1920&q=85',
             logoUrl: './0EB05BAC-3C6B-4503-BA2E-C8E0FF6D9350.png',
             discordUrl: 'https://discord.com',
             accentHex: '#f59e0b',
@@ -622,7 +582,7 @@
             try {
                 localStorage.setItem(STORAGE_VEHICLES_KEY, JSON.stringify(vehicles));
             } catch (e) {
-                showToast('Spazio browser esaurito! Usa immagini più leggere o link URL.', 'error');
+                showToast('Spazio browser esaurito! Usa link URL.', 'error');
             }
         }
 
@@ -634,7 +594,6 @@
             }
         }
 
-        // Gestione Viste Separata: Sito Cittadini vs Scheda Admin Dedicata
         function checkAuthSession() {
             isAdminLoggedIn = sessionStorage.getItem(SESSION_AUTH_KEY) === 'true';
             updateViewMode();
@@ -726,7 +685,7 @@
                 updateViewMode();
                 showToast('Benvenuto nella Scheda Admin!', 'success');
             } else {
-                showToast('Credenziali errate! Accesso negato.', 'error');
+                showToast('Credenziali errate!', 'error');
             }
         }
 
@@ -737,7 +696,7 @@
             resetVehicleForm();
             renderVehicles();
             updateViewMode();
-            showToast('Disconnesso dall'area Admin.', 'info');
+            showToast('Disconnesso dall\'area Admin.', 'info');
         }
 
         function switchAdminTab(tabId) {
@@ -746,11 +705,11 @@
             document.getElementById(tabId).classList.remove('hidden');
 
             document.querySelectorAll('.admin-tab-btn').forEach(btn => {
-                btn.className = 'admin-tab-btn px-5 py-2.5 rounded-xl text-sm font-semibold bg-cardBg border border-white/10 text-gray-300 hover:bg-white/10 transition';
+                btn.className = 'admin-tab-btn px-5 py-2.5 rounded-xl text-sm font-semibold bg-cardBg border border-white/10 text-gray-300 hover:bg-white/10 transition cursor-pointer';
             });
 
             const activeBtn = tabId === 'tab-vehicles' ? document.getElementById('btn-tab-vehicles') : document.getElementById('btn-tab-home');
-            activeBtn.className = 'admin-tab-btn px-5 py-2.5 rounded-xl text-sm font-bold accent-bg bg-amber-500 text-black transition';
+            activeBtn.className = 'admin-tab-btn px-5 py-2.5 rounded-xl text-sm font-bold accent-bg bg-amber-500 text-black transition cursor-pointer';
         }
 
         function applySettingsToUI() {
@@ -832,7 +791,7 @@
                     const compressedLogo = canvas.toDataURL('image/png');
                     document.getElementById('set-logo-url').value = compressedLogo;
                     document.getElementById('admin-logo-preview').src = compressedLogo;
-                    showToast('Logo caricato! Premi "Salva Tutte le Modifiche del Sito".', 'success');
+                    showToast('Logo caricato! Premi salva.', 'success');
                 };
                 img.src = e.target.result;
             };
@@ -858,7 +817,7 @@
 
                     const compressed = canvas.toDataURL('image/jpeg', 0.8);
                     document.getElementById('set-hero-bg').value = compressed;
-                    showToast('Sfondo caricato! Premi "Salva Tutte le Modifiche del Sito".', 'success');
+                    showToast('Sfondo caricato! Premi salva.', 'success');
                 };
                 img.src = e.target.result;
             };
@@ -881,10 +840,9 @@
 
             saveSettingsToStorage();
             applySettingsToUI();
-            showToast('Tutte le impostazioni del sito sono state salvate!', 'success');
+            showToast('Impostazioni salvate con successo!', 'success');
         }
 
-        // Aggiorna l'anteprima live delle dimensioni immagine nel form Admin
         function updatePreviewImageSize() {
             const height = document.getElementById('v-img-height').value;
             const fit = document.querySelector('input[name="v-img-fit"]:checked').value;
@@ -897,7 +855,6 @@
             previewImg.style.objectFit = fit;
         }
 
-        // Renderizza il catalogo per i CITTADINI (pulito, senza tasti modifica/elimina)
         function renderVehicles() {
             const grid = document.getElementById('vehicles-grid');
             const emptyState = document.getElementById('empty-state');
@@ -921,7 +878,6 @@
                 return `
                 <article class="group bg-cardBg hover:bg-cardHover border border-white/10 hover:border-amber-500/40 rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between shadow-xl hover:-translate-y-1.5">
                     <div>
-                        <!-- Foto Veicolo con grandezza personalizzata dall'Admin -->
                         <div style="height: ${h}px;" class="relative overflow-hidden bg-black cursor-pointer" onclick="openVehicleModal('${v.id}')">
                             <img src="${v.image}" alt="${escapeHtml(v.name)}" style="object-fit: ${fit};" onerror="this.src='https://placehold.co/800x500/160d0e/f59e0b?text=Veicolo+Bit'" class="w-full h-full group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-cardBg via-transparent to-transparent opacity-70 pointer-events-none"></div>
@@ -930,7 +886,6 @@
                             </span>
                         </div>
 
-                        <!-- Modello e Descrizione -->
                         <div class="p-6">
                             <h3 class="font-roman font-bold text-xl text-white group-hover:accent-text transition-colors cursor-pointer" onclick="openVehicleModal('${v.id}')">
                                 ${escapeHtml(v.name)}
@@ -941,9 +896,8 @@
                         </div>
                     </div>
 
-                    <!-- Azione Acquisto -->
                     <div class="px-6 pb-6 pt-2">
-                        <button onclick="openVehicleModal('${v.id}')" class="w-full py-3 px-4 rounded-xl bg-white/10 hover:bg-amber-500 hover:text-black text-white font-bold text-xs uppercase tracking-wider transition flex items-center justify-center gap-2">
+                        <button onclick="openVehicleModal('${v.id}')" class="w-full py-3 px-4 rounded-xl bg-white/10 hover:bg-amber-500 hover:text-black text-white font-bold text-xs uppercase tracking-wider transition flex items-center justify-center gap-2 cursor-pointer">
                             <i class="fa-solid fa-bolt"></i> Dettagli & Acquista
                         </button>
                     </div>
@@ -952,7 +906,6 @@
             }).join('');
         }
 
-        // Renderizza la lista mezzi nella SCHEDA ADMIN
         function renderAdminVehiclesList() {
             const list = document.getElementById('admin-vehicles-list');
             const counter = document.getElementById('admin-vehicle-count');
@@ -961,7 +914,7 @@
             counter.textContent = `${vehicles.length} Mezz${vehicles.length === 1 ? 'o' : 'i'}`;
 
             if (vehicles.length === 0) {
-                list.innerHTML = `<p class="text-sm text-gray-500 col-span-full text-center py-8">Nessun mezzo presente. Usa il modulo qui sopra per aggiungerne uno.</p>`;
+                list.innerHTML = `<p class="text-sm text-gray-500 col-span-full text-center py-8">Nessun mezzo presente.</p>`;
                 return;
             }
 
@@ -973,9 +926,6 @@
                             <span class="absolute top-2.5 right-2.5 px-2.5 py-1 rounded-lg bg-black/80 text-amber-400 font-display font-bold text-sm border border-amber-500/30">
                                 ${escapeHtml(v.price)}
                             </span>
-                            <span class="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-black/75 text-[10px] text-gray-300 font-mono">
-                                Altezza: ${v.imgHeight || 240}px (${v.imgFit || 'cover'})
-                            </span>
                         </div>
                         <div class="p-4">
                             <h4 class="font-roman font-bold text-base text-white">${escapeHtml(v.name)}</h4>
@@ -983,10 +933,10 @@
                         </div>
                     </div>
                     <div class="p-4 pt-0 flex items-center gap-2">
-                        <button onclick="editVehicle('${v.id}')" class="flex-1 py-2 px-3 rounded-xl bg-amber-500/15 hover:bg-amber-500/30 text-amber-400 border border-amber-500/30 text-xs font-bold transition flex items-center justify-center gap-1.5">
+                        <button onclick="editVehicle('${v.id}')" class="flex-1 py-2 px-3 rounded-xl bg-amber-500/15 hover:bg-amber-500/30 text-amber-400 border border-amber-500/30 text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer">
                             <i class="fa-solid fa-pen"></i> Modifica
                         </button>
-                        <button onclick="deleteVehicle('${v.id}')" class="py-2 px-3.5 rounded-xl bg-red-500/15 hover:bg-red-500/30 text-red-400 border border-red-500/30 text-xs font-bold transition flex items-center justify-center gap-1.5">
+                        <button onclick="deleteVehicle('${v.id}')" class="py-2 px-3.5 rounded-xl bg-red-500/15 hover:bg-red-500/30 text-red-400 border border-red-500/30 text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer">
                             <i class="fa-solid fa-trash"></i> Elimina
                         </button>
                     </div>
@@ -1014,7 +964,7 @@
                     const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.85);
                     document.getElementById('v-image-preview').src = compressedDataUrl;
                     document.getElementById('v-image-url').value = compressedDataUrl;
-                    showToast('Foto veicolo caricata!', 'success');
+                    showToast('Foto caricata!', 'success');
                 };
                 img.src = e.target.result;
             };
@@ -1043,7 +993,7 @@
                 const index = vehicles.findIndex(v => v.id === editId);
                 if (index !== -1) {
                     vehicles[index] = { id: editId, name, price, description, image, imgHeight, imgFit };
-                    showToast('Mezzo aggiornato con successo!', 'success');
+                    showToast('Mezzo aggiornato!', 'success');
                 }
             } else {
                 const newVehicle = {
@@ -1056,7 +1006,7 @@
                     imgFit
                 };
                 vehicles.unshift(newVehicle);
-                showToast('Nuovo mezzo pubblicato nel catalogo!', 'success');
+                showToast('Nuovo mezzo pubblicato!', 'success');
             }
 
             saveVehiclesToStorage();
@@ -1110,7 +1060,7 @@
             saveVehiclesToStorage();
             renderVehicles();
             renderAdminVehiclesList();
-            showToast('Mezzo rimosso dal catalogo.', 'info');
+            showToast('Mezzo eliminato.', 'info');
         }
 
         function openVehicleModal(id) {
@@ -1137,9 +1087,7 @@
 
         function copyOrderTicket() {
             if (!activeModalVehicle) return;
-            const textToCopy = `🏛️ ${settings.serverName.toUpperCase()} — RICHIESTA VEICOLO BIT
-• Modello: ${activeModalVehicle.name}
-• Prezzo: ${activeModalVehicle.price}`;
+            const textToCopy = `🏛️ ${settings.serverName.toUpperCase()} — RICHIESTA VEICOLO BIT\n• Modello: ${activeModalVehicle.name}\n• Prezzo: ${activeModalVehicle.price}`;
             
             const tempInput = document.createElement('textarea');
             tempInput.value = textToCopy;
@@ -1148,7 +1096,7 @@
             document.execCommand('copy');
             document.body.removeChild(tempInput);
 
-            showToast('Dati copiati! Incollali nel ticket su Discord Impero Romano.', 'success');
+            showToast('Dati copiati per Discord!', 'success');
         }
 
         function exportStoreData() {
@@ -1170,7 +1118,7 @@
             applySettingsToUI();
             renderVehicles();
             renderAdminVehiclesList();
-            showToast('Store ripristinato ai valori iniziali.', 'info');
+            showToast('Ripristinato ai valori iniziali.', 'info');
         }
 
         function showToast(message, type = 'success') {
